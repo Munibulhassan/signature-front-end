@@ -36,3 +36,47 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+/*login page css strt*/
+#login_page .insign_login .login_side .free_button .try_free { float: right; margin-top: 15%; background-color: #3B9ADD; color: white; border-radius: 20px; font-size: 15px; font-weight: 600; }
+#login_page .insign_login .header { padding: 50px 0px; }
+#login_page .insign_login .login_heading { text-align: center; color: black; }
+#login_page .insign_login .half_haeding { color: #3f9bdf; }
+#login_page .insign_login .login_heading h1 { font-size: 40px; font-family: roboto; padding: 12px 0px;}
+#login_page .insign_login .login_para { text-align: center; }
+#login_page .insign_login .login_para p { font-size: 14px; color: #918c8c; }
+#login_page .insign_login .login_side .login_form { padding: 0% 15%; position: relative;}
+#login_page .login_form input { background-color: white; padding: 10px 15px; border-radius: 10px; box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px; border: none;}
+#login_page .login_form .form-group { padding: 8px 0px; }
+#login_page .login_form input[type=email]:focus { border: none; }
+#login_page .login_form input[type=password]:focus { border: none; }
+#login_page .login_form .login_btn { background-color: #3a9be2; color: white; width: 100%; border: none; padding: 6px 0px; margin: 12px 0px; border-radius: 20px; font-weight: 600; font-size: 20px; }
+#login_page .login_form .form_or { text-align: center; }
+#login_page .login_form .form_or h5 { color: #3a9be2; font-size: 25px; }
+#login_page .login_form .google_btn { background-color: #f5f3f4; color: #959394; width: 100%; padding: 6px 0px; margin: 12px 0px; border: 1px solid #efdce6; border-radius: 20px; font-weight: 600; font-size: 20px; }
+#login_page .newhere_side { background-color: #3a9be2; padding: 15% 4%; position: relative; }
+#login_page .newhere_side .new_heading h1 { color: white; text-align: center; font-size: 35px; font-family: roboto; }
+#login_page .newhere_side .new_para p { color: white; font-size: 14px; padding: 10px 0px; text-align: center; }
+#login_page .newhere_side input { background-color: white; padding: 10px 15px; border-radius: 10px; box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px; border: none; }
+#login_page .newhere_side .form-group { padding: 6px 0px; }
+#login_page .newhere_side .form_text { color: white; font-size: 14px; padding: 10px 0px; text-align: center; }
+#login_page .newhere_side .newhere_login { background-color: white; color: #3a9be2; width: 100%; border: none; padding: 6px 0px; border-radius: 20px; font-weight: 600; font-size: 20px; }
+#login_page .newhere_side .newhere_google { background-color: white; color: #959394; width: 100%; border: none; padding: 6px 0px; border-radius: 20px; font-weight: 600; font-size: 20px; }
+#login_page .newhere_side .newhere_or { text-align: center; padding: 8px 0px; }
+#login_page .newhere_side .newhere_or h5 { color: white; font-size: 25px; }
+#login_page .newhere_side .term_privacy a { color: white; text-decoration: none; font-weight: 700; }
+#login_page .newhere_side { background-color: #3a9be2; padding-top: 15%; }
+#login_page .newhere_side .new_heading h1 { color: white; text-align: center; font-size: 35px; font-family: roboto; }
+.login_img { position: absolute; top: 36%; left: -45px; z-index: -1; }
+.loginform_img { position: absolute; right: 4%; }
+.newhere_img { position: absolute; right: 0px; top: 17%; }
+#login_page .container { max-width: 100%; }
+#login_page .insign_login { height: 100vh; }
+#login_page .login_side { padding: 0% 7%; }
+.google_icon { width: 3%; position: absolute; left: 31%; top: 86%; }
+.google_icon_new { width: 4%; position: absolute; left: 23%; top: 94.5%; }
+#login_page .newhere_side .img_newhere { position: relative; }
+/*login page css end*/

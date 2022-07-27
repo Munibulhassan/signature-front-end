@@ -12,7 +12,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Login />} />
         <Route path="/signature" element={<Signature />} />
-
         <Route path="/team" element={<Team />} />
         <Route path="/setting" element={<Setting />} />
       </Routes>
