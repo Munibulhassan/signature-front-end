@@ -4,6 +4,7 @@ import Setting from "./pages/Setting";
 import Team from "./pages/Team";
 import Signature from "./pages/Signature";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Agreement from "./pages/Agreement";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
 
         <Route path="/team" element={<Team />} />
         <Route path="/setting" element={<Setting />} />
+        <Route path="/agreement" element = {<Agreement/>}
+
+        />
       </Routes>
     </BrowserRouter>
   );

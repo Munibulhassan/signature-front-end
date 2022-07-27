@@ -1,9 +1,9 @@
 import React from 'react'
 import Sidebar from '../components/sidebar'
 
-export default function Setting() {
+export default function Agreement() {
   return (
-    <div className='Row container' >
+    <div className='Row container'>
     <div className='col-md-2'>
 
       <Sidebar/>
