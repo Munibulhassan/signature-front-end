@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Sidebar from "../components/sidebar";
 
 import profile from "../Assets/profile.jfif";
-import rightarrow from "../Assets/Group 26.png";
 import notification from "../Assets/Group 25911.png";
 import updationnotification from "../Assets/Group 2591.png";
+import rightarrow from "../Assets/Group 26.png";
 import selectMe from "../Assets/Group 2671.png";
 import Me from "../Assets/Group 2676.png";
 import meandteam from "../Assets/Group 2678.png";
@@ -15,6 +15,7 @@ import selectbulk from "../Assets/Group 2679.png";
 
 import gdrive from "../Assets/Google_Drive_logo.png";
 import onedrive from "../Assets/OneDrive-Logo.wine.png";
+import Profile from "../components/Profile";
 
 export default function Signature() {
   const [status,setstatus] =useState("1")
@@ -26,13 +27,7 @@ export default function Signature() {
       </div>
       <div className="col-md-8">
         <div className="content">
-          <div className="profile">
-            <button type="button" className="btn upgrade">
-              Upgrade <img src={rightarrow} />
-            </button>
-            <img className="profile-img" src={profile} />
-            <img className="notify" src={updationnotification} />
-          </div>
+         <Profile/>
           <p className="signatureheading">Signature</p>
           <div className="sign">
 {

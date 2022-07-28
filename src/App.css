@@ -61,27 +61,26 @@
 
 .sidebar li {
   padding: 12px;
-
+  width: max-content;
   transition: all 0.5s;
   letter-spacing: 1px;
   display: flex;
+  cursor: pointer;
   flex-direction: row;
 }
 
 .sidebar li span:nth-child(2) {
   font-size: 20px;
   font-weight: 500;
-  cursor: pointer;
+
   margin-left: 15px;
 }
 .sidebar li span:nth-child(2).active {
   color: #3c9adf;
-  cursor: default;
 }
 
 .sidebar li:hover {
   background-color: #f2f2f2;
-  padding: 12px;
 }
 .logo {
   height: 100px;
@@ -173,8 +172,9 @@
   z-index: 1;
   width: 239px;
 }
-.sign-menu.active p,.sign-menu.active h1{
-  color:#ffffff
+.sign-menu.active p,
+.sign-menu.active h1 {
+  color: #ffffff;
 }
 .sign-menu img {
   position: relative;
@@ -186,10 +186,9 @@
   font-weight: 500;
   font-size: 25px;
 }
-.sign-document p{
+.sign-document p {
   font-size: 16px;
   color: #b8b8b8;
-  
 }
 .signinput {
   margin-top: 30px;
@@ -251,71 +250,304 @@
   box-shadow: #f1f1f1 1px 2px 5px;
   justify-content: center;
   align-items: center;
-  
 }
 .gdrive img,
 .onedrive img {
   width: 65px;
   height: 60px;
   display: block;
-  
+
   margin-left: auto;
   margin-right: auto;
-  
 }
 .gdrive p,
-.onedrive p{
+.onedrive p {
   font-size: 25px;
   font-weight: 500;
   width: max-content;
-
 }
+
 /* /// */
 
-
-
 /*login page css strt*/
-#login_page .insign_login .login_side .free_button .try_free { float: right; margin-top: 15%; background-color: #3B9ADD; color: white; border-radius: 20px; font-size: 15px; font-weight: 600; }
-#login_page .insign_login .header { padding: 50px 0px; }
-#login_page .insign_login .login_heading { text-align: center; color: black; }
-#login_page .insign_login .half_haeding { color: #3f9bdf; }
-#login_page .insign_login .login_heading h1 { font-size: 40px; font-family: roboto; padding: 12px 0px;}
-#login_page .insign_login .login_para { text-align: center; }
-#login_page .insign_login .login_para p { font-size: 14px; color: #918c8c; }
-#login_page .insign_login .login_side .login_form { padding: 0% 15%; position: relative;}
-#login_page .login_form input { background-color: white; padding: 10px 15px; border-radius: 10px; box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px; border: none;}
-#login_page .login_form .form-group { padding: 8px 0px; }
-#login_page .login_form input[type=email]:focus { border: none; }
-#login_page .login_form input[type=password]:focus { border: none; }
-#login_page .login_form .login_btn { background-color: #3a9be2; color: white; width: 100%; border: none; padding: 6px 0px; margin: 12px 0px; border-radius: 20px; font-weight: 600; font-size: 20px; }
-#login_page .login_form .form_or { text-align: center; }
-#login_page .login_form .form_or h5 { color: #3a9be2; font-size: 25px; }
-#login_page .login_form .google_btn { background-color: #f5f3f4; color: #959394; width: 100%; padding: 6px 0px; margin: 12px 0px; border: 1px solid #efdce6; border-radius: 20px; font-weight: 600; font-size: 20px; }
-#login_page .newhere_side { background-color: #3a9be2; padding: 15% 4%; position: relative; }
-#login_page .newhere_side .new_heading h1 { color: white; text-align: center; font-size: 35px; font-family: roboto; }
-#login_page .newhere_side .new_para p { color: white; font-size: 14px; padding: 10px 0px; text-align: center; }
-#login_page .newhere_side input { background-color: white; padding: 10px 15px; border-radius: 10px; box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px; border: none; }
-#login_page .newhere_side .form-group { padding: 6px 0px; }
-#login_page .newhere_side .form_text { color: white; font-size: 14px; padding: 10px 0px; text-align: center; }
-#login_page .newhere_side .newhere_login { background-color: white; color: #3a9be2; width: 100%; border: none; padding: 6px 0px; border-radius: 20px; font-weight: 600; font-size: 20px; }
-#login_page .newhere_side .newhere_google { background-color: white; color: #959394; width: 100%; border: none; padding: 6px 0px; border-radius: 20px; font-weight: 600; font-size: 20px; }
-#login_page .newhere_side .newhere_or { text-align: center; padding: 8px 0px; }
-#login_page .newhere_side .newhere_or h5 { color: white; font-size: 25px; }
-#login_page .newhere_side .term_privacy a { color: white; text-decoration: none; font-weight: 700; }
-#login_page .newhere_side { background-color: #3a9be2; padding-top: 15%; }
-#login_page .newhere_side .new_heading h1 { color: white; text-align: center; font-size: 35px; font-family: roboto; }
-.login_img { position: absolute; top: 36%; left: -45px; z-index: -1; }
-.loginform_img { position: absolute; right: 4%; }
-.newhere_img { position: absolute; right: 0px; top: 17%; }
-#login_page .container { max-width: 100%; }
-#login_page .insign_login { height: 100vh; }
-#login_page .login_side { padding: 0% 7%; }
-.google_icon { width: 3%; position: absolute; left: 31%; top: 87.4%; }
-.google_icon_new { width: 5%; position: absolute; left: 20%; top: 94.7%; }
-#login_page .newhere_side .img_newhere { position: relative; }
-#login_page .login_forget p a { float: right; text-decoration: none; color: #a5a5a5; font-size: 18px;  }
+#login_page .insign_login .login_side .free_button .try_free {
+  float: right;
+  margin-top: 15%;
+  background-color: #3b9add;
+  color: white;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+#login_page .insign_login .header {
+  padding: 50px 0px;
+  display: flex;
+
+}
+#login_page .insign_login .login_heading {
+  text-align: center;
+  color: black;
+}
+#login_page .col-md-8{width: 66% !important;}
+#login_page .insign_login .half_haeding {
+  color: #3f9bdf;
+}
+#login_page .insign_login .login_heading h1 {
+  font-size: 40px;
+  
+  padding: 12px 0px;
+}
+#login_page .insign_login .login_para {
+  text-align: center;
+}
+#login_page .insign_login .login_para p {
+  font-size: 14px;
+  color: #918c8c;
+}
+#login_page .insign_login .login_side .login_form {
+  padding: 0% 15%;
+  position: relative;
+}
+#login_page .login_form input {
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px;
+  border: none;
+}
+#login_page .login_form .form-group {
+  padding: 8px 0px;
+}
+#login_page .login_form input[type="email"]:focus {
+  border: none;
+}
+#login_page .login_form input[type="password"]:focus {
+  border: none;
+}
+#login_page .login_form .login_btn {
+  background-color: #3a9be2;
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 6px 0px;
+  margin: 12px 0px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+#login_page .login_form .form_or {
+  text-align: center;
+}
+#login_page .login_form .form_or h5 {
+  color: #3a9be2;
+  font-size: 25px;
+}
+#login_page .login_form .google_btn {
+  background-color: #f5f3f4;
+  color: #959394;
+  width: 100%;
+  padding: 6px 0px;
+  margin: 12px 0px;
+  border: 1px solid #efdce6;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+#login_page .newhere_side {
+  background-color: #3a9be2;
+  padding: 15% 4%;
+  position: relative;
+}
+#login_page .newhere_side .new_heading h1 {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  
+}
+#login_page .newhere_side .new_para p {
+  color: white;
+  font-size: 14px;
+  padding: 10px 0px;
+  text-align: center;
+}
+#login_page .newhere_side input {
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px;
+  border: none;
+}
+.form{margin-top: 40px;}
+#login_page .newhere_side .form-group {
+  padding: 6px 0px;
+}
+#login_page .newhere_side .form_text {
+  color: white;
+  font-size: 14px;
+  padding: 10px 0px;
+  text-align: center;
+}
+#login_page .newhere_side .newhere_login {
+  background-color: white;
+  color: #3a9be2;
+  width: 100%;
+  border: none;
+  padding: 6px 0px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+#login_page .newhere_side .newhere_google {
+  background-color: white;
+  color: #959394;
+  width: 100%;
+  border: none;
+  padding: 6px 0px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+#login_page .newhere_side .newhere_or {
+  text-align: center;
+  padding: 8px 0px;
+}
+#login_page .newhere_side .newhere_or h5 {
+  color: white;
+  font-size: 25px;
+}
+#login_page .newhere_side .term_privacy a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+#login_page .newhere_side {
+  background-color: #3a9be2;
+  padding-top: 15%;
+}
+#login_page .newhere_side .new_heading h1 {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  
+}
+.login_img {
+  position: absolute;
+  top: 36%;
+  left: -45px;
+  z-index: -1;
+}
+.loginform_img {
+  position: absolute;
+  right: 4%;
+}
+.newhere_img {
+  position: absolute;
+  right: 0px;
+  top: 17%;
+}
+
+#login_page .insign_login {
+  height: 100vh;
+}
+#login_page .login_side {
+  padding: 0% 7%;
+}
+.google_icon {
+  width: 3%;
+  position: absolute;
+  left: 31%;
+  top: 86%;
+}
+.google_icon_new {
+  width: 4%;
+  position: absolute;
+  left: 23%;
+  top: 94.5%;
+}
+#login_page {
+  overflow: hidden;
+  height: 100vh;
+}
+#login_page .newhere_side .img_newhere {
+  position: relative;
+}
+#login_page .login_forget p a { float: right; text-decoration: none; color: #A5A5A5; font-size: 18px;  }
 #login_page .new_forget p a { text-decoration: none; color: white; font-size: 18px; float: right;  }
 #login_page .newhere_side .form_text p { padding-top: 10%; }
 #login_page .login_form .eyelash { position: absolute; right: 18%; top: 24%; width: 4%; }
-#login_page .newhere_side .eyelash { position: absolute; right: 6%; top: 46%; width: 6%; }
+#login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 44.5%; width: 6%; }
 /*login page css end*/
+
+/* Agreement */
+
+.agreement-size {
+  width: 100% !important;
+}
+#dropdown-basic,.form-inline input{
+  
+  padding: 15px 25px;
+}
+.form-inline input::placeholder{
+  
+  color: #919191;
+}
+#dropdown-basic,
+.form-inline {
+  background-color: white;
+  color: #919191;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  box-shadow: #f1f1f1 1px 1px 1px;
+}
+.dropdown-toggle::before {
+  position: absolute;
+  border-left: 10px solid #fff;
+}
+.agree-options,.distance, .agree-document {
+  display: flex;
+  justify-content:space-between;
+  
+}
+.search{
+  
+  margin-left: 10px;
+}
+.status{
+  float: right;  
+}
+.contract{margin-left: 10px;}
+.agree-document{
+  margin-top: 40px;
+}
+.agree-document .result-count {
+  font-size: 25px;  
+  font-weight: 500;
+}
+.folder{
+  background-color:#f5f5f5 ;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.folder img{
+  padding: 5px;
+  width: 100%;
+  height: auto;
+margin-left: auto;  
+margin-right: auto;  
+display: block;
+}
+.folder-container{
+  display: flex ;
+  width: 15%;
+
+  flex-direction: column;
+}
+.folder-container p {
+  margin-left: auto;  
+margin-right: auto;  
+display: block;
+  font-weight: 500;
+  font-size: 20px;
+}
+/* ///// */
