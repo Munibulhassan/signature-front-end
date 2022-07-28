@@ -281,17 +281,20 @@
 }
 #login_page .insign_login .header {
   padding: 50px 0px;
+  display: flex;
+
 }
 #login_page .insign_login .login_heading {
   text-align: center;
   color: black;
 }
+#login_page .col-md-8{width: 66% !important;}
 #login_page .insign_login .half_haeding {
   color: #3f9bdf;
 }
 #login_page .insign_login .login_heading h1 {
   font-size: 40px;
-  font-family: roboto;
+  
   padding: 12px 0px;
 }
 #login_page .insign_login .login_para {
@@ -359,7 +362,7 @@
   color: white;
   text-align: center;
   font-size: 35px;
-  font-family: roboto;
+  
 }
 #login_page .newhere_side .new_para p {
   color: white;
@@ -374,6 +377,7 @@
   box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px;
   border: none;
 }
+.form{margin-top: 40px;}
 #login_page .newhere_side .form-group {
   padding: 6px 0px;
 }
@@ -424,7 +428,7 @@
   color: white;
   text-align: center;
   font-size: 35px;
-  font-family: roboto;
+  
 }
 .login_img {
   position: absolute;
@@ -460,9 +464,18 @@
   left: 23%;
   top: 94.5%;
 }
+#login_page {
+  overflow: hidden;
+  height: 100vh;
+}
 #login_page .newhere_side .img_newhere {
   position: relative;
 }
+#login_page .login_forget p a { float: right; text-decoration: none; color: #A5A5A5; font-size: 18px;  }
+#login_page .new_forget p a { text-decoration: none; color: white; font-size: 18px; float: right;  }
+#login_page .newhere_side .form_text p { padding-top: 10%; }
+#login_page .login_form .eyelash { position: absolute; right: 18%; top: 24%; width: 4%; }
+#login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 44.5%; width: 6%; }
 /*login page css end*/
 
 /* Agreement */
