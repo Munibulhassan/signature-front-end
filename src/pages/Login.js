@@ -3,7 +3,7 @@ import logo from "../Assets/Approaved.png"
 import circle from "../Assets/Newhere.png"
 import login from "../Assets/login.png"
 import login_form from "../Assets/login_form.png"
-// import eye from "../Assets/eye-slash7.png"
+import eye from "../Assets/eye-slash.png"
 import google from "../Assets/googleicon.png"
 export default function Login() {
   return (
@@ -38,7 +38,10 @@ export default function Login() {
           </div>
           <div class="form-group">
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            {/* <img src={eye} class="eyelash"/> */}
+            <img src={eye} class="eyelash"/>
+          </div>
+          <div class="login_forget">
+          <p><a href="#">Forget Password?</a></p>
           </div>
           <button type="login" class=" login_btn">Login</button> 
           <div class="row form_or"><h5>OR</h5></div>
@@ -52,17 +55,16 @@ export default function Login() {
       </div>
   </div>
   <div class="col-md-4 col-sm-12 newhere_side">
+<div class="container-fluid">
       <div class="newhere_img">
       <img src={circle} class="img-fluid"/>
       </div>
-
-
     <div class="img_newhere">
     <div class="new_heading">
     <h1>New Here?</h1>
     </div>
     <div class="new_para">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
     </div>
     <div class="newhere_form">
           <form>
@@ -74,9 +76,13 @@ export default function Login() {
           </div>
           <div class="form-group">
             <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" />
+            <img src={eye} class="eyelash"/>
+          </div>
+          <div class="new_forget">
+          <p><a href="#">Forget Password?</a></p>
           </div>
           <div class="form_text">
-            <p>Lorem Ipsum is simply dummy text <span class="term_privacy"><a href="#"> Term & Condition </a></span> industry. Lorem Ipsum has been the industry's<span class="term_privacy"><a href="#"> Privacy Policy </a></span>dummy text.</p>
+            <p>Lorem Ipsum is simply dummy text <span class="term_privacy"><a href="#"> Term & Condition </a></span> industry. Lorem Ipsum has's<span class="term_privacy"><a href="#"> Privacy Policy </a></span>dummy text.</p>
           </div>
           <button type="login" class="btn newhere_login">Login</button> 
           <div class="row newhere_or"><h5>OR</h5></div>
@@ -84,13 +90,12 @@ export default function Login() {
          </form>
     </div>
     </div>
-
+    </div>
 
   </div>
 </div>
 </div>
 </section>
-
 </>
   )
 }

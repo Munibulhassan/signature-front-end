@@ -76,7 +76,12 @@
 #login_page .container { max-width: 100%; }
 #login_page .insign_login { height: 100vh; }
 #login_page .login_side { padding: 0% 7%; }
-.google_icon { width: 3%; position: absolute; left: 31%; top: 86%; }
-.google_icon_new { width: 4%; position: absolute; left: 23%; top: 94.5%; }
+.google_icon { width: 3%; position: absolute; left: 31%; top: 87.4%; }
+.google_icon_new { width: 5%; position: absolute; left: 20%; top: 94.7%; }
 #login_page .newhere_side .img_newhere { position: relative; }
+#login_page .login_forget p a { float: right; text-decoration: none; color: #a5a5a5; font-size: 18px;  }
+#login_page .new_forget p a { text-decoration: none; color: white; font-size: 18px; float: right;  }
+#login_page .newhere_side .form_text p { padding-top: 10%; }
+#login_page .login_form .eyelash { position: absolute; right: 18%; top: 24%; width: 4%; }
+#login_page .newhere_side .eyelash { position: absolute; right: 6%; top: 46%; width: 6%; }
 /*login page css end*/
