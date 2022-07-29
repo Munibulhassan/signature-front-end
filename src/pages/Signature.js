@@ -21,20 +21,22 @@ export default function Signature() {
   const [status,setstatus] =useState("1")
 
   return (
-    <div className="Row container">
+
+    <div class="signature_page">
+<div className="Row container">
       <div className="col-md-4">
         <Sidebar />
       </div>
-      <div className="col-md-8">
+      <div className="col-md-8 signature_profile">
         <div className="content">
          <Profile/>
           <p className="signatureheading">Signature</p>
           <div className="sign">
 {
   status == "1" ? (
-    <div className="sign-menu active ">
-              <h1 >Only Me</h1>
-              <p >
+    <div className="sign-menu only_me">
+              <h1 className="active-sign-menu">Only Me</h1>
+              <p className="active-sign-menu">
                 Lorem Ex qui mollit officia aliqua do officia deserunt id
                 aliquip culpa.
               </p>
@@ -54,16 +56,16 @@ export default function Signature() {
 }
 {
   status=="2"?(
-    <div className="sign-menu active">
-              <h1>Me & Team</h1>
-              <p>
+    <div className="sign-menu me_team">
+              <h1 className="active-sign-menu">Me & Team</h1>
+              <p className="active-sign-menu">
                 Lorem Ex qui mollit officia aliqua do officia deserunt id
                 aliquip culpa.
               </p>
               <img src={selectmeandteam} />
             </div>
   ):(
-    <div className="sign-menu" onClick={()=>setstatus("2")}>
+    <div className="sign-menu " onClick={()=>setstatus("2")}>
               <h1>Me & Team</h1>
               <p>
                 Lorem Ex qui mollit officia aliqua do officia deserunt id
@@ -77,9 +79,9 @@ export default function Signature() {
 
           {
 status=="3"?(
-  <div className="sign-menu active">
-              <h1>Bulk Sign</h1>
-              <p>
+  <div className="sign-menu bulk_sign">
+              <h1 className="active-sign-menu">Bulk Sign</h1>
+              <p className="active-sign-menu">
                 Lorem Ex qui mollit officia aliqua do officia deserunt id
                 aliquip culpa.
               </p>
@@ -215,5 +217,11 @@ status=="3"?(
         </div>
       </div>
     </div>
+
+      
+
+      
+    </div>
+    
   );
 }

@@ -75,6 +75,7 @@
 
 @media only screen and (max-width: 1440px){
   .google_icon { width: 2%; position: absolute; left: 34%; top: 83%; }
+  .signup_page .google_icon { width: 3%; left: 31%; }
 }
 
 @media only screen and (max-width: 1024px){
@@ -118,3 +119,29 @@
 /*login page responsive css*/
 
 
+
+
+
+
+
+/*Signature page responsive css*/
+@media only screen and (max-width: 1600px){
+  .signature_page .sign-menu { max-width: 25%; }
+  .signature_page .only_me { margin-right: 7%; }
+  .signature_page .me_team { margin: 0% 7%; }
+  .signature_page .bulk_sign { margin: 0% 7%; }
+  .signature_page .col-md-8 { max-width: 85% !important; }
+}
+
+@media only screen and (max-width: 1440px){
+  .gdrive p, .onedrive p { font-size: 20px; font-weight: 500; width: max-content; }
+}
+
+@media only screen and (max-width: 1024px){
+  .gdrive, .onedrive { width: 27%; }
+}
+
+@media only screen and (max-width: 1024px){
+  /* .signature_page .col-md-8 { max-width: 100% !important; } */
+}
+/*Signature page responsive css*/
