@@ -1,0 +1,33 @@
+@media only screen and (max-width: 1600px) {
+    #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 45.5%; width: 6%; }
+    .google_icon_new {
+        width: 4%;
+        position: absolute;
+        left: 20%;
+        top: 95%;
+      }
+      .google_icon {
+        width: 3%;
+        position: absolute;
+        left: 28%;
+        top: 87%;
+      }
+}
+@media only screen and (max-width: 1024px) {
+    #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 45.8%; width: 6%; }
+    #login_page .login_form .eyelash { position: absolute; right: 18%; top: 25%; width: 4%; }
+
+    .google_icon_new {
+        width: 4%;
+        position: absolute;
+        left: 23%;
+        top: 95%;
+      }
+      .google_icon {
+        width: 3%;
+        position: absolute;
+        left: 28%;
+        top: 87%;
+      }
+
+}

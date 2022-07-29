@@ -80,8 +80,8 @@ export default function Login() {
             <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Email Address"/>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" />
-            <img src={eye} class="eyelash"/>
+            <input type="password" class="form-control" id="examplepassword2"  placeholder="Password" />            
+            <img src={eye} class="eyelash"/>            
           </div>
           <div class="new_forget">
           <p><a href="#">Forget Password?</a></p>

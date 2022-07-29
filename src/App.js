@@ -5,7 +5,7 @@ import Team from "./pages/Team";
 import Signature from "./pages/Signature";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agreement from "./pages/Agreement";
-
+import "./responsive.css"
 function App() {
   return (
     <BrowserRouter>
