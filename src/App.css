@@ -474,7 +474,7 @@
 #login_page .login_forget p a { float: right; text-decoration: none; color: #A5A5A5; font-size: 18px;  }
 #login_page .new_forget p a { text-decoration: none; color: white; font-size: 18px; float: right;  }
 #login_page .newhere_side .form_text p { padding-top: 10%; }
-#login_page .login_form .eyelash { position: absolute; right: 18%; top: 24%; width: 4%; }
+#login_page .login_form .eyelash { position: absolute; right: 25%; top: 23%; width: 3%; }
 #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 44.5%; width: 6%; }
 
 /*login page css end*/
@@ -551,4 +551,24 @@ display: block;
   font-weight: 500;
   font-size: 20px;
 }
+
+.signup_page #login_page .login_form .eyelash {
+  position: absolute;
+  top: 38%;
+}
 /* ///// */
+
+
+
+/*login page css*/
+#login_page .dont_account { text-align: center; font-size: 15px; font-family: roboto; color: #918c8c; }
+#login_page .insign_login .login_side .login_form { padding: 0% 23%; position: relative; }
+/* #login_page .login_form .eyelash { position: absolute; right: 25%; top: 25%; width: 3%; } */
+.google_icon { width: 3%; position: absolute; left: 34%; top: 82%; }
+#login_page .dont_account a { text-decoration: none; }
+/*login page css*/
+
+
+/*Signup page css*/
+.signup_page .google_icon { left: 34%; top: 83%; position: absolute; }
+/*Signup page css*/
