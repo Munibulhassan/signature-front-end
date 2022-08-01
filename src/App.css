@@ -174,14 +174,20 @@
   z-index: 1;
   width: 239px;
 }
-.active-sign-menu 
-{
+.active-sign-menu {
   color: #ffffff !important;
 }
 .sign-menu img {
   position: relative;
+  background-size: cover;
+  width: 100%;
   box-shadow: #f1f1f1 1px 2px 2px;
   border-radius: 50px;
+  
+}
+
+.only_me{
+  color:#3a9be2
 }
 .sign-document h1 {
   margin-top: 20px;
@@ -284,19 +290,20 @@
 #login_page .insign_login .header {
   padding: 50px 0px;
   display: flex;
-
 }
 #login_page .insign_login .login_heading {
   text-align: center;
   color: black;
 }
-#login_page .col-md-8{width: 66% !important;}
+#login_page .col-md-8 {
+  width: 66% !important;
+}
 #login_page .insign_login .half_haeding {
   color: #3f9bdf;
 }
 #login_page .insign_login .login_heading h1 {
   font-size: 40px;
-  
+
   padding: 12px 0px;
 }
 #login_page .insign_login .login_para {
@@ -364,7 +371,6 @@
   color: white;
   text-align: center;
   font-size: 35px;
-  
 }
 #login_page .newhere_side .new_para p {
   color: white;
@@ -379,7 +385,9 @@
   box-shadow: rgb(0 0 0 / 18%) 0px 5px 15px;
   border: none;
 }
-.form{margin-top: 40px;}
+.form {
+  margin-top: 40px;
+}
 #login_page .newhere_side .form-group {
   padding: 6px 0px;
 }
@@ -430,7 +438,6 @@
   color: white;
   text-align: center;
   font-size: 35px;
-  
 }
 .login_img {
   position: absolute;
@@ -473,11 +480,33 @@
 #login_page .newhere_side .img_newhere {
   position: relative;
 }
-#login_page .login_forget p a { float: right; text-decoration: none; color: #A5A5A5; font-size: 18px;  }
-#login_page .new_forget p a { text-decoration: none; color: white; font-size: 18px; float: right;  }
-#login_page .newhere_side .form_text p { padding-top: 10%; }
-#login_page .login_form .eyelash { position: absolute; right: 25%; top: 23%; width: 3%; }
-#login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 44.5%; width: 6%; }
+#login_page .login_forget p a {
+  float: right;
+  text-decoration: none;
+  color: #a5a5a5;
+  font-size: 18px;
+}
+#login_page .new_forget p a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  float: right;
+}
+#login_page .newhere_side .form_text p {
+  padding-top: 10%;
+}
+#login_page .login_form .eyelash {
+  position: absolute;
+  right: 25%;
+  top: 23%;
+  width: 3%;
+}
+#login_page .newhere_side .eyelash {
+  position: absolute;
+  right: 5%;
+  top: 44.5%;
+  width: 6%;
+}
 
 /*login page css end*/
 
@@ -486,12 +515,11 @@
 .agreement-size {
   width: 100% !important;
 }
-#dropdown-basic,.form-inline input{
-  
+#dropdown-basic,
+.form-inline input {
   padding: 15px 25px;
 }
-.form-inline input::placeholder{
-  
+.form-inline input::placeholder {
   color: #919191;
 }
 #dropdown-basic,
@@ -506,50 +534,52 @@
   position: absolute;
   border-left: 10px solid #fff;
 }
-.agree-options,.distance, .agree-document {
+.agree-options,
+.distance,
+.agree-document {
   display: flex;
-  justify-content:space-between;
-  
+  justify-content: space-between;
 }
-.search{
-  
+.search {
   margin-left: 10px;
 }
-.status{
-  float: right;  
+.status {
+  float: right;
 }
-.contract{margin-left: 10px;}
-.agree-document{
+.contract {
+  margin-left: 10px;
+}
+.agree-document {
   margin-top: 40px;
 }
 .agree-document .result-count {
-  font-size: 25px;  
+  font-size: 25px;
   font-weight: 500;
 }
-.folder{
-  background-color:#f5f5f5 ;
+.folder {
+  background-color: #f5f5f5;
   margin: 10px;
   border-radius: 10px;
   padding: 10px 20px;
 }
-.folder img{
+.folder img {
   padding: 5px;
   width: 100%;
   height: auto;
-margin-left: auto;  
-margin-right: auto;  
-display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
-.folder-container{
-  display: flex ;
+.folder-container {
+  display: flex;
   width: 15%;
 
   flex-direction: column;
 }
 .folder-container p {
-  margin-left: auto;  
-margin-right: auto;  
-display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   font-weight: 500;
   font-size: 20px;
 }
@@ -560,18 +590,91 @@ display: block;
 }
 /* ///// */
 
-
-
 /*login page css*/
-#login_page .dont_account { text-align: center; font-size: 15px; font-family: roboto; color: #918c8c; }
-#login_page .insign_login .login_side .login_form { padding: 0% 23%; position: relative; }
+#login_page .dont_account {
+  text-align: center;
+  font-size: 15px;
+  font-family: roboto;
+  color: #918c8c;
+}
+#login_page .insign_login .login_side .login_form {
+  padding: 0% 23%;
+  position: relative;
+}
 /* #login_page .login_form .eyelash { position: absolute; right: 25%; top: 25%; width: 3%; } */
-.google_icon { width: 3%; position: absolute; left: 34%; top: 82%; }
-#login_page .dont_account a { text-decoration: none; }
+.google_icon {
+  width: 3%;
+  position: absolute;
+  left: 34%;
+  top: 82%;
+}
+#login_page .dont_account a {
+  text-decoration: none;
+}
 /*login page css*/
 
+/* agreement */
+.agreetable table {
+  width: 100%;
+  text-align: center;
+  border-bottom: none;
+}
+.agreetable table tr td,
+.agreetable table tr th {
+  border-right: #d0d0d0 solid 2px;
+  border-left: #d0d0d0 solid 2px;
+}
+.agreetable table tr {
+  border-bottom: #d0d0d0 solid 2px;
+}
+.agreetable table tr td #dropdown-basic {
+  border: none;
+  color: #000;
+}
+.agreetable table tr th {
+  background-color: #edf6fd;
+  height: 60px;
+  color: #000;
+}
+.agreetable table tr:last-child,
+.agreetable table tr:first-child {
+  border-bottom: none;
+}
+/* /////// */
+.team {
+  width: 80%;
+}
+
+.teamcart {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  justify-content: center;
+padding: 1% 2%;
 
 
-
-
-
+  width: fit-content;
+  height: fit-content;
+  border: 3px solid #f1f1f1;
+  margin-left: 20px;
+  box-shadow: #f1f1f1 1px 2px 5px;
+  justify-content: center;
+  align-items: center;
+}
+.cartcontent {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: fit-content;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  
+}
+.cartcontent img {
+  width: 100px;
+  height: 100px;
+}
+.cartcontent p {
+  size: 25px;
+  font-weight: 600;
+  margin-top: 10px;
+}

@@ -1,65 +1,166 @@
 @media only screen and (max-width: 1600px) {
-    #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 45.5%; width: 6%; }
-    .google_icon_new {
-        width: 4%;
-        position: absolute;
-        left: 20%;
-        top: 95%;
-      }
-      .google_icon {
-        width: 3%;
-        position: absolute;
-        left: 28%;
-        top: 87%;
-      }
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 45.5%;
+    width: 6%;
+  }
+  .google_icon_new {
+    width: 4%;
+    position: absolute;
+    left: 20%;
+    top: 95%;
+  }
+  .google_icon {
+    width: 3%;
+    position: absolute;
+    left: 28%;
+    top: 87%;
+  }
 }
 
-
 @media only screen and (max-width: 1440px) {
-  #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 48.5%; width: 6%; }
-  .google_icon { width: 3%; position: absolute; left: 28%; top: 88%; }
-  .google_icon_new { width: 4%; position: absolute; left: 18%; top: 95.5%; }
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 48.5%;
+    width: 6%;
+  }
+  .google_icon {
+    width: 3%;
+    position: absolute;
+    left: 28%;
+    top: 88%;
+  }
+  .google_icon_new {
+    width: 4%;
+    position: absolute;
+    left: 18%;
+    top: 95.5%;
+  }
 }
 
 @media only screen and (max-width: 1366px) {
-  #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 46.5%; width: 6%; }
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 46.5%;
+    width: 6%;
+  }
 }
 
 @media only screen and (max-width: 1280px) {
-  #login_page .login_form .google_btn { font-size: 18px; }
-  #login_page .newhere_side .newhere_google { font-size: 18px; }
+  #login_page .login_form .google_btn {
+    font-size: 18px;
+  }
+  #login_page .newhere_side .newhere_google {
+    font-size: 18px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
-  #login_page .newhere_side .eyelash { position: absolute; right: 5%; top: 45.8%; width: 6%; }
-  #login_page .login_form .eyelash { position: absolute; right: 18%; top: 25%; width: 4%; }
-  #login_page .insign_login .login_heading h1 { font-size: 36px; padding: 12px 0px; }
-  .google_icon { width: 4%; position: absolute; left: 24%; top: 88%; }
-  .google_icon_new { width: 6%; position: absolute; left: 9%; top: 95.5%; }
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 45.8%;
+    width: 6%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 18%;
+    top: 25%;
+    width: 4%;
+  }
+  #login_page .insign_login .login_heading h1 {
+    font-size: 36px;
+    padding: 12px 0px;
+  }
+  .google_icon {
+    width: 4%;
+    position: absolute;
+    left: 24%;
+    top: 88%;
+  }
+  .google_icon_new {
+    width: 6%;
+    position: absolute;
+    left: 9%;
+    top: 95.5%;
+  }
 }
 
 @media only screen and (max-width: 786px) {
-  #login_page .insign_login .login_side .login_form { padding: 0% 6%; position: relative; }
-  #login_page .newhere_side { padding: 15% 1%; position: relative; }
-  #login_page .login_form .eyelash { position: absolute; right: 11%; top: 25%; width: 5%; }
-  #login_page .newhere_side .eyelash { position: absolute; right: 8%; top: 47.8%; width: 8%; }
-  .google_icon_new { width: 6%; position: absolute; left: 9%; top: 95.8%; }
-  #login_page .insign_login .login_side .free_button .try_free { margin-top: 50%; }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 6%;
+    position: relative;
+  }
+  #login_page .newhere_side {
+    padding: 15% 1%;
+    position: relative;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 11%;
+    top: 25%;
+    width: 5%;
+  }
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 8%;
+    top: 47.8%;
+    width: 8%;
+  }
+  .google_icon_new {
+    width: 6%;
+    position: absolute;
+    left: 9%;
+    top: 95.8%;
+  }
+  #login_page .insign_login .login_side .free_button .try_free {
+    margin-top: 50%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-  #login_page .insign_login .login_side .login_form { padding: 0% 6%; position: relative; }
-  #login_page .newhere_side { padding: 15% 2%; }
-  #login_page .newhere_side { padding: 28% 0%; }
-  #login_page .login_form .eyelash { position: absolute; right: 11%; top: 25%; width: 5%; }
-  #login_page .newhere_side .eyelash { position: absolute; right: 7%; top: 45.8%; width: 8%; }
-  .google_icon_new { width: 6%; position: absolute; left: 9%; top: 95.7%; }
-  .google_icon { width: 5%; position: absolute; left: 21%; top: 87.5%; }
-  #login_page .insign_login .login_heading h1 { font-size: 35px; padding: 12px 0px; }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 6%;
+    position: relative;
+  }
+  #login_page .newhere_side {
+    padding: 15% 2%;
+  }
+  #login_page .newhere_side {
+    padding: 28% 0%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 11%;
+    top: 25%;
+    width: 5%;
+  }
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 7%;
+    top: 45.8%;
+    width: 8%;
+  }
+  .google_icon_new {
+    width: 6%;
+    position: absolute;
+    left: 9%;
+    top: 95.7%;
+  }
+  .google_icon {
+    width: 5%;
+    position: absolute;
+    left: 21%;
+    top: 87.5%;
+  }
+  #login_page .insign_login .login_heading h1 {
+    font-size: 35px;
+    padding: 12px 0px;
+  }
 }
-
-
-
 
 /*login page responsive css*/
 
@@ -69,79 +170,215 @@
   #login_page .login_form .eyelash { position: absolute; right: 19%; top: 23%; width: 3%; }
 } */
 
-@media only screen and (max-width: 1600px){
-  .google_icon { width: 2%; position: absolute; left: 35%; top: 83%; }
+@media only screen and (max-width: 1600px) {
+  .google_icon {
+    width: 2%;
+    position: absolute;
+    left: 35%;
+    top: 83%;
+  }
+  .sign-menu h1 {
+    margin-top: 5%;
+    font-size: 25px;
+    margin-left: 10%;
+  }
+  .sign-menu p {
+    margin-top: 8%;
+    font-size: 12px;
+    margin-left: 8%;
+    width: 16%;
+  }
 }
 
-@media only screen and (max-width: 1440px){
-  .google_icon { width: 2%; position: absolute; left: 34%; top: 83%; }
-  .signup_page .google_icon { width: 3%; left: 31%; }
+@media only screen and (max-width: 1440px) {
+  .google_icon {
+    width: 2%;
+    position: absolute;
+    left: 34%;
+    top: 83%;
+  }
+  .signup_page .google_icon {
+    width: 3%;
+    left: 31%;
+  }
+  .sign-menu h1 {
+    margin-left: 11%;
+  }
+  .sign-menu p {
+    margin-left: 9%;
+  }
 }
 
-@media only screen and (max-width: 1024px){
-  .google_icon { width: 3%; position: absolute; left: 32%; top: 82%; }
-  #login_page .insign_login .login_side .login_form { padding: 0% 15%; position: relative; }
-  #login_page .login_form .eyelash { position: absolute; right: 18%; top: 23%; width: 4%; }
-  .signup_page .google_icon { left: 32%; top: 83.5%; width: 2%; position: absolute; }
+@media only screen and (max-width: 1024px) {
+  .google_icon {
+    width: 3%;
+    position: absolute;
+    left: 32%;
+    top: 82%;
+  }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 15%;
+    position: relative;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 18%;
+    top: 23%;
+    width: 4%;
+  }
+  .signup_page .google_icon {
+    left: 32%;
+    top: 83.5%;
+    width: 2%;
+    position: absolute;
+  }
+  .sign-menu img {
+    border-radius: 30px;
+  }
+  .sign-menu p {
+    font-size: 13px;
+    margin-left: 11%;
+    width: 11%;
+    margin-top: 8%;
+  }
+  .sign-menu h1 {
+    font-size: 20px;
+    margin-left: 12%;
+  }
 }
 
-@media only screen and (max-width: 768px){
-  #login_page .login_form .eyelash { position: absolute; right: 18%; top: 23%; width: 4%; }
-  #login_page .insign_login .login_side .login_form { padding: 0% 9%; position: relative; }
-  #login_page .login_form .eyelash { position: absolute; right: 11%; top: 23%; width: 4%; }
-  .google_icon { width: 3%; position: absolute; left: 31%; top: 82.5%; }
-  .signup_page .google_icon { left: 30%; top: 83.5%; width: 3%; position: absolute; }
-}
+@media only screen and (max-width: 768px) {
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 18%;
+    top: 23%;
+    width: 4%;
+  }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 9%;
+    position: relative;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 11%;
+    top: 23%;
+    width: 4%;
+  }
+  .google_icon {
+    width: 3%;
+    position: absolute;
+    left: 31%;
+    top: 82.5%;
+  }
+  .signup_page .google_icon {
+    left: 30%;
+    top: 83.5%;
+    width: 3%;
+    position: absolute;
+  }
+  .sign-menu p {
+    font-size: 10px;
+    margin-left: 10%;
+    width: 11%;
+    margin-top: 6%;
+  }
+  .sign-menu h1 {
+    font-size: 20px;
+    margin-left: 9%;
+    margin-top: 3%;
 
+  }
+}
 
 /* @media only screen and (max-width: 786px){
   #login_page .login_form .eyelash { position: absolute; right: 11%; top: 25%; width: 4%; }
   .google_icon { width: 3%; position: absolute; left: 31%; top: 87.5%; }
 } */
 
-@media only screen and (max-width: 425px){
-  #login_page .insign_login .login_heading h1 { font-size: 33px; padding: 12px 0px; }
-  .google_icon { width: 5%; left: 19%; }
-  #login_page .login_form .eyelash { position: absolute; right: 11%; top: 25%; width: 6%; }
-  #login_page .insign_login .login_side .free_button .try_free { margin: 0; }
-  #login_page .insign_login .header { padding: 50px 0px; display: grid; }
-  .signup_page .google_icon { left: 14%; top: 83.5%; width: 5%; position: absolute; }
- 
-
+@media only screen and (max-width: 425px) {
+  #login_page .insign_login .login_heading h1 {
+    font-size: 33px;
+    padding: 12px 0px;
+  }
+  .google_icon {
+    width: 5%;
+    left: 19%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 11%;
+    top: 25%;
+    width: 6%;
+  }
+  #login_page .insign_login .login_side .free_button .try_free {
+    margin: 0;
+  }
+  #login_page .insign_login .header {
+    padding: 50px 0px;
+    display: grid;
+  }
+  .signup_page .google_icon {
+    left: 14%;
+    top: 83.5%;
+    width: 5%;
+    position: absolute;
+  }
 }
 
-@media only screen and (max-width: 375px){
-  #login_page .insign_login .login_heading h1 { font-size: 29px; padding: 12px 0px; }
-  .google_icon { width: 5%; top: 83%; left: 17%; }
-  #login_page .login_form .eyelash { position: absolute; right: 11%; top: 24%; width: 6%; }
+@media only screen and (max-width: 375px) {
+  #login_page .insign_login .login_heading h1 {
+    font-size: 29px;
+    padding: 12px 0px;
+  }
+  .google_icon {
+    width: 5%;
+    top: 83%;
+    left: 17%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 11%;
+    top: 24%;
+    width: 6%;
+  }
 }
 
 /*login page responsive css*/
 
-
-
-
-
-
-
 /*Signature page responsive css*/
-@media only screen and (max-width: 1600px){
-  .signature_page .sign-menu { max-width: 25%; }
-  .signature_page .only_me { margin-right: 7%; }
-  .signature_page .me_team { margin: 0% 7%; }
-  .signature_page .bulk_sign { margin: 0% 7%; }
-  .signature_page .col-md-8 { max-width: 85% !important; }
+@media only screen and (max-width: 1600px) {
+  .signature_page .sign-menu {
+    max-width: 35%;
+  }
+
+  .signature_page .me_team {
+    margin: 0% 7%;
+  }
+  .signature_page .bulk_sign {
+    margin: 0% 7%;
+  }
+  .signature_page .col-md-8 {
+    max-width: 85% !important;
+  }
 }
 
-@media only screen and (max-width: 1440px){
-  .gdrive p, .onedrive p { font-size: 20px; font-weight: 500; width: max-content; }
+@media only screen and (max-width: 1440px) {
+  .gdrive p,
+  .onedrive p {
+    font-size: 20px;
+    font-weight: 500;
+    width: max-content;
+  }
 }
 
-@media only screen and (max-width: 1024px){
-  .gdrive, .onedrive { width: 27%; }
+@media only screen and (max-width: 1024px) {
+  .gdrive,
+  .onedrive {
+    width: 27%;
+  }
 }
 
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 1024px) {
   /* .signature_page .col-md-8 { max-width: 100% !important; } */
 }
 /*Signature page responsive css*/
