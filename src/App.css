@@ -140,7 +140,9 @@
   font-weight: 500;
   margin-top: 50px;
 }
-.sign,
+.sign {
+  display: flex;
+}
 .upload {
   display: flex;
 }
@@ -172,9 +174,9 @@
   z-index: 1;
   width: 239px;
 }
-.sign-menu.active p,
-.sign-menu.active h1 {
-  color: #ffffff;
+.active-sign-menu 
+{
+  color: #ffffff !important;
 }
 .sign-menu img {
   position: relative;
@@ -569,6 +571,7 @@ display: block;
 /*login page css*/
 
 
-/*Signup page css*/
-.signup_page .google_icon { left: 34%; top: 83%; position: absolute; }
-/*Signup page css*/
+
+
+
+
