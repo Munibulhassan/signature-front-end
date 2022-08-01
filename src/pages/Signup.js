@@ -6,7 +6,9 @@ import rightarrow from "../Assets/Group 26.png";
 import circle from "../Assets/Newhere.png";
 import eye from "../Assets/eye-slash.png"
 import google from "../Assets/googleicon.png";
+import { useNavigate } from 'react-router-dom';
 export default function Signup() {
+  const navigate = useNavigate()
   return (
     <div className='signup_page'>
 <section id="login_page">
@@ -48,12 +50,12 @@ export default function Signup() {
           {/* <div class="login_forget">
           <p><a href="#">Forget Password?</a></p>
           </div> */}
-          <button type="login" class=" login_btn">Sign Up</button>
+          <button type="login" class=" login_btn" onClick={()=>navigate("/login")} >Sign Up</button>
           <div class="form_or"><h5>OR</h5></div>
-          <button type="login" class="btn google_btn"><img src={google} class="google_icon"/> Sign Up with Google</button>
+          <button type="login"  onClick={()=>navigate("/login")} class="btn google_btn"><img src={google} class="google_icon"/> Sign Up with Google</button>
          </form>
          <div class="dont_account sign_in">
-          <p>Don’t have an account?<a href="/login"> Login </a></p>
+          <p  onClick={()=>navigate("/login")}>Already have an account?<a href="#"> Login </a></p>
           </div>
           </div>
         </div>

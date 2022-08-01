@@ -48,12 +48,12 @@ export default function Login() {
           <div class="login_forget">
           <p><a href="#">Forget Password?</a></p>
           </div>
-          <button type="login" class=" login_btn" onClick={()=>navigate("/signature")}>Login</button>
+          <button type="login"  class=" login_btn" onClick={()=>navigate("/signature")}>Login</button>
           <div class="form_or"><h5>OR</h5></div>
-          <button type="login" class="btn google_btn"><img src={google} class="google_icon"/> Login with Google</button>
+          <button type="login" class="btn google_btn" onClick={()=>navigate("/signature")}><img src={google} class="google_icon"/> Login with Google</button>
          </form>
          <div class="dont_account sign_in">
-          <p>Don’t have an account?<a href="/signup"> Sign Up</a></p>
+          <p onClick={()=>navigate("/signup")}>Don’t have an account?<a href="#"> Sign Up</a></p>
           </div>
           </div>
         </div>
