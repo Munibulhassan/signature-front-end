@@ -13,7 +13,7 @@ export default function Setting() {
         <Sidebar />
       </div>
       <div className="col-md-8">
-        <div className="content"></div>
+        <div className="content">
         <Profile />
         <p className="signatureheading">Settings</p>
         <div className="sign-document">
@@ -60,7 +60,7 @@ export default function Setting() {
                    </div>
                   </div>
                     </div>
-                    <div class="col-lg-6">
+                  <div class="col-lg-6">
                     <div className="settings_radio_btn">
                   <div class="form-check form-check-inline">
                     <p>Enable Signature Security Access</p>
@@ -72,7 +72,7 @@ export default function Setting() {
                    <label class="form-check-label" for="inlineRadio2">Unable</label>
                    </div>
                   </div>
-                    </div>
+                  </div> 
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
@@ -88,7 +88,7 @@ export default function Setting() {
                    </div>
                   </div>
                     </div>
-                    <div class="col-lg-6">
+                    {/* <div class="col-lg-6">
                     <div className="settings_radio_btn">
                   <div class="form-check form-check-inline">
                     <p>Allow Signature to Download Original Documents</p>
@@ -100,7 +100,24 @@ export default function Setting() {
                    <label class="form-check-label" for="inlineRadio2">Unable</label>
                    </div>
                   </div>
-                    </div>
+                    </div> */}
+                  <div class="col-lg-6">
+                  <div class="settings_radio_btn">
+                  <div class="form-check form-check-inline">
+                  <p>Allow Signature to Download Original Documents</p>
+                  </div>
+                  <div class="form-check form-check-inline enable-unable-btn">
+                  <span class="enable-btn">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1"/>
+                  <label class="form-check-label" for="inlineRadio1">Enable</label>
+                  </span>  
+                  <span class="unable-btn">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2"/>
+                  <label class="form-check-label" for="inlineRadio2">Unable</label>
+                  </span>    
+                  </div>
+                  </div>
+                  </div>
                   </div>
                 </div>
                 <div class="save_btn">
@@ -116,6 +133,7 @@ export default function Setting() {
               
             </Tab>
           </Tabs>
+        </div>
         </div>
       </div>
     </div>
