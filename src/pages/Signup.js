@@ -19,9 +19,9 @@ export default function Signup() {
       <img src={logo} class="img-fluid"/>
       </div>
       <div class="col-md-6 free_button">
-      {/* <button type="button" className="btn upgrade try_free">
+      <button type="button" className="btn upgrade try_free">
               Try Free Trial <img src={rightarrow} />
-            </button> */}
+            </button>
       </div>
      </div>
      <div class="form">

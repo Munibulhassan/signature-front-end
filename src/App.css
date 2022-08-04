@@ -190,9 +190,9 @@
   color:#3a9be2
 }
 .sign-document h1 {
-  margin-top: 20px;
+  margin-top: 45px;
   font-weight: 500;
-  font-size: 25px;
+  font-size: 20px;
 }
 .sign-document p {
   font-size: 16px;
@@ -683,13 +683,26 @@ padding: 1% 2%;
 
 
 /*Setting page css*/
-.setting_input .redirecting { width: 50%; padding: 10px 20px; border-radius: 10px; border: 2px solid #f1f1f1; box-shadow: #f1f1f1 1px 1px 1px; margin: 2% 0%; }
-.settings_page h1 { margin-top: 10px; font-weight: 500; font-size: 25px; margin-bottom: 20px; }
-.sinature_tabs .nav-tabs { border: none; border-bottom: 4px solid #e5dcdc; }
-.sinature_tabs #justify-tab-example-tab-home { border: none; }
-.sinature_tabs #justify-tab-example-tab-profile:hover { border: none; }
-.sinature_tabs #justify-tab-example-tab-profile:focus-visible { border: none; }
-.sinature_tabs #justify-tab-example-tab-longer-tab { border: none; }
-.sinature_tabs button#justify-tab-example-tab-profile { border: none; }
 .save_btn { margin-top: 30px; }
+.sinature_tabs .nav-item {position: relative;}
+.settings_page >:last-child {margin-bottom: 50px;}
+.settings_page >:nth-child(2) {margin-bottom: 45px;}
+.sign-document {max-width: 80%;margin-bottom: 30px;}
+.sinature_tabs #justify-tab-example-tab-home { border: none; }
+.sinature_tabs #justify-tab-example-tab-home {color: #202020;}
+.sinature_tabs #justify-tab-example-tab-profile:focus-visible { border: none; }
+.save_btn .upgrade {padding-left: 45px !important;padding-right: 45px !important;}
+.sinature_tabs #justify-tab-example-tab-longer-tab { border: none; color:#202020; }
+.sinature_tabs button#justify-tab-example-tab-profile { border: none; color:#202020;}
+.sinature_tabs #justify-tab-example-tab-profile:hover { border: none; color:#202020; }
+.enable-unable-btn {display: flex !important; justify-content: space-between; width: 54%;}
+.sinature_tabs .nav-tabs { border: none; border-bottom: 4px solid #e5dcdc; width: 80%; }
+.settings_page h1 { margin-top: 10px; font-weight: 500; font-size: 20px; margin-bottom: 20px; }
+.sinature_tabs .nav-tabs .nav-item {max-width: 210px; font-weight: bold; color: #000 !important;}
+/* #justify-tab-example-tab-home:focus {border-bottom: 4px solid #3B9BE2; position: absolute; width: 123px; left: 111.3px;} */
+.setting_input .redirecting { width: 49%; padding: 10px 20px; border-radius: 10px; border: 2px solid #f1f1f1; box-shadow: #f1f1f1 1px 1px 1px; margin: 2% 0%; }
 /*Setting page css*/
+
+
+
+.sinature_tabs .nav-tabs li .active {border-bottom: 4px solid #3b9add !important;}

@@ -56,6 +56,15 @@
   #login_page .newhere_side .newhere_google {
     font-size: 18px;
   }
+  .enable-unable-btn {
+    width: 63%;
+}
+.sidecontainer {
+  padding-left: 30px;
+}
+.setting_input .redirecting {
+  width: 48.6%;
+}
 }
 
 @media only screen and (max-width: 1024px) {
