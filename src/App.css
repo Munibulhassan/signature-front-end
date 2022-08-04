@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
   background-color: #fff;
@@ -88,9 +89,7 @@
 }
 /* /////////////////// */
 /* signature */
-.col-md-8 {
-  width: 100% !important;
-}
+
 .content {
   padding: 20px;
 }
@@ -183,11 +182,10 @@
   width: 100%;
   box-shadow: #f1f1f1 1px 2px 2px;
   border-radius: 50px;
-  
 }
 
-.only_me{
-  color:#3a9be2
+.only_me {
+  color: #3a9be2;
 }
 .sign-document h1 {
   margin-top: 20px;
@@ -280,7 +278,7 @@
 /*login page css strt*/
 #login_page .insign_login .login_side .free_button .try_free {
   float: right;
-  margin-top: 15%;
+  margin-top: 10%;
   background-color: #3b9add;
   color: white;
   border-radius: 20px;
@@ -474,7 +472,7 @@
   top: 94.5%;
 }
 #login_page {
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100vh;
 }
 #login_page .newhere_side .img_newhere {
@@ -649,8 +647,7 @@
   background-color: #f5f5f5;
   border-radius: 10px;
   justify-content: center;
-padding: 1% 2%;
-
+  padding: 1% 2%;
 
   width: fit-content;
   height: fit-content;
@@ -667,7 +664,6 @@ padding: 1% 2%;
   width: fit-content;
   margin-top: 10px;
   margin-bottom: -10px;
-  
 }
 .cartcontent img {
   width: 100px;
@@ -679,17 +675,41 @@ padding: 1% 2%;
   margin-top: 10px;
 }
 
-
-
-
 /*Setting page css*/
-.setting_input .redirecting { width: 50%; padding: 10px 20px; border-radius: 10px; border: 2px solid #f1f1f1; box-shadow: #f1f1f1 1px 1px 1px; margin: 2% 0%; }
-.settings_page h1 { margin-top: 10px; font-weight: 500; font-size: 25px; margin-bottom: 20px; }
-.sinature_tabs .nav-tabs { border: none; border-bottom: 4px solid #e5dcdc; }
-.sinature_tabs #justify-tab-example-tab-home { border: none; }
-.sinature_tabs #justify-tab-example-tab-profile:hover { border: none; }
-.sinature_tabs #justify-tab-example-tab-profile:focus-visible { border: none; }
-.sinature_tabs #justify-tab-example-tab-longer-tab { border: none; }
-.sinature_tabs button#justify-tab-example-tab-profile { border: none; }
-.save_btn { margin-top: 30px; }
+.setting_input .redirecting {
+  width: 50%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  box-shadow: #f1f1f1 1px 1px 1px;
+  margin: 2% 0%;
+}
+.settings_page h1 {
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.sinature_tabs .nav-tabs {
+  border: none;
+  border-bottom: 4px solid #e5dcdc;
+}
+.sinature_tabs #justify-tab-example-tab-home {
+  border: none;
+}
+.sinature_tabs #justify-tab-example-tab-profile:hover {
+  border: none;
+}
+.sinature_tabs #justify-tab-example-tab-profile:focus-visible {
+  border: none;
+}
+.sinature_tabs #justify-tab-example-tab-longer-tab {
+  border: none;
+}
+.sinature_tabs button#justify-tab-example-tab-profile {
+  border: none;
+}
+.save_btn {
+  margin-top: 30px;
+}
 /*Setting page css*/

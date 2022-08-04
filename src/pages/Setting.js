@@ -13,7 +13,7 @@ export default function Setting() {
         <Sidebar />
       </div>
       <div className="col-md-8">
-        <div className="content"></div>
+        <div className="content">
         <Profile />
         <p className="signatureheading">Settings</p>
         <div className="sign-document">
@@ -116,6 +116,7 @@ export default function Setting() {
               
             </Tab>
           </Tabs>
+        </div>
         </div>
       </div>
     </div>

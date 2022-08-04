@@ -21,7 +21,7 @@ export default function Login() {
       </div>
       <div class="col-md-6 free_button">
       <button type="button" className="btn upgrade try_free">
-              Try Free Trial <img src={rightarrow} />
+              Try Free Trial <span><img src={rightarrow} /></span>
             </button>
       </div>
      </div>

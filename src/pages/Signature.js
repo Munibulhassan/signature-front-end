@@ -9,10 +9,8 @@ import selectMe from "../Assets/Group 2671.png";
 import Me from "../Assets/Group 2676.png";
 import meandteam from "../Assets/Group 2678.png";
 import selectmeandteam from "../Assets/Group 2675.png";
-
 import bulk from "../Assets/Group 2674.png";
 import selectbulk from "../Assets/Group 2679.png";
-
 import gdrive from "../Assets/Google_Drive_logo.png";
 import onedrive from "../Assets/OneDrive-Logo.wine.png";
 import Profile from "../components/Profile";
@@ -21,7 +19,7 @@ export default function Signature() {
   const [status, setstatus] = useState("1");
 
   return (
-    <div class="signature_page">
+    
       <div className="Row container">
         <div className="col-md-4">
           <Sidebar />
@@ -200,6 +198,6 @@ export default function Signature() {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 }

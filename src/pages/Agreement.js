@@ -20,7 +20,7 @@ export default function Agreement() {
         <div className="content">
           <Profile />
           <p className="signatureheading">Agreements</p>
-          {status ? (
+          {!status ? (
             <>
               <div className="sign-document">
                 <p>
@@ -253,7 +253,7 @@ export default function Agreement() {
               <div className="agree-document">
                 <p className="signatureheading">Folders</p>
                 <div className="agree-menu">
-                  <button type="button" className="btn upgrade" onClick={()=>setstaus(false)}>
+                  <button type="button" className="btn upgrade"  onClick={()=>setstaus(true)}>
                     Create Folder
                     <img src={rightarrow} />
                   </button>
@@ -290,7 +290,7 @@ export default function Agreement() {
             </>
           ) : (
             <div className="sign">
-              <div className="sign-menu only_me">
+              <div className="sign-menu only_me"  onClick={()=>setstaus(false)}>
                 <h1 className="sign-menu">Calculate & Text Base</h1>
 
                 <p className="sign-menu">
@@ -299,7 +299,7 @@ export default function Agreement() {
                 </p>
                 <img src={calculate} />
               </div>
-              <div className="sign-menu only_me">
+              <div className="sign-menu only_me"  onClick={()=>setstaus(false)}>
                 <h1 className="sign-menu">Text Base Agreement</h1>
 
                 <p className="sign-menu">
@@ -308,7 +308,7 @@ export default function Agreement() {
                 </p>
                 <img src={text} />
               </div>
-              <div className="sign-menu only_me">
+              <div className="sign-menu only_me"  onClick={()=>setstaus(false)}>
                 <h1 className="sign-menu">Upload File</h1>
 
                 <p className="sign-menu">
