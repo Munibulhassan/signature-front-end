@@ -12,7 +12,7 @@ export default function Setting() {
       <div className="col-md-4">
         <Sidebar />
       </div>
-      <div className="col-md-8">
+      <div className="col-md-8 signature_profile">
         <div className="content">
         <Profile />
         <p className="signatureheading">Settings</p>

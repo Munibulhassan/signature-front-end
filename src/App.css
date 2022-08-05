@@ -33,8 +33,9 @@
 .sidecontainer {
   padding-left: 100px;
 }
+
 .container {
-  width: 100%;
+  width: 100% !important;
   height: 100vh;
   background-color: #fff;
   position: absolute;
@@ -159,7 +160,7 @@
   justify-content: center;
   margin-left: 13%;
   z-index: 1;
-  width: fit-content;
+  width: max-content;
 }
 .sign-menu p {
   margin-top: 10%;
@@ -293,9 +294,12 @@
   text-align: center;
   color: black;
 }
-#login_page .col-md-8 {
-  width: 66% !important;
+.signature_profile{
+  width: 100% !important;
 }
+/* #login_page .col-md-8 {
+  width: 66% !important;
+} */
 #login_page .insign_login .half_haeding {
   color: #3f9bdf;
 }
@@ -688,7 +692,7 @@
 .sinature_tabs #justify-tab-example-tab-longer-tab { border: none; color:#202020; }
 .sinature_tabs button#justify-tab-example-tab-profile { border: none; color:#202020;}
 .sinature_tabs #justify-tab-example-tab-profile:hover { border: none; color:#202020; }
-.enable-unable-btn {display: flex !important; justify-content: space-between; width: 54%;}
+.enable-unable-btn {display: flex !important; justify-content: space-between; width: 56%;}
 .sinature_tabs .nav-tabs { border: none; border-bottom: 4px solid #e5dcdc; width: 80%; }
 .settings_page h1 { margin-top: 10px; font-weight: 500; font-size: 20px; margin-bottom: 20px; }
 .sinature_tabs .nav-tabs .nav-item {max-width: 210px; font-weight: bold; color: #000 !important;}
