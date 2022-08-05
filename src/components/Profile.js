@@ -4,13 +4,23 @@ import profile from "../Assets/profile.jfif";
 import notification from "../Assets/Group 25911.png";
 import updationnotification from "../Assets/Group 2591.png";
 export default function Profile() {
-  return (
-    <div className="profile">
-    <button type="button" className="btn upgrade">
-      Upgrade <img src={rightarrow} />
-    </button>
-    <img className="profile-img" src={profile} />
-    <img className="notify" src={updationnotification} />
-  </div>
-  )
+if(window.innerWidth>500){
+    return (
+      <div className="profile">
+      <button type="button" className="btn upgrade">
+        Upgrade <img alt="" src={rightarrow} />
+      </button>
+      <img alt="" className="profile-img" src={profile} />
+      <img alt="" className="notify" src={updationnotification} />
+    </div>
+    )
+  }else{
+    return (
+      <div className="profile">
+      <img alt="" className="profile-img" src={profile} />
+      <img alt="" className="notify" src={updationnotification} />
+    </div>
+    )
+  }
+
 }

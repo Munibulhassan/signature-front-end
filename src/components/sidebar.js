@@ -12,6 +12,7 @@ import {  useLocation, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import toggle from "../Assets/burger-menu.png"
+import rightarrow from "../Assets/Group 26.png";
 
 export default function Sidebar() {
   const location = useLocation();  
@@ -103,8 +104,8 @@ export default function Sidebar() {
   }else{
 return (
   <>
-    <Button variant="primary" onClick={handleShow} style={{"background":"white","border":"none"}}>
-        <img src={toggle} style={{"width":"50px","height":"50px"}}
+    <Button variant="" className="toggle_btn" onClick={handleShow}  style={{"background":"white","border":"none"}}>
+        <img src={toggle} style={{"width":"30px","height":"30px"}}
         />
 
         
@@ -194,6 +195,9 @@ return (
             </li>
           )}
         </ul>
+        <button type="button" className="btn upgrade">
+        Upgrade <img alt="" src={rightarrow} />
+      </button>
         </Offcanvas.Body>
       </Offcanvas>
   </>

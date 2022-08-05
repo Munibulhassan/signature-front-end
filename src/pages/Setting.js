@@ -61,7 +61,7 @@ export default function Setting() {
                   </div>
                     </div>
                   <div class="col-lg-6">
-                    <div className="settings_radio_btn">
+                    <div className="settings_radio_btn security-check-boxes">
                   <div class="form-check form-check-inline">
                     <p>Enable Signature Security Access</p>
                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>

@@ -8,9 +8,13 @@ import folder from "../Assets/free-folder-icon-1484-thumb.png";
 import calculate from "../Assets/Group 2665.png";
 import text from "../Assets/Group 2666.png";
 import upload from "../Assets/Group 2667.png";
+import calculateblue from "../Assets/Group 2664.png";
+import textblue from "../Assets/Group 2663.png";
+import uploadblue from "../Assets/Group 2662.png";
 
 export default function Agreement() {
   const [status, setstaus] = useState(true);
+  const [tab,settab] = useState(1)
   return (
     <div className="Row container">
       <div className="col-md-4">
@@ -20,7 +24,7 @@ export default function Agreement() {
         <div className="content">
           <Profile />
           <p className="signatureheading">Agreements</p>
-          {!status ? (
+          {status ? (
             <>
               <div className="sign-document">
                 <p>
@@ -253,7 +257,7 @@ export default function Agreement() {
               <div className="agree-document">
                 <p className="signatureheading">Folders</p>
                 <div className="agree-menu">
-                  <button type="button" className="btn upgrade"  onClick={()=>setstaus(true)}>
+                  <button type="button" className="btn upgrade"  onClick={()=>setstaus(false)}>
                     Create Folder
                     <img src={rightarrow} />
                   </button>
@@ -289,38 +293,77 @@ export default function Agreement() {
               </div>
             </>
           ) : (
+
             <div className="sign">
-              <div className="sign-menu only_me"  onClick={()=>setstaus(false)}>
-                <h1 className="sign-menu">Calculate & Text Base</h1>
+            { tab == 1 ? (
+                <div className="sign-menu ">
+                  <h1 className="active-sign-menu">Calculate & Text Base</h1>
+                  <p className="active-sign-menu">
+                    Lorem Ex qui mollit officia aliqua do officia deserunt id
+                    aliquip culpa.
+                  </p>
+                  <img src={calculateblue} />
+                </div>
+              ) : (
+                <div className="sign-menu" onClick={() => settab(1)}>
+                  <h1>Calculate & Text Base</h1>
+                  <p>
+                    Lorem Ex qui mollit officia aliqua do officia deserunt id
+                    aliquip culpa.
+                  </p>
+                  <img src={calculate} />
+                </div>
+              )}
+            {tab == 2 ? (
+                <div className="sign-menu me_team">
+                  <h1 className="active-sign-menu">Text Base Argument</h1>
+                  <p className="active-sign-menu">
+                    Lorem Ex qui mollit officia aliqua do officia deserunt id
+                    aliquip culpa.
+                  </p>
+                  <img src={textblue} />
+                </div>
+              ) : (
+                <div className="sign-menu " onClick={() => settab(2)}>
+                  <h1>Text Base Argument</h1>
+                  <p>
+                    Lorem Ex qui mollit officia aliqua do officia deserunt id
+                    aliquip culpa.
+                  </p>
+                  <img src={text} />
+                </div>
+              )}
 
-                <p className="sign-menu">
-                  Lorem Ex qui mollit officia aliqua do officia deserunt id
-                  aliquip culpa.
-                </p>
-                <img src={calculate} />
-              </div>
-              <div className="sign-menu only_me"  onClick={()=>setstaus(false)}>
-                <h1 className="sign-menu">Text Base Agreement</h1>
+              {tab == 3 ? (
+                <div className="sign-menu bulk_sign">
+                  <h1 className="active-sign-menu">Upload File</h1>
+                  <p className="active-sign-menu">
+                    Lorem Ex qui mollit officia aliqua do officia deserunt id
+                    aliquip culpa.
+                  </p>
+                  <img src={uploadblue} />
+                </div>
+              ) : (
+                <div className="sign-menu" onClick={() => settab(3)}>
+                  <h1>Upload File</h1>
+                  <p>
+                    Lorem Ex qui mollit officia aliqua do officia deserunt id
+                    aliquip culpa.
+                  </p>
+                  <img src={upload} />
+                </div>
+              )}
+</div>
 
-                <p className="sign-menu">
-                  Lorem Ex qui mollit officia aliqua do officia deserunt id
-                  aliquip culpa.
-                </p>
-                <img src={text} />
-              </div>
-              <div className="sign-menu only_me"  onClick={()=>setstaus(false)}>
-                <h1 className="sign-menu">Upload File</h1>
 
-                <p className="sign-menu">
-                  Lorem Ex qui mollit officia aliqua do officia deserunt id
-                  aliquip culpa.
-                </p>
-                <img src={upload} />
-              </div>
-            </div>
-          )}{" "}
+         
+
+
+            
+          )}
         </div>
       </div>
+    
     </div>
   );
 }

@@ -96,6 +96,10 @@
     left: 9%;
     top: 95.5%;
   }
+  .enable-unable-btn {
+    width: 78.3%;
+}
+
 }
 
 @media only screen and (max-width: 786px) {
@@ -128,8 +132,35 @@
   #login_page .insign_login .login_side .free_button .try_free {
     margin-top: 10%;
   }
-
-  .sidecontainer { padding: 0; }
+	
+ 
+  .sidecontainer {
+    padding-left: 0;
+  }
+  
+  .setting_input .redirecting {
+    width: 48.2%;
+  }
+  
+  .security-check-boxes .form-check-inline {
+    margin-right: -39px;
+  }
+  
+ 
+  
+  .settings_radio_btn {margin-bottom: 31px;}
+  
+  .settings_page >:nth-child(2) {
+    margin-bottom: 0;
+  }
+  
+  .enable-unable-btn {
+    width: 44.3%;
+  }
+  
+  .save_btn {
+    margin-top: -43px;
+  }
  
   
 }
@@ -173,23 +204,47 @@
     font-size: 35px;
     padding: 12px 0px;
   }
+  	
+  .enable-unable-btn {
+    width: 41%;
+  }
 }
 @media only screen and (max-width: 480px){
   .col-md-6 {
     width: 50%;
     flex: 0 0 auto;
   }
-  #login_page .insign_login .login_side .free_button .try_free {
-  /* margin-left: 30%; */
-  }
+  	
+  .sinature_tabs .nav-tabs li {
+    font-size: 12px;
 }
-/*login page responsive css*/
+.sign-document p {
+    font-size: 12px;
+}
+.signatureheading {
+    font-size: 30px;
+}
+.signinput input {
+    font-size: 12px;
+}
+.setting_input .redirecting {
+    font-size: 12px;
+}
+.settings_page h1 {
+    font-size: 19px;
+}
+.form-check-inline {
+    font-size: 13px;
+}
+.enable-unable-btn {
+    width: 57%;
+}
+.security-check-boxes .form-check-inline {
+  margin-right: -29px;
+}
 
-/* @media only screen and (max-width: 1920px){
-  #login_page .login_form .eyelash { position: absolute; right: 25%; top: 23%; width: 3%; }
-  .google_icon { width: 2%; position: absolute; left: 36%; top: 82%; }
-  #login_page .login_form .eyelash { position: absolute; right: 19%; top: 23%; width: 3%; }
-} */
+ 
+}
 
 @media only screen and (max-width: 1600px) {
   .google_icon {
@@ -199,16 +254,21 @@
     top: 83%;
   }
   .sign-menu h1 {
-    margin-top: 3%;
+    margin-top: 4%;
     font-size: 25px;
-    margin-left: 10%;
-  }
-  .sign-menu p {
-    margin-top: 8%;
-    font-size: 12px;
     margin-left: 8%;
-    width: 16%;
   }
+  
+  .sign-menu p {
+    margin-top: 7%;
+    font-size: 13px;
+    margin-left: 7%;
+    width: 10%;
+}
+.sign-document { max-width: 100%; }
+.upload .drop { width: 40%; }
+.upload .gdrive { width: 30%; }
+.upload .onedrive { width: 30%; }
 }
 
 @media only screen and (max-width: 1440px) {
@@ -223,11 +283,21 @@
     left: 31%;
   }
   .sign-menu h1 {
-    margin-left: 11%;
+    margin-left: 9%;
   }
   .sign-menu p {
     margin-left: 8%;
   }
+  
+  .sign-document {
+    max-width: 100%;
+}
+.sign-menu h1 { margin-top: 3%; font-size: 24px; margin-left: 8%; }
+.sign-menu p { margin-top: 6%; font-size: 11px; margin-left: 7%; width: 10%; }
+.drop button { margin-right: auto; margin-left: 0; }
+.gdrive p, .onedrive p { font-size: 20px; font-weight: 500; width: max-content; margin-left: 15px; }
+.upload .drop button.btn.upgrade { margin-left: 19px; }
+
 }
 
 @media only screen and (max-width: 1024px) {
@@ -266,6 +336,24 @@
     font-size: 23px;
     margin-left: 11%;
   }
+}
+	
+@media only screen and (max-width: 767px) {
+  .sinature_tabs .nav-tabs {
+    width: 100%;
+}
+.sinature_tabs .nav-tabs .nav-item {
+    max-width: 235px;
+}
+.setting_input {
+    max-width: 100%;
+}
+.setting_input .redirecting {
+    width: 100%;
+}
+.enable-unable-btn {
+    width: 60%;
+}
 }
 
 @media only screen and (max-width: 768px) {
@@ -337,6 +425,12 @@
     width: 5%;
     position: absolute;
   }
+  .sinature_tabs .nav-link {
+    padding: 5px 5px;
+}
+  .enable-unable-btn {
+    width: 66%;
+}
 }
 @media only screen and (min-width: 320px) {
   .header .free_button {
@@ -381,6 +475,7 @@
   .signature_page .sign-menu {
     max-width: 35%;
   }
+  .offcanvas-header .btn-close { position: absolute; right: 75px; }
 
   .signature_page .me_team {
     margin: 0% 7%;
@@ -409,10 +504,6 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  /* .signature_page .col-md-8 { max-width: 100% !important; } */
-}
-/*Signature page responsive css*/
 
 
 
@@ -421,6 +512,12 @@
   #login_page .dont_account { text-align: center; font-size: 14px; font-family: roboto; color: #918c8c; }
   #login_page .login_form .google_btn { font-size: 15px; }
   .signup_page .google_icon { left: 14%; top: 84.5%; width: 5%; position: absolute; }
+  .sign-menu h1 { font-size: 19px; margin-left: 7%; }
+  .sign-menu p { font-size: 10px; margin-left: 6%; width: 11%; margin-top: 6%; }
+  .gdrive p, .onedrive p { font-size: 20px; font-weight: 500; width: max-content; margin-left: -24%; }
+  .drop h1 { margin-top: 15px; text-align: center; color: #3c9adf; font-size: 22px; }
+  .upload button { width: 159%; margin-left: -28%; }
+  .upload .drop button.btn.upgrade { margin-left: -25px; }
 }
 
 
@@ -437,6 +534,22 @@
 }
 
 
+@media only screen and (max-width: 768px){
+  .sign-menu h1 { font-size: 35px; margin-left: 20%; margin-top: 6%; }
+  .sign-menu p { font-size: 21px; width: 30%; margin-left: 20%; margin-top: 13%; }
+  .upload .drop { width: 50%; }
+  .upload .drop { width: 30%; }
+  .upload .drop button.btn.upgrade { border: none; margin-left: -17%; }
+  .drop h1 { margin-top: 15px; text-align: center; color: #3c9adf; font-size: 17px; }
+  .upload .gdrive img { margin-left: -93%; }
+  .upload .gdrive p { margin-left: -172%; font-size: 16px; }
+  .upload .onedrive img { margin-left: -91%; }
+  .upload .onedrive p { margin-left: -111%; font-size: 16px; }
+  .upload .drop { padding: 0% 6%; padding-top: 14%;}
+.upload .drop button.btn.upgrade {margin: 0% -27%;}
+}
+
+
 @media only screen and (max-width: 425px){
   .signature_page .sign-menu { max-width: 100%; }
   .upload { display: block; }
@@ -449,10 +562,29 @@
   .upload .gdrive p { margin-left: 45px; }
   .upload .onedrive img { margin-left: 32%; }
   .upload .onedrive p { margin-left: 55px; }
-  .fill button { margin-left: 25%; }
+  .fill button { width: 100%; }
+  .upload .drop .upgrade { margin-left: 7%; width: 80%; }
+  .upload .gdrive img { margin-left: 30%; }
+  .upload .drop button.btn.upgrade { border: none; margin-left: 9%; }
+
+  .toggle_btn { margin-top: 25px; }
+  .toggle_btn:focus-visible { outline: none; }
+  .offcanvas-body button.btn.upgrade { margin-left: 10%; }
+
+  .cartcontent img { width: 150px; height: 150px; }
+  .teamcart { margin-top: 10%; }
+  .sign-document p { font-size: 16px; color: #b8b8b8; width: 123%; }
+  .agree-menu { position: absolute; margin-top: 37%; }
+  .offcanvas.offcanvas-start.show { width: 100%; }
 }
 
 @media only screen and (max-width: 375px){
   .sign-menu p { font-size: 12px; margin-left: 22%; width: 30%; margin-top: 17%; }
   .sign-document h1 { margin-top: 20px; font-weight: 500; font-size: 22px; }
+  .agree-menu { position: absolute; margin-top: 48%; }
+}
+
+@media only screen and (max-width: 320px){
+  .content { padding: 0; }
+  .agree-menu { position: absolute; margin-top: 64%; }
 }

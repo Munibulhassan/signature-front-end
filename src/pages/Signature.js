@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import Sidebar from "../components/sidebar";
-
-import profile from "../Assets/profile.jfif";
-import notification from "../Assets/Group 25911.png";
-import updationnotification from "../Assets/Group 2591.png";
 import rightarrow from "../Assets/Group 26.png";
 import selectMe from "../Assets/Group 2671.png";
 import Me from "../Assets/Group 2676.png";
