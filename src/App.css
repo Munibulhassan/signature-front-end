@@ -616,6 +616,10 @@
 /*login page css*/
 
 /* agreement */
+.agreetable{
+  margin: 30px 0px 30px 0px;
+  box-shadow: 0 0 3px 0px;
+}
 .agreetable table {
   width: 100%;
   text-align: center;
@@ -704,3 +708,34 @@
 
 .sinature_tabs .nav-tabs li .active {border-bottom: 4px solid #3b9add !important;}
 .toggle_btn { margin-top: 25px; }
+
+
+/* modal content agreement */
+
+.modalcontent img{
+  width: 60%;
+  
+}
+.modalcontent ul{
+margin-left: -10px;
+  list-style: none;
+  line-height: 30px !important;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 !important;
+
+}
+.modal-content ul li:hover{
+  background-color: #3a9be2;
+  color: white;
+  border-radius: 15px;
+
+
+}
+.modal-content{
+font-size: 17px;
+}
+.modal-title{
+  font-size: 20px;
+}
+
