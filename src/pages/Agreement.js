@@ -14,7 +14,7 @@ import uploadblue from "../Assets/Group 2662.png";
 
 import { Modal } from "react-bootstrap";
 export default function Agreement() {
-  const [status, setstaus] = useState(true);
+  const [status, setstatus] = useState(true);
   const [tab, settab] = useState(1);
   const [content, setcontent] = useState();
   const [show, setShow] = useState(false);
@@ -68,7 +68,7 @@ export default function Agreement() {
           <div className="content">
             <Profile />
             <p className="signatureheading">Agreements</p>
-            {status ? (
+            {!status ? (
               <>
                 <div className="sign-document">
                   <p>
@@ -244,7 +244,7 @@ export default function Agreement() {
                     <button
                       type="button"
                       className="btn upgrade"
-                      onClick={() => setstaus(false)}
+                      onClick={() => setstatus(true)}
                     >
                       Create Folder
                       <img src={rightarrow} />
