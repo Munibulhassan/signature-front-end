@@ -1,9 +1,10 @@
 import React from "react";
-import Sidebar from "../components/sidebar";
-import rightarrow from "../Assets/Group 26.png";
-import team from "../Assets/V3.png";
-import addteam from "../Assets/addteam.PNG";
-import Profile from "../components/Profile";
+import Sidebar from "../../components/sidebar";
+import rightarrow from "../../Assets/Group 26.png";
+import team from "../../Assets/V3.png";
+import addteam from "../../Assets/addteam.PNG";
+import Profile from "../../components/Profile";
+import "./team.css"
 
 export default function Team() {
   return (

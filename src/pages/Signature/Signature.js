@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import Sidebar from "../components/sidebar";
-import rightarrow from "../Assets/Group 26.png";
-import selectMe from "../Assets/Group 2671.png";
-import Me from "../Assets/Group 2676.png";
-import meandteam from "../Assets/Group 2678.png";
-import selectmeandteam from "../Assets/Group 2675.png";
-import bulk from "../Assets/Group 2674.png";
-import selectbulk from "../Assets/Group 2679.png";
-import gdrive from "../Assets/Google_Drive_logo.png";
-import onedrive from "../Assets/OneDrive-Logo.wine.png";
-import Profile from "../components/Profile";
+import Sidebar from "../../components/sidebar";
+import rightarrow from "../../Assets/Group 26.png";
+import selectMe from "../../Assets/Group 2671.png";
+import Me from "../../Assets/Group 2676.png";
+import meandteam from "../../Assets/Group 2678.png";
+import selectmeandteam from "../../Assets/Group 2675.png";
+import bulk from "../../Assets/Group 2674.png";
+import selectbulk from "../../Assets/Group 2679.png";
+import gdrive from "../../Assets/Google_Drive_logo.png";
+import onedrive from "../../Assets/OneDrive-Logo.wine.png";
+import Profile from "../../components/Profile";
+import "./signature.css"
 
 export default function Signature() {
   const [status, setstatus] = useState("1");

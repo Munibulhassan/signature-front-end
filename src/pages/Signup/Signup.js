@@ -1,43 +1,40 @@
 import React, { useState } from "react";
-import logo from "../Assets/Approaved.png";
-import login from "../Assets/login.png";
-import login_form from "../Assets/login_form.png";
-import rightarrow from "../Assets/Group 26.png";
-
-import circle from "../Assets/Newhere.png";
-import eye from "../Assets/eye-slash.png";
-import google from "../Assets/googleicon.png";
+import logo from "../../Assets/Approaved.png";
+import login from "../../Assets/login.png";
+import login_form from "../../Assets/login_form.png";
+import rightarrow from "../../Assets/Group 26.png";
+import circle from "../../Assets/Newhere.png";
+import eye from "../../Assets/eye-slash.png";
+import google from "../../Assets/googleicon.png";
 import { useNavigate } from "react-router-dom";
-import { userlogin } from "../action/action";
+import { usersignup } from "../../action/action";
+import "./signup.css"
 
-export default function Login() {
+import { Toast } from "bootstrap";
+export default function Signup() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("munib1.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
+  const [firstname, setfirstname] = useState("12345679");
 
-  const userLogin = async (e) => {
+  const userSignup = async (e) => {
     e.preventDefault();
 
     const userData = {
       email: email,
       password: password,
+      first_name: firstname,
     };
-    console.log(userData);
-    // const res = await login(userData);
-    const res = await userlogin(userData);
-
+    const res = await usersignup(userData);
+    console.log(res)
     if (res.success == true) {
       navigate("/agreement");
     } else {
       // Toast.error(res.message);
     }
-
-    // if (res) {navigate("/agreement")}
   };
-
   return (
-    <>
+    <div className="signup_page">
       <section id="login_page">
         <div class="row insign_login">
           <div class="col-md-12 col-sm-12 login_side">
@@ -47,10 +44,7 @@ export default function Login() {
               </div>
               <div class="col-md-6 free_button">
                 <button type="button" className="btn upgrade try_free">
-                  Try Free Trial{" "}
-                  <span>
-                    <img src={rightarrow} />
-                  </span>
+                  Try Free Trial <img src={rightarrow} />
                 </button>
               </div>
             </div>
@@ -58,7 +52,7 @@ export default function Login() {
               <div class="col-md-12 login_form">
                 <div class="login_heading">
                   <h1>
-                    <span class="half_haeding">Login</span> to your Account
+                    <span class="half_haeding">Sign Up</span> to your Account
                   </h1>
                 </div>
                 <div class="login_para">
@@ -73,6 +67,15 @@ export default function Login() {
                 </div>
                 <div class="login_form">
                   <form>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First Name"
+                        onChange={(e) => setfirstname(e.target.value)}
+                        value={firstname}
+                      />
+                    </div>
                     <div class="form-group">
                       <input
                         type="email"
@@ -93,9 +96,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                       />
-                      <img
-                        src={eye}
-                        onClick={() => {
+                      <img src={eye} class="eyelash"   onClick={() => {
                           var p = document.getElementById(
                             "exampleInputPassword1"
                           );
@@ -104,32 +105,33 @@ export default function Login() {
                           } else {
                             p.setAttribute("type", "password");
                           }
-                        }}
-                        class="eyelash"
-                      />
+                        }}/>
                     </div>
-                    <div class="login_forget">
-                      <p>
-                        <a href="#">Forget Password?</a>
-                      </p>
-                    </div>
-                    <button class="login_btn" onClick={(e) => userLogin(e)}>
-                      Login
+                    {/* <div class="login_forget">
+          <p><a href="#">Forget Password?</a></p>
+          </div> */}
+                    <button
+                      type="login"
+                      class=" login_btn"
+                      onClick={(e) => userSignup(e)}
+                    >
+                      Sign Up
                     </button>
                     <div class="form_or">
                       <h5>OR</h5>
                     </div>
                     <button
                       type="login"
+                      onClick={() => navigate("/google")}
                       class="btn google_btn"
-                      onClick={() => navigate("/api/auth/google")}
                     >
-                      <img src={google} class="google_icon" /> Login with Google
+                      <img src={google} class="google_icon" /> Sign Up with
+                      Google
                     </button>
                   </form>
                   <div class="dont_account sign_in">
-                    <p onClick={() => navigate("/signup")}>
-                      Don’t have an account?<a href="#"> Sign Up</a>
+                    <p onClick={() => navigate("/login")}>
+                      Already have an account?<a href="#"> Login </a>
                     </p>
                   </div>
                 </div>
@@ -141,6 +143,6 @@ export default function Login() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

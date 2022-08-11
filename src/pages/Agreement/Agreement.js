@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import Profile from "../components/Profile";
-import Sidebar from "../components/sidebar";
-import rightarrow from "../Assets/Group 26.png";
-import createdlogo from "../Assets/pexels-dinielle-de-veyra-4195342.png";
+import Profile from "../../components/Profile";
+import Sidebar from "../../components/sidebar";
+import rightarrow from "../../Assets/Group 26.png";
+import createdlogo from "../../Assets/pexels-dinielle-de-veyra-4195342.png";
 import { Dropdown } from "react-bootstrap";
-import folder from "../Assets/free-folder-icon-1484-thumb.png";
-import calculate from "../Assets/Group 2665.png";
-import text from "../Assets/Group 2666.png";
-import upload from "../Assets/Group 2667.png";
-import calculateblue from "../Assets/Group 2664.png";
-import textblue from "../Assets/Group 2663.png";
-import uploadblue from "../Assets/Group 2662.png";
+import folder from "../../Assets/free-folder-icon-1484-thumb.png";
+import calculate from "../../Assets/Group 2665.png";
+import text from "../../Assets/Group 2666.png";
+import upload from "../../Assets/Group 2667.png";
+import calculateblue from "../../Assets/Group 2664.png";
+import textblue from "../../Assets/Group 2663.png";
+import uploadblue from "../../Assets/Group 2662.png";
+import "./Agreement.css"
 
 import { Modal } from "react-bootstrap";
 export default function Agreement() {

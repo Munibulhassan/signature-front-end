@@ -1,7 +1,8 @@
 import React from "react";
-import Profile from "../components/Profile";
-import Sidebar from "../components/sidebar";
-import rightarrow from "../Assets/Group 26.png";
+import Profile from "../../components/Profile";
+import Sidebar from "../../components/sidebar";
+import rightarrow from "../../Assets/Group 26.png";
+import "./setting.css"
 
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";

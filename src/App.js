@@ -1,12 +1,12 @@
 import "./App.css";
-import Login from "./pages/Login";
-import Setting from "./pages/Setting";
-import Team from "./pages/Team";
-import Signature from "./pages/Signature";
+import Login from "./pages/Login/Login";
+import Setting from "./pages/Setting/Setting";
+import Team from "./pages/Team/Team";
+import Signature from "./pages/Signature/Signature";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Agreement from "./pages/Agreement";
+import Agreement from "./pages/Agreement/Agreement";
 import "./responsive.css"
-import Signup from "./pages/Signup";
+import Signup from "./pages/Signup/Signup";
 function App() {
   return (
     <BrowserRouter>
