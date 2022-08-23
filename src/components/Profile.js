@@ -10,15 +10,15 @@ if(window.innerWidth>500){
       <button type="button" className="btn upgrade">
         Upgrade <img alt="" src={rightarrow} />
       </button>
-      <img alt="" className="profile-img" src={profile} />
       <img alt="" className="notify" src={updationnotification} />
+      <img alt="" className="profile-img" src={profile} />
     </div>
     )
   }else{
     return (
       <div className="profile">
-      <img alt="" className="profile-img" src={profile} />
       <img alt="" className="notify" src={updationnotification} />
+      <img alt="" className="profile-img" src={profile} />
     </div>
     )
   }

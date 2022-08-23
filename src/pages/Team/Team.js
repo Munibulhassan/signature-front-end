@@ -8,17 +8,17 @@ import "./team.css"
 
 export default function Team() {
   return (
-    <div className="Row container">
-      <div className="col-md-4">
+    <div className="Row containe">
+      <div className="col-lg-2 col-md-4 team_container">
         <Sidebar />
       </div>
-      <div className="col-md-8">
-        <div className="content">
+      <div className="col-lg-10 col-md-8">
+        <div className="content team_content">
     <Profile/>
 
           <p className="signatureheading">Team</p>
-          <div className="agree-document">
-            <div className="sign-document team">
+          <div className="team-document">
+            <div className="team">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
                 quisquam ratione, consequuntur eaque magni ipsum odio temporibus
@@ -26,14 +26,14 @@ export default function Team() {
                 molestias omnis possimus!
               </p>
             </div>
-            <div className="agree-menu">
-              <button type="button" className="btn upgrade ">
+            <div className="team-menu">
+              <button type="button" className="btn upgrade" style={{"width":"max-content"}}>
                 Add Team Member
                 <img src={rightarrow} />
               </button>
             </div>
           </div>
-          <div className="upload">
+          <div className="team-icon">
             <div className="teamcart">
               <div className="cartcontent">
                 <img src={team} />

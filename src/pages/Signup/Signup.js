@@ -3,19 +3,19 @@ import logo from "../../Assets/Approaved.png";
 import login from "../../Assets/login.png";
 import login_form from "../../Assets/login_form.png";
 import rightarrow from "../../Assets/Group 26.png";
-import circle from "../../Assets/Newhere.png";
 import eye from "../../Assets/eye-slash.png";
 import google from "../../Assets/googleicon.png";
 import { useNavigate } from "react-router-dom";
 import { usersignup } from "../../action/action";
-import "./signup.css"
+import "./signup.css";
+import { toast } from "react-toastify";
 
 import { Toast } from "bootstrap";
 export default function Signup() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("munib1.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
-  const [firstname, setfirstname] = useState("12345679");
+  const [firstname, setfirstname] = useState("Munib1");
 
   const userSignup = async (e) => {
     e.preventDefault();
@@ -26,11 +26,12 @@ export default function Signup() {
       first_name: firstname,
     };
     const res = await usersignup(userData);
-    console.log(res)
+
     if (res.success == true) {
+      toast.success("Account created Succssfully");
       navigate("/agreement");
     } else {
-      // Toast.error(res.message);
+      toast.error(res.message);
     }
   };
   return (
@@ -96,7 +97,10 @@ export default function Signup() {
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                       />
-                      <img src={eye} class="eyelash"   onClick={() => {
+                      <img
+                        src={eye}
+                        class="eyelash"
+                        onClick={() => {
                           var p = document.getElementById(
                             "exampleInputPassword1"
                           );
@@ -105,7 +109,8 @@ export default function Signup() {
                           } else {
                             p.setAttribute("type", "password");
                           }
-                        }}/>
+                        }}
+                      />
                     </div>
                     {/* <div class="login_forget">
           <p><a href="#">Forget Password?</a></p>
@@ -114,6 +119,7 @@ export default function Signup() {
                       type="login"
                       class=" login_btn"
                       onClick={(e) => userSignup(e)}
+                      style={{ "font-size": "18px" }}
                     >
                       Sign Up
                     </button>
@@ -124,8 +130,9 @@ export default function Signup() {
                       type="login"
                       onClick={() => navigate("/google")}
                       class="btn google_btn"
+                      style={{ "font-size": "18px" }}
                     >
-                      <img src={google} class="google_icon" /> Sign Up with
+                      <img src={google} class="goolge_signup" /> Sign Up with
                       Google
                     </button>
                   </form>

@@ -5,36 +5,33 @@ import logo from "../../Assets/Approaved.png";
 import login from "../../Assets/login.png";
 import login_form from "../../Assets/login_form.png";
 import rightarrow from "../../Assets/Group 26.png";
-
+import {  toast } from 'react-toastify';
 import eye from "../../Assets/eye-slash.png";
 import google from "../../Assets/googleicon.png";
 import { useNavigate } from "react-router-dom";
 import { userlogin } from "../../action/action";
 
+
 export default function Login() {
   const navigate = useNavigate();
-
-  const [email, setEmail] = useState("munib1.teckflux@gmail.com");
+  const [email, setEmail] = useState("munib96.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
-
   const userLogin = async (e) => {
     e.preventDefault();
-
     const userData = {
       email: email,
       password: password,
     };
-    console.log(userData);
-    // const res = await login(userData);
     const res = await userlogin(userData);
-
+    
     if (res.success == true) {
+      toast.success("Login Succssfully")
+
       navigate("/agreement");
-    } else {
-      // Toast.error(res.message);
+    } else{
+      toast.error(res.message)
     }
 
-    // if (res) {navigate("/agreement")}
   };
 
   return (
@@ -118,7 +115,6 @@ export default function Login() {
                       class="login_btn"
                       onClick={(e) => {
                         userLogin(e);
-                        navigate("/agreement");
                       }}
                     >
                       Login
@@ -131,7 +127,8 @@ export default function Login() {
                       class="btn google_btn"
                       onClick={() => navigate("/api/auth/google")}
                     >
-                      <img src={google} class="google_icon" /> Login with Google
+                      <img src={google} class="google_icon_login" /> Login with
+                      Google
                     </button>
                   </form>
                   <div class="dont_account sign_in">

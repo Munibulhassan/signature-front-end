@@ -1,0 +1,490 @@
+@media only screen and (min-width: 1441px) and (max-width: 1600px) {
+}
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+  .sign-menu img {
+    border-radius: 20px;
+  }
+  .agree-m p {
+    font-size: 14px;
+
+    line-height: 17px;
+    margin-top: 6%;
+    margin-left: 6%;
+    width: 13%;
+  }
+  .agree-m h1 {
+    font-size: 18px;
+    margin-left: 5%;
+  }
+}
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+  .sign-menu img {
+    border-radius: 20px;
+  }
+  .agree-m p {
+    font-size: 14px;
+
+    line-height: 17px;
+    margin-top: 6%;
+    margin-left: 6%;
+    width: 13%;
+  }
+  .agree-m h1 {
+    font-size: 18px;
+    margin-left: 6%;
+    margin-top: 2%;
+    width: 12%;
+  }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .sign-menu img {
+    border-radius: 20px;
+  }
+  .agree-m p {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 6%;
+    margin-left: 5%;
+    width: 13%;
+  }
+  .agree-m h1 {
+    font-size: 18px;
+    margin-left: 4%;
+    margin-top: 1%;
+    width: 14%;
+  }
+}
+@media only screen and (min-width: 787px) and (max-width: 1024px) {
+  /* .sign-menu img {
+    border-radius: 20px;
+    width: 110%;
+  } */
+  .agree-m p {
+    font-size: 14px;
+
+    line-height: 17px;
+    margin-top: 6%;
+    margin-left: 6%;
+    width: 13%;
+  }
+  .agree-m h1 {
+    font-size: 18px;
+    margin-left: 5%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 786px) {
+  .agree-menu {
+    margin-left: 110px;
+    line-height: 40px;
+  }
+  .more-sign {
+    margin-left: 10px;
+  }
+  .listing p {
+    width: max-content;
+  }
+  .agreetable {
+    margin-top: 10px;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .contract{
+    margin-left: 0px;
+  }
+
+  .sign{
+    display: block;
+  }
+  /* .sign-menu p{
+    margin-top: 25%;
+    font-size: 22px;
+    width: 200px;
+margin-left: 36%;
+
+  } */
+  /* .sign-menu h1{
+margin-left: 36%;
+margin-top: 10%;
+    font-size: 30px;
+    width: 200px;
+  } */
+
+  
+  .agree-menu {
+    line-height: 40px;
+    position: relative;
+    left: 0;
+    margin-left: 40px !important;
+    margin-top: -10px;
+    width: min-content;
+  }
+  .status {
+    margin-top: 70px;
+    position: absolute;
+  }
+  .status .dropdown .dropdown-toggle {
+    width: 110%;
+  }
+  /* .signature_page .sign-menu {
+    max-width: 100%;
+  } */
+  .upload {
+    display: block;
+  }
+  .upload .drop {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+
+  .upload .drop .upgrade {
+    margin-left: 10%;
+  }
+
+  .fill button {
+    width: 100%;
+  }
+  .upload .drop .upgrade {
+    margin-left: 7%;
+    width: 80%;
+  }
+
+  .upload .drop button.btn.upgrade {
+    border: none;
+    margin-left: 9%;
+  }
+
+  .toggle_btn {
+    margin-top: 25px;
+    position: absolute;
+  }
+  .toggle_btn:focus-visible {
+    outline: none;
+  }
+  .offcanvas-body button.btn.upgrade {
+    margin-left: 10%;
+  }
+  .agree-document {
+    margin-top: 80px;
+  }
+  .agree-document .result-count {
+    font-size: 18px;
+    margin-left: 10px;
+    width: max-content;
+  }
+  .agree-btn {
+    margin-left: 40px !important;
+  }
+  .agreetable {
+    margin-top: 5%;
+  }
+  .offcanvas.offcanvas-start.show {
+    width: 100% !important;
+  }
+  .offcanvas-header .btn-close {
+    position: absolute;
+    right: 75px;
+  }
+  .folder {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .sign-document {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 426px) and (max-width: 480px) {
+  .signatureheading {
+    margin-top: 60px;
+  }
+  .btn.upgrade {
+    margin-left: 10px;
+    
+  }
+  .agree-menu {
+    line-height: 40px;
+    position: relative;
+    
+    margin-left: 108px !important;
+    margin-top: -10px;
+    
+  }
+  .status {
+    margin-top: 70px;
+    position: absolute;
+  }
+  .status .dropdown .dropdown-toggle {
+    width: 110%;
+  }
+  /* .signature_page .sign-menu {
+    max-width: 100%;
+  } */
+  .upload {
+    display: block;
+  }
+  .upload .drop {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+
+  .upload .drop .upgrade {
+    margin-left: 10%;
+  }
+
+  .fill button {
+    width: 100%;
+  }
+  .upload .drop .upgrade {
+    margin-left: 7%;
+    width: 80%;
+  }
+
+  .upload .drop button.btn.upgrade {
+    border: none;
+    margin-left: 9%;
+  }
+
+  .toggle_btn {
+    margin-top: 25px;
+    position: absolute;
+  }
+  .toggle_btn:focus-visible {
+    outline: none;
+  }
+  .offcanvas-body button.btn.upgrade {
+    margin-left: 10%;
+  }
+  .agree-document {
+    margin-top: 80px;
+  }
+  .agree-document .result-count {
+    font-size: 18px;
+    margin-left: 10px;
+    width: max-content;
+  }
+  .agree-btn {
+    margin-left: 40px !important;
+  }
+  .agreetable {
+    margin-top: 5%;
+  }
+  .offcanvas.offcanvas-start.show {
+    width: 100% !important;
+  }
+  .offcanvas-header .btn-close {
+    position: absolute;
+    right: 75px;
+  }
+  .folder {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .sign-document {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  .signatureheading {
+    margin-top: 60px;
+  }
+  .btn.upgrade {
+    margin-left: 10px;
+    
+  }
+  .agree-menu {
+    line-height: 40px;
+    position: relative;
+    left: 58px;
+    
+    margin-top: -10px;
+    
+  }
+  .status {
+    margin-top: 70px;
+    position: absolute;
+  }
+  .status .dropdown .dropdown-toggle {
+    width: 110%;
+  }
+  /* .signature_page .sign-menu {
+    max-width: 100%;
+  } */
+  .upload {
+    display: block;
+  }
+  .upload .drop {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+
+  .upload .drop .upgrade {
+    margin-left: 10%;
+  }
+
+  .fill button {
+    width: 100%;
+  }
+  .upload .drop .upgrade {
+    margin-left: 7%;
+    width: 80%;
+  }
+
+  .upload .drop button.btn.upgrade {
+    border: none;
+    margin-left: 9%;
+  }
+
+  .toggle_btn {
+    margin-top: 25px;
+    position: absolute;
+  }
+  .toggle_btn:focus-visible {
+    outline: none;
+  }
+  .offcanvas-body button.btn.upgrade {
+    margin-left: 10%;
+  }
+  .agree-document {
+    margin-top: 80px;
+  }
+  .agree-document .result-count {
+    font-size: 18px;
+    margin-left: 10px;
+    width: max-content;
+  }
+  .agree-btn {
+    margin-left: 40px !important;
+  }
+  .agree-m p {
+    line-height: 1;
+    margin-top: 23%;
+  }
+  .agreetable {
+    margin-top: 5%;
+  }
+  .offcanvas.offcanvas-start.show {
+    width: 100% !important;
+  }
+  .offcanvas-header .btn-close {
+    position: absolute;
+    right: 75px;
+  }
+  .folder {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .sign-document {
+    max-width: 100% !important;
+  }
+}
+@media only screen and (min-width: 361px) and (max-width: 375px) {
+  .signatureheading {
+    margin-top: 60px;
+  }
+  .status {
+    margin-top: 70px;
+    position: absolute;
+  }
+  .btn.upgrade {
+    margin-left: 12px;
+    
+  }
+  .status .dropdown .dropdown-toggle {
+    width: 110%;
+  }
+  .agree-menu {
+    line-height: 40px;
+    position: relative;
+    left: 40px;
+    margin-left: 25px !important;
+    margin-top: -10px;
+    
+  }
+  .agree-document {
+    margin-top: 100px;
+  }
+  .listing p {
+    
+    font-size: 18px !important;
+  }
+  .agreetable {
+    margin-top: 10px;
+  }
+  .folder {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .upload {
+    display: block;
+  }
+  .sign-document {
+    max-width: 100% !important;
+  }
+  .agree-m p {
+    margin-top: 23%;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 360px) {
+  .agree-m p {
+    font-size: 16px;
+    margin-left: 31%;
+    width: 40%;
+    margin-top: 24%;
+    line-height: 20px;
+  }
+  .agree-m h1 {
+    margin-left: 28%;
+  }
+
+  .toggle_icon {
+    width: 25px;
+    height: 25px;
+  }
+  .btn.upgrade {
+    margin-left: 10px;
+    
+  }
+  .status {
+    margin-top: 70px;
+    position: absolute;
+  }
+  .status .dropdown .dropdown-toggle {
+    width: 110%;
+  }
+  .agree-menu {
+    line-height: 40px;
+    position: relative;
+    left: 28px;
+
+    
+
+    
+  }
+  .agree-document {
+    margin-top: 80px;
+  }
+  .agree-document .result-count {
+    font-size: 18px;
+  }
+  .folder {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .upload {
+    display: block;
+  }
+  .agree-btn {
+    margin-left: 40px !important;
+  }
+  .agreetable {
+    margin-top: 5%;
+  }
+  .sign-document {
+    max-width: 100% !important;
+  }
+  .content {
+    padding: 0px 15px;
+  }
+  .signatureheading {
+    margin-top: 60px;
+  }
+}

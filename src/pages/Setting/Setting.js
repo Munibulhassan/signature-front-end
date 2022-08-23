@@ -3,17 +3,16 @@ import Profile from "../../components/Profile";
 import Sidebar from "../../components/sidebar";
 import rightarrow from "../../Assets/Group 26.png";
 import "./setting.css"
+import { Tab, Tabs } from "react-bootstrap";
 
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
 
 export default function Setting() {
   return (
-    <div className="Row container">
-      <div className="col-md-4">
+    <div className="Row containe">
+      <div className="col-lg-2 col-md-4">
         <Sidebar />
       </div>
-      <div className="col-md-8 signature_profile">
+      <div className="col-lg-10 col-md-8 signature_profile">
         <div className="content">
         <Profile />
         <p className="signatureheading">Settings</p>
@@ -50,27 +49,37 @@ export default function Setting() {
                   <div class="row">
                     <div class="col-lg-6">
                     <div className="settings_radio_btn">
-                  <div class="form-check form-check-inline">
+                  <div class="form-check">
                     <p>Available signature types</p>
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                   <label class="form-check-label" for="inlineRadio1">Drawn</label>
                    </div>
                    <div class="form-check form-check-inline">
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                   <label class="form-check-label" for="inlineRadio2">Uploaded</label>
+                  
+                   <span class="enable-btn">
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                  <label class="form-check-label" for="inlineRadio1">Enable</label>
+                  </span>  
+                  <span class="unable-btn">
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+                  <label class="form-check-label" for="inlineRadio2">Unable</label>
+                  </span>    
                    </div>
                   </div>
                     </div>
                   <div class="col-lg-6">
                     <div className="settings_radio_btn security-check-boxes">
-                  <div class="form-check form-check-inline">
+                  <div class="form-check ">
                     <p>Enable Signature Security Access</p>
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                   <label class="form-check-label" for="inlineRadio1">Enable</label>
                    </div>
                    <div class="form-check form-check-inline">
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                   <label class="form-check-label" for="inlineRadio2">Unable</label>
+                 
+                   <span class="enable-btn">
+                  <input  type="radio" name="inlineRadioOption" id="inlineRadio3" value="option1"/>
+                  <label class="form-check-label" for="inlineRadio3">Enable</label>
+                  </span>  
+                  <span class="unable-btn">
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2"/>
+                  <label class="form-check-label" for="inlineRadio4">Unable</label>
+                  </span>    
                    </div>
                   </div>
                   </div> 
@@ -78,43 +87,38 @@ export default function Setting() {
                   <div class="row">
                     <div class="col-lg-6">
                     <div className="settings_radio_btn">
-                  <div class="form-check form-check-inline">
+                  <div class="form-check ">
                     <p>Independent Aundit Trail</p>
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                   <label class="form-check-label" for="inlineRadio1">Enable</label>
                    </div>
                    <div class="form-check form-check-inline">
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                   <label class="form-check-label" for="inlineRadio2">Unable</label>
+                   
+                  <span class="enable-btn">
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option1"/>
+                  <label class="form-check-label" for="inlineRadio5">Enable</label>
+                  </span>  
+                  <span class="unable-btn">
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option2"/>
+                  <label class="form-check-label" for="inlineRadio6">Unable</label>
+                  </span>    
                    </div>
                   </div>
                     </div>
-                    {/* <div class="col-lg-6">
-                    <div className="settings_radio_btn">
-                  <div class="form-check form-check-inline">
-                    <p>Allow Signature to Download Original Documents</p>
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1"/>
-                   <label class="form-check-label" for="inlineRadio1">Enable</label>
-                   </div>
-                   <div class="form-check form-check-inline">
-                   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2"/>
-                   <label class="form-check-label" for="inlineRadio2">Unable</label>
-                   </div>
-                  </div>
-                    </div> */}
+                    
                   <div class="col-lg-6">
                   <div class="settings_radio_btn">
-                  <div class="form-check form-check-inline">
+                  <div class="form-check">
                   <p>Allow Signature to Download Original Documents</p>
                   </div>
-                  <div class="form-check form-check-inline enable-unable-btn">
+                  {/* <div class="form-check form-check-inline enable-unable-btn"> */}
+                  <div class="form-check form-check-inline">
+
                   <span class="enable-btn">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option1"/>
-                  <label class="form-check-label" for="inlineRadio1">Enable</label>
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio7" value="option1"/>
+                  <label class="form-check-label" for="inlineRadio7">Enable</label>
                   </span>  
                   <span class="unable-btn">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option2"/>
-                  <label class="form-check-label" for="inlineRadio2">Unable</label>
+                  <input  type="radio" name="inlineRadioOptions" id="inlineRadio8" value="option2"/>
+                  <label class="form-check-label" for="inlineRadio8">Unable</label>
                   </span>    
                   </div>
                   </div>

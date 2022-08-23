@@ -13,6 +13,7 @@ import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import toggle from "../Assets/burger-menu.png";
 import rightarrow from "../Assets/Group 26.png";
+import "./sidebar.css"
 
 export default function Sidebar() {
   const location = useLocation();
@@ -109,7 +110,7 @@ export default function Sidebar() {
           onClick={handleShow}
           style={{ background: "white", border: "none" }}
         >
-          <img src={toggle} style={{ width: "30px", height: "30px" }} />
+          <img src={toggle} className="toggle_icon" />
         </Button>
 
         <Offcanvas show={show} onHide={handleClose}>
@@ -196,7 +197,7 @@ export default function Sidebar() {
                 </li>
               )}
             </ul>
-            <button type="button" className="btn upgrade">
+            <button type="button" className="btn upgrade" style={{"width":"70%"}}>
               Upgrade <img alt="" src={rightarrow} />
             </button>
           </Offcanvas.Body>

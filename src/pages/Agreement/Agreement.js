@@ -15,7 +15,7 @@ import "./Agreement.css"
 
 import { Modal } from "react-bootstrap";
 export default function Agreement() {
-  const [status, setstatus] = useState(true);
+  const [status, setstatus] = useState(false);
   const [tab, settab] = useState(1);
   const [content, setcontent] = useState();
   const [show, setShow] = useState(false);
@@ -61,14 +61,31 @@ export default function Agreement() {
 
   return (
     <>
-      <div className="Row container">
-        <div className="col-md-4">
+      <div className="Row containe">
+        <div className="col-lg-2 col-md-4">
           <Sidebar />
         </div>
-        <div className="col-md-8 signature_profile">
+        <div className="col-lg-10 col-md-8 signature_profile">
           <div className="content">
             <Profile />
             <p className="signatureheading">Agreements</p>
+            {status==true?(
+            <div className="team-document">
+
+            <div className="team">
+              <p>
+              
+              </p>
+            </div>
+            <div className="team-menu">
+              <button type="button" className="btn upgrade" style={{"width":"max-content"}} onClick={()=>setstatus(!status)}>
+                View list
+                <img src={rightarrow} />
+              </button>
+            </div>
+          </div>
+            )
+            :null}
             {!status ? (
               <>
                 <div className="sign-document">
@@ -99,7 +116,7 @@ export default function Agreement() {
                         <input
                           class="form-control landscape-search mr-sm-2"
                           type="text"
-                          placeholder="Search cuisine"
+                          placeholder="Search"
                           aria-label="Search"
                         />
                       </form>
@@ -123,13 +140,17 @@ export default function Agreement() {
                   </div>
                 </div>
                 <div className="agree-document">
-                  <p className="result-count">1-4 of 8 results</p>
+                <div className ="listing">
+                  
+                  <p className="result-count" 
+                  >1-4 of 8 results</p>
+                </div>
                   <div className="agree-menu">
-                    <button type="button" className="btn upgrade ">
+                    <button type="button" className="btn upgrade more-sign">
                       Buy more signs
                       <img src={rightarrow} />
                     </button>
-                    <button type="button" className="btn upgrade contract">
+                    <button type="button" className="btn upgrade contract" onClick={()=>setstatus(!status)}>
                       Create Contract
                       <img src={rightarrow} />
                     </button>
@@ -239,13 +260,13 @@ export default function Agreement() {
                   </div>
                 )}
 
-                <div className="agree-document">
-                  <p className="signatureheading">Folders</p>
-                  <div className="agree-menu">
+                <div className="agree-document-icon">
+                  <p className="agreeheading">Folders</p>
+                  <div className="agree-folder">
                     <button
                       type="button"
                       className="btn upgrade"
-                      onClick={() => setstatus(true)}
+                      
                     >
                       Create Folder
                       <img src={rightarrow} />
@@ -284,8 +305,8 @@ export default function Agreement() {
             ) : (
               <div className="sign">
                 {tab == 1 ? (
-                  <div className="sign-menu ">
-                    <h1 className="active-sign-menu">Calculate & Text Base</h1>
+                  <div className="sign-menu agree-m">
+                    <h1 className="active-sign-menu agreement-white-title" >Calculate & Text Base</h1>
                     <p className="active-sign-menu">
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -293,8 +314,8 @@ export default function Agreement() {
                     <img src={calculateblue} />
                   </div>
                 ) : (
-                  <div className="sign-menu" onClick={() => settab(1)}>
-                    <h1>Calculate & Text Base</h1>
+                  <div className="sign-menu agree-m" onClick={() => settab(1)}>
+                    <h1 className="agreement-white-title">Calculate & Text Base</h1>
                     <p>
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -303,8 +324,8 @@ export default function Agreement() {
                   </div>
                 )}
                 {tab == 2 ? (
-                  <div className="sign-menu me_team">
-                    <h1 className="active-sign-menu">Text Base Argument</h1>
+                  <div className="sign-menu agree-m">
+                    <h1 className="active-sign-menu agreement-white-title">Text Base Argument</h1>
                     <p className="active-sign-menu">
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -312,8 +333,8 @@ export default function Agreement() {
                     <img src={textblue} />
                   </div>
                 ) : (
-                  <div className="sign-menu " onClick={() => settab(2)}>
-                    <h1>Text Base Argument</h1>
+                  <div className="sign-menu agree-m" onClick={() => settab(2)}>
+                    <h1 className="agreement-white-title">Text Base Argument</h1>
                     <p>
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -323,8 +344,8 @@ export default function Agreement() {
                 )}
 
                 {tab == 3 ? (
-                  <div className="sign-menu bulk_sign">
-                    <h1 className="active-sign-menu">Upload File</h1>
+                  <div className="sign-menu bulk_sign agree-m">
+                    <h1 className="active-sign-menu agreement-white-title">Upload File</h1>
                     <p className="active-sign-menu">
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -332,8 +353,8 @@ export default function Agreement() {
                     <img src={uploadblue} />
                   </div>
                 ) : (
-                  <div className="sign-menu" onClick={() => settab(3)}>
-                    <h1>Upload File</h1>
+                  <div className="sign-menu agree-m" onClick={() => settab(3)}>
+                    <h1 className="agreement-white-title">Upload File</h1>
                     <p>
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.

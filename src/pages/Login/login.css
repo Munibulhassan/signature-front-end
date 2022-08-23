@@ -1,44 +1,334 @@
-@media only screen and (min-width: 1441px) and (max-width: 1600px){
+@media only screen and (min-width: 1441px) and (max-width: 1600px) {
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 45.5%;
+    width: 6%;
+  }
 
+  /* .google_icon {
+    width: 3%;
+    position: absolute;
+    left: 28%;
+    top: 87%;
+  } */
+  .google_icon_login,
+  .goolge_signup {
+    width: 3%;
+    position: absolute;
+    left: 32%;
+    top: 81%;
+  }
 }
-@media only screen and (min-width: 1367px) and (max-width: 1440px){}
-@media only screen and (min-width: 1281px) and (max-width: 1366px){}
-@media only screen and (min-width: 1025px) and (max-width: 1280px){}
-@media only screen and (min-width: 787px) and (max-width: 1024px){
-    .google_icon {
-        width: 3%;
-        top: 83%;
-        left: 30%;
-        position: absolute;
-    }
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 48.5%;
+    width: 6%;
+  }
+  .google_icon_login,
+  .goolge_signup {
+    width: 3%;
+    position: absolute;
+    left: 30%;
+    top: 82%;
+  }
 }
-@media only screen and (min-width: 768px) and (max-width: 786px){
-    .google_icon {
-        width: 3%;
-        top: 84% !important;
-        left: 28% !important;
-        position: absolute;
-    }
+
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 46.5%;
+    width: 6%;
+  }
+  .google_icon_login .goolge_signup {
+    width: 3%;
+    position: absolute;
+    left: 30%;
+    top: 82%;
+  }
 }
-@media only screen and (min-width: 481px) and (max-width: 767px){}
-@media only screen and (min-width: 426px) and (max-width: 480px){
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  #login_page .login_form .google_btn {
+    font-size: 18px;
+  }
+
+  #login_page .newhere_side .newhere_google {
+    font-size: 18px;
+  }
+  .google_icon_login {
+    width: 4%;
+    position: absolute;
+    left: 28%;
+    top: 82%;
+  }
+  .goolge_signup {
+    width: 4%;
+    position: absolute;
+    left: 28%;
+    top: 82%;
+  }
+}
+
+@media only screen and (min-width: 787px) and (max-width: 1024px) {
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 5%;
+    top: 45.8%;
+    width: 6%;
+  }
+
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 20%;
+    top: 22%;
+    width: 4%;
+  }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 16%;
+    position: relative;
+  }
+  #login_page .insign_login .login_heading h1 {
+    font-size: 36px;
+    padding: 12px 0px;
+  }
+
+  .google_icon_login {
+    width: 3%;
+    position: absolute;
+    left: 27%;
+    top: 82%;
+  }
+  .goolge_signup {
+    width: 3%;
+    position: absolute;
+    left: 27%;
+    top: 82%;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 786px) {
+ 
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 15%;
+    position: relative;
+  }
+
+  #login_page .newhere_side {
+    padding: 15% 1%;
+    position: relative;
+  }
+
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 21%;
+    top: 22%;
+    width: 5%;
+  }
+
+  #login_page .newhere_side .eyelash {
+    position: absolute;
+    right: 8%;
+    top: 47.8%;
+    width: 8%;
+  }
+
+  #login_page .insign_login .login_side .free_button .try_free {
+    margin-top: 10%;
+  }
+
+  .google_icon_login {
+    width: 3%;
+    position: absolute;
+    left: 25%;
+    top: 82%;
+  }
+  .goolge_signup {
+    width: 4%;
+    position: absolute;
+    left: 20%;
+    top: 82%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .free_button {
+        flex: 1 0 auto;
+        width: 50%;
+      }
+      #login_page .insign_login .login_side .free_button .try_free {
+        margin-top: 10%;
+      }
+      #login_page .insign_login .login_side .login_form {
+        padding: 0% 17%;
+        position: relative;
+      }
+.google_icon_login {
+    width: 4%;
+    position: absolute;
+    left: 23%;
+    top: 82%;
+  }
+  .goolge_signup {
+    width: 4%;
+    position: absolute;
+    left: 20%;
+    top: 82%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 22%;
+    top: 22.8%;
+    width: 6%;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 480px) {
+  .free_button {
+    position: relative;
+    left: 145px;
+    margin-top: 30px;
+  }
+  .google_icon_login,
+  .goolge_signup {
+    width: 4%;
+    position: absolute;
+    left: 20%;
+    top: 82%;
+  }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 0%;
+    position: relative;
+  }
+  #login_page .insign_login .login_side .login_form .login_form {
+    padding: 0% 10%;
+    position: relative;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 12%;
+    top: 23%;
+    width: 5%;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px) {
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 15%;
+    top: 23%;
+    width: 6%;
+  }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 6% !important;
+    position: relative;
+  }
+  .google_icon_login {
+    width: 4%;
+    position: absolute;
+    left: 15%;
+    top: 82%;
+  }
+  .free_button {
+    position: relative;
+    left: 100px;
+    margin-top: 30px;
+  }
+  .goolge_signup {
+    width: 4%;
+    position: absolute;
+    left: 15%;
+    top: 83%;
+  }
+}
+
+@media only screen and (min-width: 361px) and (max-width: 375px) {
+  .free_button {
+    position: relative;
+    left: 40px;
+    margin-top: 35px;
+    width: 60%;
+  }
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 6% !important;
+    position: relative;
+  }
+  .google_icon_login {
+    width: 5%;
+    position: absolute;
+    left: 14%;
+    top: 82%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 15%;
+    top: 23%;
+    width: 6%;
+  }
+  .goolge_signup {
+    width: 5%;
+    position: absolute;
+    left: 14%;
+    top: 83%;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 360px) {
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 6% !important;
+    position: relative;
+  }
+  .goolge_signup {
+    width: 4%;
+    position: absolute;
+    left: 20%;
+    top: 82%;
+  }
+  .google_icon_login {
+    width: 5%;
+    position: absolute;
+    left: 20%;
+    top: 82%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
     
-}
-@media only screen and (min-width: 376px) and (max-width: 425px){
-    #login_page .insign_login .login_side .login_form{
-        padding: 0% 6% !important;
+
+  #login_page .insign_login .login_side .login_form {
+    padding: 0% 6% !important;
     position: relative;
-    }
-}
-@media only screen and (min-width: 361px) and (max-width: 375px){
-    #login_page .insign_login .login_side .login_form{
-        padding: 0% 6% !important;
-    position: relative;
-    }
-}
-@media only screen and (min-width: 320px) and (max-width: 360px){
-    #login_page .insign_login .login_side .login_form{
-        padding: 0% 6% !important;
-    position: relative;
-    }
+  }
+  .header .free_button {
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+  .header .free_button .try_free{
+    width: 105%;
+
+  }
+
+  .google_icon_login {
+    width: 7%;
+    position: absolute;
+    left: 10%;
+    top: 82%;
+  }
+  .goolge_signup {
+    width: 7%;
+    position: absolute;
+    left: 9%;
+    top: 82%;
+  }
+  #login_page .login_form .eyelash {
+    position: absolute;
+    right: 15%;
+    top: 23%;
+    width: 8%;
+  }
 }
