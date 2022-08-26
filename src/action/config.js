@@ -1,4 +1,5 @@
-// export const baseURL = "http://localhost:6000/api"
+// export const baseURL = "http://localhost:8080/api"
 export const baseURL = "https://isignbackend.herokuapp.com/api"
 
-export const imageURL = "https://isignbackend.herokuapp.com/api/image/"
+export const imageURL = "https://isignbackend.herokuapp.com/image/"
+// export const imageURL = "http://localhost:8080/image/"

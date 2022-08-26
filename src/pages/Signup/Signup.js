@@ -9,16 +9,19 @@ import { useNavigate } from "react-router-dom";
 import { usersignup } from "../../action/action";
 import "./signup.css";
 import { toast } from "react-toastify";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner } from "react-bootstrap";
 import { Toast } from "bootstrap";
+
 export default function Signup() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("munib1.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
   const [firstname, setfirstname] = useState("Munib1");
+  const [loader, setloader] = useState(false);
 
-  const userSignup = async (e) => {
-    e.preventDefault();
+  const userSignup = async () => {
+    
 
     const userData = {
       email: email,
@@ -118,10 +121,35 @@ export default function Signup() {
                     <button
                       type="login"
                       class=" login_btn"
-                      onClick={(e) => userSignup(e)}
+                      onClick={(e) => {
+                        e.preventDefault()
+
+                        if(loader == false){
+  
+                          
+                          userSignup()
+                      }
+                        setloader(true)
+                      }}
                       style={{ "font-size": "18px" }}
                     >
-                      Sign Up
+                       {!loader ? (
+                        "Sign Up"
+                      ) : (
+                        <span>
+                        <Spinner
+                        as="span"
+                        animation="grow"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                      <span>
+
+                        Loading...
+                      </span>
+                      </span>
+                      )}
                     </button>
                     <div class="form_or">
                       <h5>OR</h5>

@@ -1,37 +1,39 @@
 import React, { useState } from "react";
 import "./login.css";
+import { Rings } from "react-loader-spinner";
 
 import logo from "../../Assets/Approaved.png";
 import login from "../../Assets/login.png";
 import login_form from "../../Assets/login_form.png";
 import rightarrow from "../../Assets/Group 26.png";
-import {  toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import eye from "../../Assets/eye-slash.png";
 import google from "../../Assets/googleicon.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userlogin } from "../../action/action";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner } from "react-bootstrap";
+import { baseURL } from "../../action/config";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("munib96.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
-  const userLogin = async (e) => {
-    e.preventDefault();
+  const [loader, setloader] = useState(false);
+  const userLogin = async () => {
     const userData = {
       email: email,
       password: password,
     };
     const res = await userlogin(userData);
-    
+
     if (res.success == true) {
-      toast.success("Login Succssfully")
+      toast.success("Login Succssfully");
 
       navigate("/agreement");
-    } else{
-      toast.error(res.message)
+    } else {
+      toast.error(res.message);
     }
-
   };
 
   return (
@@ -114,10 +116,27 @@ export default function Login() {
                     <button
                       class="login_btn"
                       onClick={(e) => {
-                        userLogin(e);
+                        e.preventDefault();
+                        if (loader == false) {
+                          userLogin(e);
+                        }
+                        setloader(true);
                       }}
                     >
-                      Login
+                      {!loader ? (
+                        "Login"
+                      ) : (
+                        <span>
+                          <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                          <span>Loading...</span>
+                        </span>
+                      )}
                     </button>
                     <div class="form_or">
                       <h5>OR</h5>
@@ -125,10 +144,15 @@ export default function Login() {
                     <button
                       type="login"
                       class="btn google_btn"
-                      onClick={() => navigate("/api/auth/google")}
+                      onClick={(e) => {
+                        e.preventDefault();
+
+                        // navigate(`${baseURL}/api/auth/google`)
+                      }}
                     >
-                      <img src={google} class="google_icon_login" /> Login with
-                      Google
+                      
+                        <img src={google} class="google_icon_login" /> Login
+                        with Google
                     </button>
                   </form>
                   <div class="dont_account sign_in">
