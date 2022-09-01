@@ -5,7 +5,7 @@ import team from "../../Assets/V3.png";
 import addteam from "../../Assets/addteam.PNG";
 import Profile from "../../components/Profile";
 import "./team.css";
-import { createteams, getteams } from "../../action/action";
+import { createteams, getteams, updateteam } from "../../action/action";
 import { toast } from "react-toastify";
 import { imageURL } from "../../action/config";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -32,32 +32,68 @@ export default function Team() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [logo, setlogo] = useState({});
   const [document, setdocument] = useState({});
+  const [id, setid] = useState("");
 
+  const [edit, setedit] = useState(false);
   const [teamdata, setteamdata] = useState({
-    name: "",   
+    name: "",
     viewer: "",
     member: "",
   });
+  const [name, setname] = useState("");
+  const [member, setmember] = useState("");
+
+  const [viewer, setviewer] = useState("");
+
+  const updateteamdata = async (e) => {
+    console.log(teamdata);
+    e.preventDefault();
+    const payload = new FormData();
+    payload.append("name", teamdata.name);
+    if (typeof teamdata.member == String) {
+      payload.append("member", JSON.stringify(teamdata.member.split(",")));
+    } else {
+      payload.append("member", teamdata.member);
+    }
+    if (typeof teamdata.viewer == String) {
+      payload.append("viewer", JSON.stringify(teamdata.viewer.split(",")));
+    } else {
+      payload.append("viewer", teamdata.viewer);
+    }
+    const res = await updateteam(id, payload);
+    console.log(res);
+
+    if (res.success == true) {
+      setteamdata({
+        name: "",
+        viewer: "",
+        member: "",
+      });
+      toast.success(res.message);
+      getteamdata();
+      closeModal();
+    } else {
+      toast.error(res.message);
+    }
+  };
   const Addteam = async (e) => {
     e.preventDefault();
-    
-    const payload =new FormData()
-    payload.append("name",teamdata.name)
-    payload.append("viewer",JSON.stringify(teamdata.viewer.split(",")))
-    payload.append("member",JSON.stringify(teamdata.member.split(",")))
-    payload.append("file",logo[0])
-    payload.append("file",document[0])
-    console.log(payload)
-    const res = await createteams(payload)
-    if(res.success==true){
-      getteamdata()
-      toast.success(res.message)
-      setIsOpen(false)
-    }else{
-      toast.success(res.message)
 
+    const payload = new FormData();
+
+    payload.append("name", teamdata.name);
+    payload.append("viewer", JSON.stringify(teamdata.viewer.split(",")));
+    payload.append("member", JSON.stringify(teamdata.member.split(",")));
+    payload.append("file", logo[0]);
+    payload.append("file", document[0]);
+    const res = await createteams(payload);
+    if (res.success == true) {
+      getteamdata();
+      toast.success(res.message);
+      setIsOpen(false);
+    } else {
+      toast.success(res.message);
     }
-
   };
   const getteamdata = async () => {
     const res = await getteams();
@@ -75,11 +111,13 @@ export default function Team() {
 
   function closeModal() {
     setIsOpen(false);
+    setedit(false);
   }
   function handleSubmit(event) {
     console.log("Your favorite flavor is: " + event);
     event.preventDefault();
   }
+  console.log(teamdata);
   return (
     <div className="Row containe">
       <div className="col-lg-2 col-md-4 team_container">
@@ -117,7 +155,23 @@ export default function Team() {
           <div className="team-icon">
             {data.map((item) => {
               return (
-                <div className="teamcart">
+                <div
+                  className="teamcart"
+                  style={{ cursor: "pointer" }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log(item.name);
+                    setteamdata({
+                      name: item.name,
+                      member: item.member,
+                      viewer: item.viewer,
+                    });
+
+                    setlogo({ image: imageURL + "team/" + item.logo });
+                    setedit(true);
+                    setid(item._id);
+                  }}
+                >
                   <div className="cartcontent">
                     <img src={imageURL + "team/" + item.logo} />
                     <p>{item.name}</p>
@@ -159,8 +213,8 @@ export default function Team() {
                     placeholder="Team name"
                     value={teamdata.name}
                     onChange={(e) => {
-                      console.log(e.target.value)
-                      setteamdata({...teamdata, name: e.target.value });
+                      console.log(e.target.value);
+                      setteamdata({ ...teamdata, name: e.target.value });
                     }}
                   />
                 </Col>
@@ -198,14 +252,14 @@ export default function Team() {
                     (You can enter multiple E-Mail with each seperated by comma)
                   </sub>
                   <input
-                    type="email"
+                    type="text"
                     name="email"
                     id="email"
                     multiple
                     size="50"
                     value={teamdata.member}
                     onChange={(e) => {
-                      setteamdata({...teamdata,  member: e.target.value });
+                      setteamdata({ ...teamdata, member: e.target.value });
                     }}
                   />
                 </Col>
@@ -226,7 +280,7 @@ export default function Team() {
                     size="50"
                     value={teamdata.viewer}
                     onChange={(e) => {
-                      setteamdata({...teamdata,  viewer: e.target.value });
+                      setteamdata({ ...teamdata, viewer: e.target.value });
                     }}
                   />
                 </Col>
@@ -240,6 +294,106 @@ export default function Team() {
           </Button>
           <Button variant="primary" type="submit" onClick={(e) => Addteam(e)}>
             Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={edit} onHide={closeModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Team </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <>
+            <form className="teamdata">
+              <Row className="teamrow">
+                <Col>
+                  <div className="cartcontent">
+                    <img src={logo.image} style={{ "margin-bottom": "10px" }} />
+                  </div>
+                </Col>
+              </Row>
+              <Row className="teamrow">
+                <Col>
+                  <lable>Team name</lable>
+                </Col>
+                <Col>
+                  <input
+                    type="text"
+                    placeholder="Team name"
+                    value={teamdata.name}
+                    onChange={(e) => {
+                      setteamdata({ ...teamdata, name: e.target.value });
+                    }}
+                  />
+                </Col>
+              </Row>
+
+              {/* <Row className="teamrow">
+                <Col>
+                  <lable>Document</lable>
+                </Col>
+                <Col>
+                  <input
+                    type="file"
+                    placeholder="Add document"
+                    onChange={(e) => setdocument(e.target.files)}
+                  />
+                </Col>
+              </Row> */}
+              <Row className="teamrow">
+                <Col>
+                  <lable>Member</lable>
+                </Col>
+                <Col>
+                  <sub>
+                    (You can enter multiple E-Mail with each seperated by comma)
+                  </sub>
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    multiple
+                    size="50"
+                    value={teamdata.member}
+                    onChange={(e) => {
+                      setteamdata({ ...teamdata, member: e.target.value });
+                    }}
+                  />
+                </Col>
+              </Row>
+              <Row className="teamrow">
+                <Col>
+                  <lable>Viewer</lable>
+                </Col>
+                <Col>
+                  <sub>
+                    (You can enter multiple E-Mail with each seperated by comma)
+                  </sub>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    multiple
+                    size="50"
+                    value={teamdata.viewer}
+                    onChange={(e) => {
+                      setteamdata({ ...teamdata, viewer: e.target.value });
+                    }}
+                  />
+                </Col>
+              </Row>
+            </form>
+          </>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeModal}>
+            cancel
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => updateteamdata(e)}
+          >
+            Update
           </Button>
         </Modal.Footer>
       </Modal>

@@ -80,3 +80,21 @@ console.log(response)
     return err.message;
   }
 };
+
+export const updateteam = async (id,data) => {
+  try {
+    const header = {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization":"Bearer "+JSON.parse(localStorage.getItem("AccessToken"))
+      },
+    };
+
+    console.log(id)
+    const response = await axios.patch(`${baseURL}/team/${id}`, data,header);
+
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+};
