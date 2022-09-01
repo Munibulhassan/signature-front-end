@@ -48,32 +48,34 @@ export default function Team() {
   const updateteamdata = async (e) => {
     console.log(teamdata);
     e.preventDefault();
-    const payload = new FormData();
-    payload.append("name", teamdata.name);
-    if (typeof teamdata.member == String) {
-      payload.append("member", JSON.stringify(teamdata.member.split(",")));
-    } else {
-      payload.append("member", teamdata.member);
-    }
-    if (typeof teamdata.viewer == String) {
-      payload.append("viewer", JSON.stringify(teamdata.viewer.split(",")));
-    } else {
-      payload.append("viewer", teamdata.viewer);
-    }
-    const res = await updateteam(id, payload);
-    console.log(res);
+    const user = JSON.stringify(localStorage.getItem("user"))._id;
 
-    if (res.success == true) {
-      setteamdata({
-        name: "",
-        viewer: "",
-        member: "",
-      });
-      toast.success(res.message);
-      getteamdata();
+    if (user != teamdata.owner) {
+      toast.error("Only owner of this team can update data");
       closeModal();
     } else {
-      toast.error(res.message);
+      const payload = new FormData();
+      payload.append("name", teamdata.name);
+      if (typeof teamdata.member == String) {
+        payload.append("member", JSON.stringify(teamdata.member.split(",")));
+      } else {
+        payload.append("member", teamdata.member);
+      }
+      if (typeof teamdata.viewer == String) {
+        payload.append("viewer", JSON.stringify(teamdata.viewer.split(",")));
+      } else {
+        payload.append("viewer", teamdata.viewer);
+      }
+      const res = await updateteam(id, payload);
+      
+
+      if (res.success == true) {
+        toast.success(res.message);
+        getteamdata();
+        closeModal();
+      } else {
+        toast.error(res.message);
+      }
     }
   };
   const Addteam = async (e) => {
@@ -112,6 +114,11 @@ export default function Team() {
   function closeModal() {
     setIsOpen(false);
     setedit(false);
+    setteamdata({
+      name: "",
+      viewer: "",
+      member: "",
+    });
   }
   function handleSubmit(event) {
     console.log("Your favorite flavor is: " + event);
@@ -165,6 +172,7 @@ export default function Team() {
                       name: item.name,
                       member: item.member,
                       viewer: item.viewer,
+                      owner: item.owner,
                     });
 
                     setlogo({ image: imageURL + "team/" + item.logo });
