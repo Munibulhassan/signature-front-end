@@ -1,77 +1,56 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar";
 import rightarrow from "../../Assets/Group 26.png";
-import team from "../../Assets/V3.png";
+import ReactSelect, { components } from "react-select";
 import addteam from "../../Assets/addteam.PNG";
 import Profile from "../../components/Profile";
+import makeAnimated from "react-select/animated";
 import "./team.css";
-import { createteams, getteams, updateteam } from "../../action/action";
+import {
+  createteams,
+  getteams,
+  getUser,
+  sendinvite,
+  updateteam,
+} from "../../action/action";
 import { toast } from "react-toastify";
 import { imageURL } from "../../action/config";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
-
 import Row from "react-bootstrap/Row";
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 export default function Team() {
   const [data, setdata] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [logo, setlogo] = useState({});
-  const [document, setdocument] = useState({});
+  
   const [id, setid] = useState("");
-
+  const [users, setusers] = useState([]);
   const [edit, setedit] = useState(false);
+  const [invite, setinvite] = useState(false);
+
   const [teamdata, setteamdata] = useState({
     name: "",
-    viewer: "",
-    member: "",
+    member: [],
+    owner:""
   });
-  const [name, setname] = useState("");
-  const [member, setmember] = useState("");
-
-  const [viewer, setviewer] = useState("");
+  const [email, setemails] = useState("");
+  
 
   const updateteamdata = async (e) => {
-    console.log(teamdata);
     e.preventDefault();
-    const user = JSON.stringify(localStorage.getItem("user"))._id;
-
+    const user = JSON.parse(localStorage.getItem("user"))._id;   
+   
     if (user != teamdata.owner) {
       toast.error("Only owner of this team can update data");
       closeModal();
     } else {
-      const payload = new FormData();
-      payload.append("name", teamdata.name);
-      if (typeof teamdata.member == String) {
-        payload.append("member", JSON.stringify(teamdata.member.split(",")));
-      } else {
-        payload.append("member", teamdata.member);
-      }
-      if (typeof teamdata.viewer == String) {
-        payload.append("viewer", JSON.stringify(teamdata.viewer.split(",")));
-      } else {
-        payload.append("viewer", teamdata.viewer);
-      }
-      const res = await updateteam(id, payload);
-      
-
+      const res = await updateteam(id, teamdata);
       if (res.success == true) {
         toast.success(res.message);
         getteamdata();
+        getusers()
         closeModal();
       } else {
         toast.error(res.message);
@@ -80,12 +59,9 @@ export default function Team() {
   };
   const Addteam = async (e) => {
     e.preventDefault();
-
     const payload = new FormData();
-
     payload.append("name", teamdata.name);
-    payload.append("viewer", JSON.stringify(teamdata.viewer.split(",")));
-    payload.append("member", JSON.stringify(teamdata.member.split(",")));
+    payload.append("member",teamdata.member);
     payload.append("file", logo[0]);
     payload.append("file", document[0]);
     const res = await createteams(payload);
@@ -94,37 +70,77 @@ export default function Team() {
       toast.success(res.message);
       setIsOpen(false);
     } else {
-      toast.success(res.message);
+      toast.error(res.message);
     }
   };
   const getteamdata = async () => {
     const res = await getteams();
-    console.log(res);
+
     if (res.success == true) {
       setdata(res.data);
     } else {
       toast.error(res.message);
     }
   };
+  const getusers = async () => {
+    const res = await getUser();
+    const arr = [];
+    if (res.success == true) {
+      res.data.map((item) => {
+        item.checked = false;
+        arr.push(item);
+      });
+    }
+    setusers(arr);
+  };
 
   useEffect(() => {
     getteamdata();
+    getusers();
   }, []);
 
   function closeModal() {
     setIsOpen(false);
     setedit(false);
+    setemails([])
+    setinvite(false)
     setteamdata({
       name: "",
-      viewer: "",
-      member: "",
+      member: [],
     });
   }
-  function handleSubmit(event) {
-    console.log("Your favorite flavor is: " + event);
-    event.preventDefault();
-  }
-  console.log(teamdata);
+
+  const handleselected = (selected) => {
+    if (selected[0]) {
+      const i = teamdata.member?.indexOf(selected[0]?._id);
+
+      if (i == -1) {
+        teamdata.member.push(selected[0]?._id);
+        setteamdata({ ...teamdata, member: teamdata.member });
+      } else {
+        teamdata.member.splice(i, 1);
+      }
+      users.map((item, index) => {
+        if (item._id == selected[0]?._id) {
+          users[index].checked = !users[index].checked;
+        }
+      });
+    }
+  };
+
+const invitesend =async ()=>{
+  
+  console.log({"email":JSON.stringify(email.split(","))})
+  const res = await sendinvite({"email":email.split(",")})
+  // if(res.success){
+  //   toast.success(res.message);
+  //   closeModal();
+
+  // }else{
+  //   toast.success(res.message);
+  // }
+
+}
   return (
     <div className="Row containe">
       <div className="col-lg-2 col-md-4 team_container">
@@ -151,7 +167,7 @@ export default function Team() {
                 style={{ width: "max-content" }}
                 onClick={(e) => {
                   e.preventDefault();
-                  setIsOpen(true);
+                  setinvite(true);
                 }}
               >
                 Add Team Member
@@ -159,46 +175,60 @@ export default function Team() {
               </button>
             </div>
           </div>
-          <div className="team-icon">
+          <div className="team-icon row">
             {data.map((item) => {
               return (
-                <div
-                  className="teamcart"
-                  style={{ cursor: "pointer" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    console.log(item.name);
-                    setteamdata({
-                      name: item.name,
-                      member: item.member,
-                      viewer: item.viewer,
-                      owner: item.owner,
-                    });
+                <div class="col-md-2">
+                  <div
+                    className="teamcart mb-4"
+                    style={{ cursor: "pointer" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      
+                      setteamdata({
+                        name: item.name,
+                        member: item.member,
+                        owner: item.owner,
+                      });
 
-                    setlogo({ image: imageURL + "team/" + item.logo });
-                    setedit(true);
-                    setid(item._id);
-                  }}
-                >
-                  <div className="cartcontent">
-                    <img src={imageURL + "team/" + item.logo} />
-                    <p>{item.name}</p>
+                      const userlist = [...users];
+                      userlist.map((value, index) => {
+                        for (var i = 0; i < item?.member?.length; i++) {
+                          if (value._id == item.member[i]) {
+                            userlist[index].checked = true;
+                          }
+                        }
+                        if (index == userlist.length - 1) {
+                          setusers(userlist);
+                        }
+                      });
+
+                      setlogo({ image: imageURL + "team/" + item.logo });
+                      setedit(true);
+                      setid(item._id);
+                    }}
+                  >
+                    <div className="cartcontent">
+                      <img src={imageURL + "team/" + item.logo} />
+                      <p>{item.name}</p>
+                    </div>
                   </div>
                 </div>
               );
             })}
-
-            <div className="teamcart">
-              <div
-                className="cartcontent"
-                style={{ cursor: "pointer" }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsOpen(true);
-                }}
-              >
-                <img src={addteam} />
-                <p>Add Teams</p>
+            <div class="col-md-2">
+              <div className="teamcart">
+                <div
+                  className="cartcontent"
+                  style={{ cursor: "pointer" }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(true);
+                  }}
+                >
+                  <img src={addteam} />
+                  <p>Add Teams</p>
+                </div>
               </div>
             </div>
           </div>
@@ -206,7 +236,7 @@ export default function Team() {
       </div>
       <Modal show={modalIsOpen} onHide={closeModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Team Form</Modal.Title>
+          <Modal.Title>Add Team</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <>
@@ -221,7 +251,6 @@ export default function Team() {
                     placeholder="Team name"
                     value={teamdata.name}
                     onChange={(e) => {
-                      console.log(e.target.value);
                       setteamdata({ ...teamdata, name: e.target.value });
                     }}
                   />
@@ -239,18 +268,7 @@ export default function Team() {
                   />
                 </Col>
               </Row>
-              <Row className="teamrow">
-                <Col>
-                  <lable>Document</lable>
-                </Col>
-                <Col>
-                  <input
-                    type="file"
-                    placeholder="Add document"
-                    onChange={(e) => setdocument(e.target.files)}
-                  />
-                </Col>
-              </Row>
+
               <Row className="teamrow">
                 <Col>
                   <lable>Member</lable>
@@ -259,38 +277,19 @@ export default function Team() {
                   <sub>
                     (You can enter multiple E-Mail with each seperated by comma)
                   </sub>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    multiple
-                    size="50"
-                    value={teamdata.member}
-                    onChange={(e) => {
-                      setteamdata({ ...teamdata, member: e.target.value });
+                  <ReactSelect
+                    options={users}
+                    isMulti
+                    closeMenuOnSelect={false}
+                    hideSelectedOptions={false}
+                    components={{
+                      Option,
                     }}
+                    onChange={handleselected}
+                    allowSelectAll={true}
+                    // value={teamdata.member}
                   />
-                </Col>
-              </Row>
-              <Row className="teamrow">
-                <Col>
-                  <lable>Viewer</lable>
-                </Col>
-                <Col>
-                  <sub>
-                    (You can enter multiple E-Mail with each seperated by comma)
-                  </sub>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    multiple
-                    size="50"
-                    value={teamdata.viewer}
-                    onChange={(e) => {
-                      setteamdata({ ...teamdata, viewer: e.target.value });
-                    }}
-                  />
+                 
                 </Col>
               </Row>
             </form>
@@ -305,9 +304,48 @@ export default function Team() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <Modal show={invite} onHide={closeModal}>
+      <Modal.Header closeButton>
+          <Modal.Title>Invite New Member</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+       
+       <div>
+       <sub>
+                    (You can enter multiple E-Mail with each seperated by comma)
+                  </sub>
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    multiple
+                    size="50"
+                    value={email}
+                    onChange={(e) => {
+                      setemails(e.target.value)
+                      
+                    }}
+                  />
+        </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={closeModal}>
+            cancel
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => invitesend()}
+          >
+            Send invitation
+          </Button>
+        </Modal.Footer>
+
+      </Modal>
+
       <Modal show={edit} onHide={closeModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Team </Modal.Title>
+          <Modal.Title>Team Update</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <>
@@ -335,57 +373,21 @@ export default function Team() {
                 </Col>
               </Row>
 
-              {/* <Row className="teamrow">
-                <Col>
-                  <lable>Document</lable>
-                </Col>
-                <Col>
-                  <input
-                    type="file"
-                    placeholder="Add document"
-                    onChange={(e) => setdocument(e.target.files)}
-                  />
-                </Col>
-              </Row> */}
               <Row className="teamrow">
                 <Col>
                   <lable>Member</lable>
                 </Col>
                 <Col>
-                  <sub>
-                    (You can enter multiple E-Mail with each seperated by comma)
-                  </sub>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    multiple
-                    size="50"
-                    value={teamdata.member}
-                    onChange={(e) => {
-                      setteamdata({ ...teamdata, member: e.target.value });
-                    }}
-                  />
-                </Col>
-              </Row>
-              <Row className="teamrow">
-                <Col>
-                  <lable>Viewer</lable>
-                </Col>
-                <Col>
-                  <sub>
-                    (You can enter multiple E-Mail with each seperated by comma)
-                  </sub>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    multiple
-                    size="50"
-                    value={teamdata.viewer}
-                    onChange={(e) => {
-                      setteamdata({ ...teamdata, viewer: e.target.value });
-                    }}
+                 
+                  <ReactSelect
+                    options={users}
+                    isMulti
+                    closeMenuOnSelect={false}
+                    hideSelectedOptions={false}
+                    components={{ Option }}
+                    onChange={handleselected}
+                    allowSelectAll={true}
+                    // value={teamdata.member}
                   />
                 </Col>
               </Row>
@@ -408,3 +410,17 @@ export default function Team() {
     </div>
   );
 }
+const Option = (props) => {
+  return (
+    <div>
+      <components.Option {...props}>
+        <input
+          type="checkbox"
+          checked={props.data.checked}
+          onChange={() => null}
+        />{" "}
+        <label>{props.data.email}</label>
+      </components.Option>
+    </div>
+  );
+};

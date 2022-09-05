@@ -28,7 +28,7 @@ export const usersignup = async (payload) => {
         "Content-Type": "application/json",
       },
     };
-    console.log(payload);
+
     const response = await axios.post(
       `${baseURL}/auth/register`,
       payload,
@@ -49,31 +49,30 @@ export const getteams = async () => {
     const header = {
       headers: {
         "Content-Type": "application/json",
-        "Authorization":"Bearer "+JSON.parse(localStorage.getItem("AccessToken"))
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
       },
     };
-console.log(header)
+
     const response = await axios.get(`${baseURL}/team`, header);
-console.log(response)
 
     return response.data;
   } catch (err) {
     return err.message;
   }
 };
-
 
 export const createteams = async (data) => {
   try {
     const header = {
       headers: {
         "Content-Type": "application/json",
-        "Authorization":"Bearer "+JSON.parse(localStorage.getItem("AccessToken"))
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
       },
     };
 
-    const response = await axios.post(`${baseURL}/team`, data,header);
-console.log(response)
+    const response = await axios.post(`${baseURL}/team`, data, header);
 
     return response.data;
   } catch (err) {
@@ -81,20 +80,53 @@ console.log(response)
   }
 };
 
-export const updateteam = async (id,data) => {
+export const updateteam = async (id, data) => {
   try {
     const header = {
       headers: {
         "Content-Type": "application/json",
-        "Authorization":"Bearer "+JSON.parse(localStorage.getItem("AccessToken"))
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
       },
     };
 
-    console.log(id)
-    const response = await axios.patch(`${baseURL}/team/${id}`, data,header);
+    const response = await axios.patch(`${baseURL}/team/${id}`, data, header);
 
     return response.data;
   } catch (err) {
     return err.message;
   }
 };
+
+export const getUser = async () => {
+  try {
+    const header = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
+      },
+    };
+
+    const response = await axios.get(`${baseURL}/auth/users`, header);
+
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+};
+export const sendinvite = async (payload)=>{
+  try{
+    const header = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
+      },
+    };
+    const response = await axios.post(`${baseURL}/auth/sendinvites`, payload,header);
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+}

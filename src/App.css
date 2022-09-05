@@ -1,3 +1,4 @@
+@import '~mdb-ui-kit/css/mdb.min.css';
 .App {
   text-align: center;
   background-color: #fff;
@@ -672,16 +673,8 @@
 .teamcart {
   background-color: #f5f5f5;
   border-radius: 10px;
-  justify-content: center;
-  padding: 1% 2%;
-
-  width: fit-content;
-  height: fit-content;
   border: 3px solid #f1f1f1;
-  margin-left: 20px;
   box-shadow: #f1f1f1 1px 2px 5px;
-  justify-content: center;
-  align-items: center;
 }
 .cartcontent {
   margin-left: auto;
@@ -801,6 +794,14 @@
   position: absolute;
 }
 
-.teamrow{
+.teamrow {
   margin-top: 10px !important;
+}
+.emaillist{
+  font-family: sans-serif;
+  width: 500px;
+  border: 1px solid #eee;
+  background: #f3f3f3;
+  padding: 25px;
+  margin: 20px;
 }
