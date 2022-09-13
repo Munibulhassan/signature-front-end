@@ -132,13 +132,14 @@ const invitesend =async ()=>{
   
   console.log({"email":JSON.stringify(email.split(","))})
   const res = await sendinvite({"email":email.split(",")})
-  // if(res.success){
-  //   toast.success(res.message);
-  //   closeModal();
+  console.log(res)
+  if(res.success){
+    toast.success(res.message);
+    closeModal();
 
-  // }else{
-  //   toast.success(res.message);
-  // }
+  }else{
+    toast.success(res.message);
+  }
 
 }
   return (
