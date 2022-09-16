@@ -23,7 +23,6 @@
     max-width: 100%;
   }
   .upload .drop {
-    width: 60%;
   }
   .upload .gdrive {
     width: 20%;
@@ -176,7 +175,6 @@
   }
   .drop h1 {
     font-size: 22px;
-    margin-left: 26%;
   }
 }
 @media only screen and (min-width: 1081px) and (max-width: 1280px) {
@@ -204,7 +202,6 @@
     max-width: 100%;
   }
   .upload .drop {
-    width: 60%;
     height: fit-content;
   }
   .upload .gdrive {
@@ -252,7 +249,6 @@
   }
   .drop h1 {
     font-size: 22px;
-    margin-left: 33%;
   }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1080px) {
@@ -328,7 +324,6 @@
   }
   .drop h1 {
     font-size: 22px;
-    margin-left: 30%;
   }
 }
 @media only screen and (min-width: 788px) and (max-width: 1024px) {
@@ -341,7 +336,6 @@
     margin-top: 100px;
   }
   .drop button {
-    margin-left: 13%;
   }
   .sign-menu img {
     border-radius: 30px;
@@ -407,10 +401,8 @@
   }
   .drop h1 {
     font-size: 20px;
-    margin-left: 27%;
   }
   .drop button{
-    margin-left: 29%;
     
   }
 }
@@ -455,15 +447,12 @@
     width: 33%;
   }
   .drop button {
-    margin-right: auto;
-    margin-left: 0%;
   }
   .drop h1 {
     margin-top: 15px;
     text-align: center;
     color: #3c9adf;
     font-size: 20px;
-    margin-left: -5%;
   }
   .gdrive p,
   .onedrive p {
@@ -556,7 +545,6 @@
     width: 45%;
   }
   .drop h1 {
-    margin-left: 11%;
   }
   .upload .gdrive img {
     margin-left: 35%;
@@ -592,7 +580,6 @@
     width: 45%;
   }
   .drop h1 {
-    margin-left: 8%;
   }
   .upload .gdrive img {
     margin-left: 35%;
@@ -612,7 +599,6 @@
     display: block;
   }
   .drop button{
-    margin-left: 15% !important;
   }
   .signature_page .sign-menu {
     max-width: 50%;
@@ -635,7 +621,6 @@
     margin-bottom: 10%;
   }
   .drop h1 {
-    margin-left: 5%;
   }
   .upload .gdrive img {
     margin-left: 35%;
@@ -679,7 +664,6 @@
     margin-bottom: 10%;
   }
   .drop h1 {
-    margin-left: -10%;
   }
   .upload .gdrive img {
     margin-left: 35%;

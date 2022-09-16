@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "../../components/Profile";
 import Sidebar from "../../components/sidebar";
+import Subscription from "../../components/Subscription";
 import rightarrow from "../../Assets/Group 26.png";
 import "./setting.css"
 import { Tab, Tabs } from "react-bootstrap";
@@ -136,6 +137,11 @@ export default function Setting() {
             </Tab>
             <Tab eventKey="longer-tab" title="Edit Signature">
               
+            </Tab>
+            <Tab eventKey="billing" title="Billing">
+            <div className="sign-document setting_input">
+              <Subscription/>
+                </div>
             </Tab>
           </Tabs>
         </div>

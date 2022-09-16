@@ -11,16 +11,57 @@ import upload from "../../Assets/Group 2667.png";
 import calculateblue from "../../Assets/Group 2664.png";
 import textblue from "../../Assets/Group 2663.png";
 import uploadblue from "../../Assets/Group 2662.png";
-import "./Agreement.css"
+import Modal from "react-bootstrap/Modal";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
+import {
+  createFolderAction,
+  getFolderAction,
+} from "../../action/folder.action";
+import "./Agreement.css";
+import { useEffect } from "react";
 
-import { Modal } from "react-bootstrap";
 export default function Agreement() {
   const [status, setstatus] = useState(false);
   const [tab, settab] = useState(1);
   const [content, setcontent] = useState();
   const [show, setShow] = useState(false);
+  const [showFolderModal, setShowFolderModal] = useState(false);
   const handleClose = () => setShow(false);
+  const showFolderModalHandler = () => setShowFolderModal(true);
+  const [folderData, setFolderdata] = useState({
+    name: "",
+  });
+  const [getFolder, setGetFolder] = useState([]);
 
+  const createFolder = async (e) => {
+    e.preventDefault();
+    if (!folderData.name) {
+      toast.error("Folder name is required");
+      setShowFolderModal(false);
+    } else {
+      const res = await createFolderAction(folderData);
+      console.log(res);
+      if (res.success == false) {
+        await getFolders();
+        toast.success(res.message);
+        setShowFolderModal(false);
+      } else {
+        toast.error(res.message);
+      }
+    }
+  };
+
+  const getFolders = async () => {
+    const res = await getFolderAction();
+    if (res.success == true) {
+      setGetFolder(res.data);
+    } else {
+      toast.error(res.message);
+    }
+  };
   const [data, setdata] = useState([
     {
       title: "Contract 01",
@@ -59,6 +100,9 @@ export default function Agreement() {
     },
   ]);
 
+  useEffect(() => {
+    getFolders();
+  }, []);
   return (
     <>
       <div className="Row containe">
@@ -69,23 +113,24 @@ export default function Agreement() {
           <div className="content">
             <Profile />
             <p className="signatureheading">Agreements</p>
-            {status==true?(
-            <div className="team-document">
-
-            <div className="team">
-              <p>
-              
-              </p>
-            </div>
-            <div className="team-menu">
-              <button type="button" className="btn upgrade" style={{"width":"max-content"}} onClick={()=>setstatus(!status)}>
-                View list
-                <img src={rightarrow} />
-              </button>
-            </div>
-          </div>
-            )
-            :null}
+            {status == true ? (
+              <div className="team-document">
+                <div className="team">
+                  <p></p>
+                </div>
+                <div className="team-menu">
+                  <button
+                    type="button"
+                    className="btn upgrade"
+                    style={{ width: "max-content" }}
+                    onClick={() => setstatus(!status)}
+                  >
+                    View list
+                    <img src={rightarrow} />
+                  </button>
+                </div>
+              </div>
+            ) : null}
             {!status ? (
               <>
                 <div className="sign-document">
@@ -140,17 +185,19 @@ export default function Agreement() {
                   </div>
                 </div>
                 <div className="agree-document">
-                <div className ="listing">
-                  
-                  <p className="result-count" 
-                  >1-4 of 8 results</p>
-                </div>
+                  <div className="listing">
+                    <p className="result-count">1-4 of 8 results</p>
+                  </div>
                   <div className="agree-menu">
                     <button type="button" className="btn upgrade more-sign">
                       Buy more signs
                       <img src={rightarrow} />
                     </button>
-                    <button type="button" className="btn upgrade contract" onClick={()=>setstatus(!status)}>
+                    <button
+                      type="button"
+                      className="btn upgrade contract"
+                      onClick={() => setstatus(!status)}
+                    >
                       Create Contract
                       <img src={rightarrow} />
                     </button>
@@ -266,7 +313,7 @@ export default function Agreement() {
                     <button
                       type="button"
                       className="btn upgrade"
-                      
+                      onClick={showFolderModalHandler}
                     >
                       Create Folder
                       <img src={rightarrow} />
@@ -281,32 +328,28 @@ export default function Agreement() {
                     ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
                 </div>
-                <div className="upload">
-                  <div className="folder-container">
-                    <div className="folder">
-                      <img src={folder} />
-                    </div>
-                    <p>Company</p>
-                  </div>
-                  <div className="folder-container">
-                    <div className="folder">
-                      <img src={folder} />
-                    </div>
-                    <p>My Doc</p>
-                  </div>
-                  <div className="folder-container">
-                    <div className="folder">
-                      <img src={folder} />
-                    </div>
-                    <p>Exe</p>
-                  </div>
+                <div className="row upload">
+                  
+                  {getFolder.map((fol) => {
+                    
+                    return (
+                      <div className="folder-container col-md-4">
+                        <div className="folder">
+                          <img src={folder} />
+                        </div>
+                        <p>{fol.name}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </>
             ) : (
               <div className="sign">
                 {tab == 1 ? (
                   <div className="sign-menu agree-m">
-                    <h1 className="active-sign-menu agreement-white-title" >Calculate & Text Base</h1>
+                    <h1 className="active-sign-menu agreement-white-title">
+                      Calculate & Text Base
+                    </h1>
                     <p className="active-sign-menu">
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -315,7 +358,9 @@ export default function Agreement() {
                   </div>
                 ) : (
                   <div className="sign-menu agree-m" onClick={() => settab(1)}>
-                    <h1 className="agreement-white-title">Calculate & Text Base</h1>
+                    <h1 className="agreement-white-title">
+                      Calculate & Text Base
+                    </h1>
                     <p>
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -325,7 +370,9 @@ export default function Agreement() {
                 )}
                 {tab == 2 ? (
                   <div className="sign-menu agree-m">
-                    <h1 className="active-sign-menu agreement-white-title">Text Base Argument</h1>
+                    <h1 className="active-sign-menu agreement-white-title">
+                      Text Base Argument
+                    </h1>
                     <p className="active-sign-menu">
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -334,7 +381,9 @@ export default function Agreement() {
                   </div>
                 ) : (
                   <div className="sign-menu agree-m" onClick={() => settab(2)}>
-                    <h1 className="agreement-white-title">Text Base Argument</h1>
+                    <h1 className="agreement-white-title">
+                      Text Base Argument
+                    </h1>
                     <p>
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -345,7 +394,9 @@ export default function Agreement() {
 
                 {tab == 3 ? (
                   <div className="sign-menu bulk_sign agree-m">
-                    <h1 className="active-sign-menu agreement-white-title">Upload File</h1>
+                    <h1 className="active-sign-menu agreement-white-title">
+                      Upload File
+                    </h1>
                     <p className="active-sign-menu">
                       Lorem Ex qui mollit officia aliqua do officia deserunt id
                       aliquip culpa.
@@ -376,24 +427,18 @@ export default function Agreement() {
         className="main-modal"
       >
         <Modal.Header closeButton>
-          <p className="modal-title"
-          >
-
-          {content?.title}
-          </p>
+          <p className="modal-title">{content?.title}</p>
         </Modal.Header>
         <Modal.Body>
-        
-
           <div className="row">
-            <div className="col modalcontent" >
+            <div className="col modalcontent">
               <p>Status: {content?.status}</p>
               <p>Date Created: {content?.datecreated}</p>
               Created By:
               <img src={content?.createdby} />
             </div>
             <div className="col modalcontent">
-            Signed By:
+              Signed By:
               <ul>
                 {content?.signedby?.map((item) => {
                   return <li>{item}</li>;
@@ -401,8 +446,43 @@ export default function Agreement() {
               </ul>
             </div>
           </div>
-        
         </Modal.Body>
+      </Modal>
+
+      <Modal show={showFolderModal} onHide={() => setShowFolderModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Team</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <>
+            <form className="teamdata">
+              <Row className="teamrow">
+                <Col>
+                  <lable>Team name</lable>
+                </Col>
+                <Col>
+                  <input
+                    type="text"
+                    placeholder="Team name"
+                    value={folderData.name}
+                    onChange={(e) => {
+                      setFolderdata({ ...folderData, name: e.target.value });
+                    }}
+                  />
+                </Col>
+              </Row>
+            </form>
+          </>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => createFolder(e)}
+          >
+            Save
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

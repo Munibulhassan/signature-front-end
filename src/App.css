@@ -193,9 +193,9 @@
   color: #3a9be2;
 }
 .sign-document h1 {
-  margin-top: 45px;
+  /* margin-top: 45px;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 20px; */
 }
 .sign-document p,
 .team p {
@@ -240,22 +240,18 @@
   background-color: #edf6fd;
   justify-content: center;
   padding: 80px 50px;
-  width: 60%;
-  height: 272px;
   box-shadow: #f1f1f1 1px 2px 5px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 .drop button {
-  margin-left: 35%;
 }
 .drop h1 {
   margin-top: 15px;
   text-align: center;
   color: #3c9adf;
   font-size: 25px;
-  margin-left: 30%;
 }
 .gdrive,
 .onedrive {
