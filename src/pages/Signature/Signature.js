@@ -15,14 +15,19 @@ import formValidation from "../../utils/formValidation";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
 
-import { createSignatureAction } from "../../action/signature.action";
+import {
+  createSignatureAction,
+  fileupload,
+} from "../../action/signature.action";
 import "./signature.css";
 
 export default function Signature() {
   const [status, setstatus] = useState("1");
+
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
+
   const [signatureUser, setSignatureUser] = useState([{ name: "", email: "" }]);
   const [viewerUser, setViewerUser] = useState([]);
   const [error, setError] = useState(null);
@@ -32,20 +37,37 @@ export default function Signature() {
 
   const signatuerHandleChange = (i, e) => {
     let newFormValues = [...signatureUser];
-    if(error && Object.keys(error?.signedby)?.length>0)
-    setError({ ...error, signedby: {...error.signedby,[(i+1).toString()]:{...error.signedby[(i+1).toString()],[e.target.name]:""}} });
+    if (error && error?.signedby && Object.keys(error?.signedby)?.length > 0)
+      setError({
+        ...error,
+        signedby: {
+          ...error.signedby,
+          [(i + 1).toString()]: {
+            ...error.signedby[(i + 1).toString()],
+            [e.target.name]: "",
+          },
+        },
+      });
     newFormValues[i][e.target.name] = e.target.value;
     setSignatureUser(newFormValues);
   };
-  
+
   const viewerHandleChange = (i, e) => {
     let newFormValues = [...viewerUser];
-    if(error && Object.keys(error?.viewedby)?.length>0)
-    setError({ ...error, viewedby: {...error.viewedby,[(i).toString()]:{...error.viewedby[(i).toString()],[e.target.name]:""}} });
+    if (error && error?.viewedby && Object.keys(error?.viewedby)?.length > 0)
+      setError({
+        ...error,
+        viewedby: {
+          ...error.viewedby,
+          [i.toString()]: {
+            ...error.viewedby[i.toString()],
+            [e.target.name]: "",
+          },
+        },
+      });
     newFormValues[i][e.target.name] = e.target.value;
     setViewerUser(newFormValues);
   };
-
   const uploadFileHandler = (e) => {
     e.preventDefault();
     inputFile.click();
@@ -58,23 +80,22 @@ export default function Signature() {
 
   const changeNavHandleChange = (n) => {
     setstatus(n);
-    setError(null)
+    setError(null);
   };
 
-  const titleHandleChange = (e) => { 
-    setError({ ...error, title: '' });
+  const titleHandleChange = (e) => {
+    setError({ ...error, title: "" });
     setTitle(e.target.value);
   };
 
   const fileHandleChange = (e) => {
-    setError({ ...error, file: '' });
+    setError({ ...error, file: "" });
     setFile(e.target.files[0]);
   };
 
-
   const formValidate = () => {
     const options = { abortEarly: false };
-    let error = null
+    let error = null;
     let formData = {
       file: file,
       signedby: [
@@ -85,21 +106,29 @@ export default function Signature() {
       title: title,
       description: description,
     };
-    if(status === "1") {
-      formData = {file,title}
+    if (status === "1") {
+      formData = { file, title };
       error = Joi.validate(
         formData,
         formValidation.createMeSignatureSchema,
         options
       );
-    }else if(status === "2"){
+    } else if (status === "2") {
       error = Joi.validate(
         formData,
         formValidation.createSignatureSchema,
         options
       );
+    }else if( status == "3"){
+      formData = { file, title };
+
+      error = Joi.validate(
+        formData,
+        formValidation.createMeSignatureSchema,
+        options
+      );
     }
-    console.log(error)
+
     const errors = {};
     if (error && error.error)
       for (let item of error?.error?.details) {
@@ -121,13 +150,12 @@ export default function Signature() {
               };
             }
           } else {
-            
             errors[item.path[0]] = {
               [item.path[1]]: { [item.path[2]]: item.message },
             };
           }
         } else {
-          console.log(item.path[0])
+          
           errors[item.path[0]] = item.message;
         }
       }
@@ -138,30 +166,69 @@ export default function Signature() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const errors = formValidate();
-    if (errors) return;
-    console.log(errors,"lklkl")
+    console.log("///")
+
+    
+    const errors = formValidate();    
+    console.log(errors)
+    if (errors) return;    
+    console.log("///")
+    
     let formData = new FormData();
-   
     formData.append("file", file);
-    formData.append("signedby", [
-      { name: currentUser.first_name, email: currentUser.email },
-      ...signatureUser,
-    ]);
-    formData.append("viewedby", viewerUser);
-    formData.append("title", title);
-    formData.append("description", description);
-    const res = await createSignatureAction(formData);
-    if (res.success == true) {
-      toast.success(res.message);
-    } else {
-      toast.error(res.message);
-    }
+    const filename = await fileupload(formData);
+
+    if(status=="1" || status=="3"){
+      const payload = JSON.stringify({
+        title: title,
+        // signer: [
+        //   { name: currentUser.first_name, email: currentUser.email }
+          
+        // ],
+        // viewer: viewerUser.length > 0 ? viewerUser : "",
+        description: description,
+        file: filename,
+      });
+
+      const res = await createSignatureAction(payload, status);
+      console.log(res);
+      if (res.success == true) {
+        setTitle("");
+        setDescription("");
+        // setFile(null);
+        // setSignatureUser[{ name: "", email: "" }];
+        // setViewerUser([]);
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
+      }
+    }else{
+      const payload = JSON.stringify({
+        title: title,
+        signer: [
+          { name: currentUser.first_name, email: currentUser.email },
+       ...signatureUser   
+        ],
+        viewer: viewerUser.length > 0 ? viewerUser : "",
+        description: description,
+        file: filename,
+      });
+
+      const res = await createSignatureAction(payload, status);
+      console.log(res);
+      if (res.success == true) {
+        setTitle("");
+        setDescription("");
+        // setFile(null);
+        // setSignatureUser[{ name: "", email: "" }];
+        // setViewerUser([]);
+        toast.success(res.message);
+      } else {
+        toast.error(res.message);
+      }
+    } 
   };
-
-  // useEffect(()=>{
-
-  // },[inputFile])
+  
   return (
     <div className="Row containe">
       <div className="col-lg-2 col-md-4">
@@ -184,7 +251,10 @@ export default function Signature() {
                 <img src={selectMe} />
               </div>
             ) : (
-              <div className="sign-menu" onClick={()=>changeNavHandleChange("1")}>
+              <div
+                className="sign-menu"
+                onClick={() => changeNavHandleChange("1")}
+              >
                 <div className="sign-menu-content only-me">
                   <h1>Only Me</h1>
                   <p>
@@ -207,7 +277,10 @@ export default function Signature() {
                 <img src={selectmeandteam} />
               </div>
             ) : (
-              <div className="sign-menu " onClick={() => changeNavHandleChange("2")}>
+              <div
+                className="sign-menu "
+                onClick={() => changeNavHandleChange("2")}
+              >
                 <div className="sign-menu-content me_team">
                   <h1>Me & Team</h1>
                   <p>
@@ -231,7 +304,10 @@ export default function Signature() {
                 <img src={selectbulk} />
               </div>
             ) : (
-              <div className="sign-menu" onClick={() => changeNavHandleChange("3")}>
+              <div
+                className="sign-menu"
+                onClick={() => changeNavHandleChange("3")}
+              >
                 <div className="sign-menu-content bulk_sign">
                   <h1>Bulk Sign</h1>
                   <p>
@@ -254,6 +330,7 @@ export default function Signature() {
                     <input
                       className="form-control"
                       type="text"
+                      value={title}
                       placeholder="Document Title to identify your document."
                       // style={{ marginLeft: "20px" }}
                       onChange={titleHandleChange}
@@ -266,6 +343,7 @@ export default function Signature() {
                     <textarea
                       className="form-control"
                       rows={6}
+                      value={description}
                       placeholder="Optional Message for the document signer"
                       onChange={descriptionHandleChange}
                     />
@@ -364,7 +442,7 @@ export default function Signature() {
                     <p>One Drive</p>
                   </div>
                 </div>
-                
+
                 <div className="mt-4 pb-3">
                   <button
                     type="submit"
@@ -387,30 +465,58 @@ export default function Signature() {
                   incididunt pariatur voluptate qui non qui mollit.
                 </p>
               </div>
-              <div className="upload">
-                <div className="drop">
-                  <button type="button" className="btn upgrade">
-                    Upload here
-                    <img src={rightarrow} />
-                  </button>
-                  <h1> Drop your file here</h1>
-                </div>
-              </div>
               <div className="sign-document">
                 <div className="signinput">
                   <input
+                    className="form-control"
                     type="text"
+                    value={title}
                     placeholder="Document Title to identify your document."
+                    // style={{ marginLeft: "20px" }}
+                    onChange={titleHandleChange}
                   />
                 </div>
+                {error?.title && (
+                  <small className="text-danger">{error.title}</small>
+                )}
                 <textarea
+                  className="form-control"
                   rows={6}
+                  value={description}
                   placeholder="Optional Message for the document signer"
+                  onChange={descriptionHandleChange}
                 />
               </div>
-              <div className="fill">
-                <button type="button" className="btn upgrade">
-                  Select Column <img src={rightarrow} />
+              <div className="upload">
+                <div className="drop">
+                  <button
+                    onClick={uploadFileHandler}
+                    type="button"
+                    className="btn upgrade"
+                  >
+                    Upload here
+                    <img src={rightarrow} />
+                  </button>
+                  <input
+                    ref={(input) => (inputFile = input)}
+                    style={{ display: "none" }}
+                    type="file"
+                    onChange={fileHandleChange}
+                  />
+                  <h1> Drop your file here</h1>
+                  {error?.file && (
+                    <small className=" text-danger">{error.file}</small>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-4 pb-3">
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="btn upgrade"
+                >
+                  Fill & Sign <img src={rightarrow} />
                 </button>
               </div>
             </>

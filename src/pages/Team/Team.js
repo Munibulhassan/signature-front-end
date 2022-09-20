@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar";
 import rightarrow from "../../Assets/Group 26.png";
-import ReactSelect, { components } from "react-select";
+import ReactSelect from "react-select";
+import Select from "react-select";
+import { components } from "react-select";
 import addteam from "../../Assets/addteam.PNG";
 import Profile from "../../components/Profile";
-import makeAnimated from "react-select/animated";
+
 import "./team.css";
 import {
   createteams,
@@ -24,7 +26,7 @@ export default function Team() {
   const [data, setdata] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [logo, setlogo] = useState({});
-  
+
   const [id, setid] = useState("");
   const [users, setusers] = useState([]);
   const [edit, setedit] = useState(false);
@@ -33,15 +35,14 @@ export default function Team() {
   const [teamdata, setteamdata] = useState({
     name: "",
     member: [],
-    owner:""
+    owner: "",
   });
   const [email, setemails] = useState("");
-  
 
   const updateteamdata = async (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem("user"))._id;   
-   
+    const user = JSON.parse(localStorage.getItem("user"))._id;
+
     if (user != teamdata.owner) {
       toast.error("Only owner of this team can update data");
       closeModal();
@@ -50,7 +51,7 @@ export default function Team() {
       if (res.success == true) {
         toast.success(res.message);
         getteamdata();
-        getusers()
+        getusers();
         closeModal();
       } else {
         toast.error(res.message);
@@ -61,7 +62,7 @@ export default function Team() {
     e.preventDefault();
     const payload = new FormData();
     payload.append("name", teamdata.name);
-    payload.append("member",teamdata.member);
+    payload.append("member", teamdata.member);
     payload.append("file", logo[0]);
     payload.append("file", document[0]);
     const res = await createteams(payload);
@@ -88,6 +89,7 @@ export default function Team() {
     if (res.success == true) {
       res.data.map((item) => {
         item.checked = false;
+        item.value = item.email
         arr.push(item);
       });
     }
@@ -102,8 +104,8 @@ export default function Team() {
   function closeModal() {
     setIsOpen(false);
     setedit(false);
-    setemails([])
-    setinvite(false)
+    setemails([]);
+    setinvite(false);
     setteamdata({
       name: "",
       member: [],
@@ -127,21 +129,22 @@ export default function Team() {
       });
     }
   };
-
-const invitesend =async ()=>{
-  
-  console.log({"email":JSON.stringify(email.split(","))})
-  const res = await sendinvite({"email":email.split(",")})
-  console.log(res)
-  if(res.success){
-    toast.success(res.message);
-    closeModal();
-
-  }else{
-    toast.success(res.message);
+  const [selectedOptions, setSelectedOptions] = useState();
+  function handleSelect(data) {
+    setSelectedOptions(data);
   }
 
-}
+  const invitesend = async () => {
+    console.log({ email: JSON.stringify(email.split(",")) });
+    const res = await sendinvite({ email: email.split(",") });
+    console.log(res);
+    if (res.success) {
+      toast.success(res.message);
+      closeModal();
+    } else {
+      toast.success(res.message);
+    }
+  };
   return (
     <div className="Row containe">
       <div className="col-lg-2 col-md-4 team_container">
@@ -185,7 +188,7 @@ const invitesend =async ()=>{
                     style={{ cursor: "pointer" }}
                     onClick={(e) => {
                       e.preventDefault();
-                      
+
                       setteamdata({
                         name: item.name,
                         member: item.member,
@@ -290,7 +293,6 @@ const invitesend =async ()=>{
                     allowSelectAll={true}
                     // value={teamdata.member}
                   />
-                 
                 </Col>
               </Row>
             </form>
@@ -306,42 +308,35 @@ const invitesend =async ()=>{
         </Modal.Footer>
       </Modal>
       <Modal show={invite} onHide={closeModal}>
-      <Modal.Header closeButton>
+        <Modal.Header closeButton>
           <Modal.Title>Invite New Member</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-       
-       <div>
-       <sub>
-                    (You can enter multiple E-Mail with each seperated by comma)
-                  </sub>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    multiple
-                    size="50"
-                    value={email}
-                    onChange={(e) => {
-                      setemails(e.target.value)
-                      
-                    }}
-                  />
-        </div>
+          <div>
+            <sub>
+              (You can enter multiple E-Mail with each seperated by comma)
+            </sub>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              multiple
+              size="50"
+              value={email}
+              onChange={(e) => {
+                setemails(e.target.value);
+              }}
+            />
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>
             cancel
           </Button>
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={(e) => invitesend()}
-          >
+          <Button variant="primary" type="submit" onClick={(e) => invitesend()}>
             Send invitation
           </Button>
         </Modal.Footer>
-
       </Modal>
 
       <Modal show={edit} onHide={closeModal}>
@@ -379,7 +374,7 @@ const invitesend =async ()=>{
                   <lable>Member</lable>
                 </Col>
                 <Col>
-                 
+                  
                   <ReactSelect
                     options={users}
                     isMulti
@@ -388,6 +383,7 @@ const invitesend =async ()=>{
                     components={{ Option }}
                     onChange={handleselected}
                     allowSelectAll={true}
+                    isSearchable={true}
                     // value={teamdata.member}
                   />
                 </Col>
@@ -420,7 +416,7 @@ const Option = (props) => {
           checked={props.data.checked}
           onChange={() => null}
         />{" "}
-        <label>{props.data.email}</label>
+        <label>{props.data.email.slice(0, 20)}</label>
       </components.Option>
     </div>
   );

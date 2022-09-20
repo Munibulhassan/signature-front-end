@@ -16,12 +16,22 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
+import userimg from "../../Assets/userimg.jpg";
 import {
   createFolderAction,
   getFolderAction,
+  folderupdate,
+  folderdelete,
 } from "../../action/folder.action";
 import "./Agreement.css";
 import { useEffect } from "react";
+import { scryRenderedComponentsWithType } from "react-dom/test-utils";
+import {
+  getcontractdata,
+  getsignaturedata,
+} from "../../action/signature.action";
+import { imageURL } from "../../action/config";
+import SelectSearch from "react-select-search";
 
 export default function Agreement() {
   const [status, setstatus] = useState(false);
@@ -30,12 +40,30 @@ export default function Agreement() {
   const [show, setShow] = useState(false);
   const [showFolderModal, setShowFolderModal] = useState(false);
   const handleClose = () => setShow(false);
+  const [id, setid] = useState("");
+  const [showFolderupdateModal, setshowFolderupdateModal] = useState(false);
+  const [type, settype] = useState("Signature");
+  const [docstatus, setdocstatus] = useState("ALL");
   const showFolderModalHandler = () => setShowFolderModal(true);
+  const [search, setsearch] = useState("");
+
   const [folderData, setFolderdata] = useState({
     name: "",
   });
   const [getFolder, setGetFolder] = useState([]);
+  ///update folder
+  const updatefolder = async () => {
+    const res = await folderupdate(id, folderData);
+    if (res.success == true) {
+      setFolderdata({ ...folderData, name: "" });
+      toast.success(res.message);
+      getFolders();
+    } else {
+      toast.error(res.message);
+    }
 
+    setshowFolderupdateModal(false);
+  };
   const createFolder = async (e) => {
     e.preventDefault();
     if (!folderData.name) {
@@ -43,9 +71,10 @@ export default function Agreement() {
       setShowFolderModal(false);
     } else {
       const res = await createFolderAction(folderData);
-      console.log(res);
-      if (res.success == false) {
+
+      if (res.success == true) {
         await getFolders();
+        setFolderdata({ ...folderData, name: "" });
         toast.success(res.message);
         setShowFolderModal(false);
       } else {
@@ -53,52 +82,92 @@ export default function Agreement() {
       }
     }
   };
-
+  const deleteFolder = async (e) => {
+    e.preventDefault();
+    const res = await folderdelete(id);
+    console.log(res);
+    if (res.success == true) {
+      toast.success(res.message);
+      getFolders();
+    } else {
+      toast.error(res.message);
+    }
+    setshowFolderupdateModal(false);
+  };
   const getFolders = async () => {
     const res = await getFolderAction();
+    console.log("get folder");
     if (res.success == true) {
       setGetFolder(res.data);
     } else {
       toast.error(res.message);
     }
   };
-  const [data, setdata] = useState([
-    {
-      title: "Contract 01",
-      status: "Completed",
-      datecreated: "22 July 2022",
-      createdby: createdlogo,
-      signedby: [1, 2, 3, 4, 5],
-    },
-    {
-      title: "Contract 01",
-      status: "Completed",
-      datecreated: "22 July 2022",
-      createdby: createdlogo,
-      signedby: [1, 2, 3, 4, 5],
-    },
-    {
-      title: "Contract 01",
-      status: "Completed",
-      datecreated: "22 July 2022",
-      createdby: createdlogo,
-      signedby: [1, 2, 3, 4, 5],
-    },
-    {
-      title: "Contract 01",
-      status: "Completed",
-      datecreated: "22 July 2022",
-      createdby: createdlogo,
-      signedby: [1, 2, 3, 4, 5],
-    },
-    {
-      title: "Contract 01",
-      status: "Completed",
-      datecreated: "22 July 2022",
-      createdby: createdlogo,
-      signedby: [1, 2, 3, 4, 5],
-    },
-  ]);
+  // useEffect(() => {
+  //   const getsearchsignature =async () => {
+  //     const res = await getsignaturedata(docstatus,search);
+  //     if (res.success == true) {
+  //       setdata(res.data);
+  //       // toast.success(res.message);
+  //     } else {
+  //       setdata([]);
+
+  //       // toast.error(res.message);
+  //     }
+  //   };
+  //   const getsearchcontracts = async () => {
+  //     const res = await getcontractdata(docstatus,search);
+  //     if (res.success == true) {
+  //       setdata(res.data);
+  //       // toast.success(res.message);
+  //     } else {
+  //       setdata([]);
+
+  //       // toast.error(res.message);
+  //     }
+  //   };
+
+  //   if (type.toLowerCase() == "signature") {
+  //     getsearchsignature();
+  //   } else {
+  //     getsearchcontracts();
+  //   }
+  // }, [search]);
+
+  useEffect(() => {
+    const getsignature = async () => {
+      const res = await getsignaturedata(docstatus, search);
+      if (res.success == true) {
+        setdata(res.data);
+        // toast.success(res.message);
+      } else {
+        setdata([]);
+
+        // toast.error(res.message);
+      }
+    };
+    const getcontracts = async () => {
+      const res = await getcontractdata(docstatus, search);
+      if (res.success == true) {
+        setdata(res.data);
+        // toast.success(res.message);
+      } else {
+        setdata([]);
+
+        // toast.error(res.message);
+      }
+    };
+
+    if (type.toLowerCase() == "signature") {
+      console.log("signature");
+      getsignature();
+    } else {
+      console.log("contracts");
+      getcontracts();
+    }
+  }, [docstatus, type, search]);
+  const [data, setdata] = useState();
+  console.log(data);
 
   useEffect(() => {
     getFolders();
@@ -145,15 +214,26 @@ export default function Agreement() {
                   <div className="distance">
                     <Dropdown>
                       <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Documents
+                        {type}
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item>0.5 mi</Dropdown.Item>
-                        <Dropdown.Item>1 mi</Dropdown.Item>
-                        <Dropdown.Item>2 mi</Dropdown.Item>
-                        <Dropdown.Item>5 mi</Dropdown.Item>
-                        <Dropdown.Item>10 mi</Dropdown.Item>
+                        <Dropdown.Item
+                          value="Contracts"
+                          onClick={(e) => {
+                            settype("Contracts");
+                          }}
+                        >
+                          Contracts
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          value="Contracts"
+                          onClick={(e) => {
+                            settype("Signature");
+                          }}
+                        >
+                          Signature
+                        </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                     <div className="search">
@@ -161,6 +241,8 @@ export default function Agreement() {
                         <input
                           class="form-control landscape-search mr-sm-2"
                           type="text"
+                          value={search}
+                          onChange={(e) => setsearch(e.target.value)}
                           placeholder="Search"
                           aria-label="Search"
                         />
@@ -171,15 +253,45 @@ export default function Agreement() {
                   <div className="status">
                     <Dropdown>
                       <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Status: All
+                        Status: {docstatus}
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item>0.5 mi</Dropdown.Item>
-                        <Dropdown.Item>1 mi</Dropdown.Item>
-                        <Dropdown.Item>2 mi</Dropdown.Item>
-                        <Dropdown.Item>5 mi</Dropdown.Item>
-                        <Dropdown.Item>10 mi</Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => {
+                            setdocstatus("ALL");
+                          }}
+                        >
+                          ALL
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => {
+                            setdocstatus("DRAFT");
+                          }}
+                        >
+                          DRAFT
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => {
+                            setdocstatus("AWAITING");
+                          }}
+                        >
+                          AWAITING
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => {
+                            setdocstatus("COMPLETED");
+                          }}
+                        >
+                          COMPLETED
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          onClick={() => {
+                            setdocstatus("RECEIVED");
+                          }}
+                        >
+                          RECEIVED
+                        </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
@@ -218,27 +330,31 @@ export default function Agreement() {
                       <th>Signed by</th>
                       <th>Action</th> */}
                       </tr>
-                      {data.map((item) => {
-                        return (
-                          <tr>
-                            <td>{item.title}</td>
-                            <td>{item.status}</td>
-                            <td>{item.datecreated}</td>
-                            <td>
-                              <i
-                                style={{ "font-size": "24px" }}
-                                className="fas"
-                                onClick={() => {
-                                  setcontent(item);
-                                  setShow(true);
-                                }}
-                              >
-                                &#xf105;
-                              </i>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                      {data?.length == 0 ? (
+                        <>No Data Exist</>
+                      ) : (
+                        data?.map((item) => {
+                          return (
+                            <tr>
+                              <td>{item?.title}</td>
+                              <td>{item?.status}</td>
+                              <td>{item?.createdAt}</td>
+                              <td>
+                                <i
+                                  style={{ "font-size": "24px" }}
+                                  className="fas"
+                                  onClick={() => {
+                                    setcontent(item);
+                                    setShow(true);
+                                  }}
+                                >
+                                  &#xf105;
+                                </i>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      )}
                     </table>
                   </div>
                 ) : (
@@ -253,55 +369,71 @@ export default function Agreement() {
                           <th>Signed by</th>
                           <th>Action</th>
                         </tr>
-                        {data.map((item) => {
-                          return (
-                            <tr>
-                              <td>{item.title}</td>
-                              <td>{item.status}</td>
-                              <td>{item.datecreated}</td>
-                              <td>
-                                <img src={item.createdby} /> Chris
-                              </td>
-                              <td>
-                                <Dropdown>
-                                  <Dropdown.Toggle
-                                    variant="success"
-                                    id="dropdown-basic"
-                                  >
-                                    View
-                                  </Dropdown.Toggle>
+                        {data?.length == 0 ? (
+                          <>No Data Exist</>
+                        ) : (
+                          data?.map((item) => {
+                            return (
+                              <tr>
+                                <td>{item.title}</td>
+                                <td>{item.status}</td>
+                                <td>{item.createdAt.split("T")[0]}</td>
+                                <td>
+                                  <img
+                                    src={
+                                      item?.owner?.profile != undefined
+                                        ? imageURL +
+                                          "users/" +
+                                          item?.owner?.profile
+                                        : userimg
+                                    }
+                                    className="profile-img"
+                                  />{" "}
+                                  {item?.owner?.first_name}
+                                </td>
+                                <td>
+                                  <Dropdown>
+                                    <Dropdown.Toggle
+                                      variant="success"
+                                      id="dropdown-basic"
+                                    >
+                                      View
+                                    </Dropdown.Toggle>
 
-                                  <Dropdown.Menu>
-                                    {item?.signedby.map((value) => {
-                                      return (
-                                        <Dropdown.Item>{value}</Dropdown.Item>
-                                      );
-                                    })}
-                                  </Dropdown.Menu>
-                                </Dropdown>
-                              </td>
-                              <td>
-                                <Dropdown>
-                                  <Dropdown.Toggle
-                                    variant="success"
-                                    id="dropdown-basic"
-                                  >
-                                    View
-                                  </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                      {item?.signer.map((value) => {
+                                        return (
+                                          <Dropdown.Item>
+                                            {value.name}
+                                          </Dropdown.Item>
+                                        );
+                                      })}
+                                    </Dropdown.Menu>
+                                  </Dropdown>
+                                </td>
+                                <td>
+                                  <Dropdown>
+                                    <Dropdown.Toggle
+                                      variant="success"
+                                      id="dropdown-basic"
+                                    >
+                                      View
+                                    </Dropdown.Toggle>
 
-                                  <Dropdown.Menu>
-                                    <Dropdown.Item>Rename</Dropdown.Item>
-                                    <Dropdown.Item>Move to</Dropdown.Item>
-                                    <Dropdown.Item>Delete</Dropdown.Item>
-                                    <Dropdown.Item>
-                                      Change Permissions
-                                    </Dropdown.Item>
-                                  </Dropdown.Menu>
-                                </Dropdown>
-                              </td>
-                            </tr>
-                          );
-                        })}
+                                    <Dropdown.Menu>
+                                      <Dropdown.Item>Rename</Dropdown.Item>
+                                      <Dropdown.Item>Move to</Dropdown.Item>
+                                      <Dropdown.Item>Delete</Dropdown.Item>
+                                      <Dropdown.Item>
+                                        Change Permissions
+                                      </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                  </Dropdown>
+                                </td>
+                              </tr>
+                            );
+                          })
+                        )}
                       </table>
                     </div>
                   </div>
@@ -329,12 +461,20 @@ export default function Agreement() {
                   </p>
                 </div>
                 <div className="row upload">
-                  
                   {getFolder.map((fol) => {
-                    
                     return (
                       <div className="folder-container col-md-4">
-                        <div className="folder">
+                        <div
+                          className="folder"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setshowFolderupdateModal(true);
+                            setFolderdata({ ...folderData, name: fol.name });
+                            setid(fol._id);
+
+                            // showFolderModalHandler;
+                          }}
+                        >
                           <img src={folder} />
                         </div>
                         <p>{fol.name}</p>
@@ -433,15 +573,22 @@ export default function Agreement() {
           <div className="row">
             <div className="col modalcontent">
               <p>Status: {content?.status}</p>
-              <p>Date Created: {content?.datecreated}</p>
+              <p>Date Created: {content?.createdAt.split("T")[0]}</p>
               Created By:
-              <img src={content?.createdby} />
+              <img
+                className="profile-img"
+                src={
+                  content?.owner?.profile != undefined
+                    ? imageURL + "users/" + content?.owner?.profile
+                    : userimg
+                }
+              />
             </div>
             <div className="col modalcontent">
               Signed By:
               <ul>
-                {content?.signedby?.map((item) => {
-                  return <li>{item}</li>;
+                {content?.signer?.map((item) => {
+                  return <li>{item.name}</li>;
                 })}
               </ul>
             </div>
@@ -449,7 +596,12 @@ export default function Agreement() {
         </Modal.Body>
       </Modal>
 
-      <Modal show={showFolderModal} onHide={() => setShowFolderModal(false)}>
+      <Modal
+        show={showFolderModal}
+        onHide={() => {
+          setShowFolderModal(false);
+        }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Team</Modal.Title>
         </Modal.Header>
@@ -481,6 +633,58 @@ export default function Agreement() {
             onClick={(e) => createFolder(e)}
           >
             Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal
+        show={showFolderupdateModal}
+        onHide={() => {
+          setshowFolderupdateModal(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Update Team</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <>
+            <form className="teamdata">
+              <Row className="teamrow">
+                <Col>
+                  <lable>Team name</lable>
+                </Col>
+                <Col>
+                  <input
+                    type="text"
+                    placeholder="Team name"
+                    value={folderData.name}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      console.log(e.target.value, e.target.key);
+                      if (e.key == "Enter") {
+                        console.log("Enter is pressed");
+                      }
+                      setFolderdata({ ...folderData, name: e.target.value });
+                    }}
+                  />
+                </Col>
+              </Row>
+            </form>
+          </>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="danger"
+            type="submit"
+            onClick={(e) => deleteFolder(e)}
+          >
+            Delete
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => updatefolder(e)}
+          >
+            update
           </Button>
         </Modal.Footer>
       </Modal>
