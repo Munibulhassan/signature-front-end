@@ -89,7 +89,9 @@ export const getsignaturedata = async (status, title) => {
     };
 
     const response = await axios.get(
-      `${baseURL}/signature?status=${status=="ALL"?"":status}&title=${title}`,
+      `${baseURL}/signature?status=${
+        status == "ALL" ? "" : status
+      }&title=${title}`,
       header
     );
 
@@ -98,8 +100,7 @@ export const getsignaturedata = async (status, title) => {
     return err.message;
   }
 };
-
-export const getcontractdata = async (status, title) => {
+export const updatesignature = async (id, data) => {
   try {
     const header = {
       headers: {
@@ -109,8 +110,9 @@ export const getcontractdata = async (status, title) => {
       },
     };
 
-    const response = await axios.get(
-      `${baseURL}/document?status=${status=="ALL"?"":status}&title=${title}`,
+    const response = await axios.patch(
+      `${baseURL}/signature/${id}`,
+      data,
       header
     );
 
@@ -119,3 +121,26 @@ export const getcontractdata = async (status, title) => {
     return err.message;
   }
 };
+
+
+export const deletesignature = async (id)=>{
+  try {
+    const header = {
+      headers: {
+        "Content-Type": "application/JSON",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
+      },
+    };
+
+    const response = await axios.delete(
+      `${baseURL}/signature/${id}`,
+      
+      header
+    );
+
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+}

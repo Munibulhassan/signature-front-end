@@ -25,13 +25,14 @@ import {
 } from "../../action/folder.action";
 import "./Agreement.css";
 import { useEffect } from "react";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import {
-  getcontractdata,
   getsignaturedata,
+  updatesignature,
+  deletesignature,
 } from "../../action/signature.action";
+import { getcontractdata, updatecontract } from "../../action/contract.action";
 import { imageURL } from "../../action/config";
-import SelectSearch from "react-select-search";
+// import SelectSearch from "react-select-search";
 
 export default function Agreement() {
   const [status, setstatus] = useState(false);
@@ -45,8 +46,10 @@ export default function Agreement() {
   const [type, settype] = useState("Signature");
   const [docstatus, setdocstatus] = useState("ALL");
   const showFolderModalHandler = () => setShowFolderModal(true);
+  const [title, settitle] = useState("");
+  const [shownrenamemodal, setshownrenamemodal] = useState(false);
+  const [showndeletedocument, setshowndeletedocument] = useState(false);
   const [search, setsearch] = useState("");
-
   const [folderData, setFolderdata] = useState({
     name: "",
   });
@@ -85,7 +88,7 @@ export default function Agreement() {
   const deleteFolder = async (e) => {
     e.preventDefault();
     const res = await folderdelete(id);
-    console.log(res);
+
     if (res.success == true) {
       toast.success(res.message);
       getFolders();
@@ -96,82 +99,94 @@ export default function Agreement() {
   };
   const getFolders = async () => {
     const res = await getFolderAction();
-    console.log("get folder");
+
     if (res.success == true) {
       setGetFolder(res.data);
     } else {
       toast.error(res.message);
     }
   };
-  // useEffect(() => {
-  //   const getsearchsignature =async () => {
-  //     const res = await getsignaturedata(docstatus,search);
-  //     if (res.success == true) {
-  //       setdata(res.data);
-  //       // toast.success(res.message);
-  //     } else {
-  //       setdata([]);
 
-  //       // toast.error(res.message);
-  //     }
-  //   };
-  //   const getsearchcontracts = async () => {
-  //     const res = await getcontractdata(docstatus,search);
-  //     if (res.success == true) {
-  //       setdata(res.data);
-  //       // toast.success(res.message);
-  //     } else {
-  //       setdata([]);
+  const getsignature = async () => {
+    const res = await getsignaturedata(docstatus, search);
+    if (res.success == true) {
+      setdata(res.data);
+      // toast.success(res.message);
+    } else {
+      setdata([]);
 
-  //       // toast.error(res.message);
-  //     }
-  //   };
+      // toast.error(res.message);
+    }
+  };
+  const getcontracts = async () => {
+    const res = await getcontractdata(docstatus, search);
+    if (res.success == true) {
+      setdata(res.data);
+      // toast.success(res.message);
+    } else {
+      setdata([]);
 
-  //   if (type.toLowerCase() == "signature") {
-  //     getsearchsignature();
-  //   } else {
-  //     getsearchcontracts();
-  //   }
-  // }, [search]);
-
+      // toast.error(res.message);
+    }
+  };
   useEffect(() => {
-    const getsignature = async () => {
-      const res = await getsignaturedata(docstatus, search);
-      if (res.success == true) {
-        setdata(res.data);
-        // toast.success(res.message);
-      } else {
-        setdata([]);
-
-        // toast.error(res.message);
-      }
-    };
-    const getcontracts = async () => {
-      const res = await getcontractdata(docstatus, search);
-      if (res.success == true) {
-        setdata(res.data);
-        // toast.success(res.message);
-      } else {
-        setdata([]);
-
-        // toast.error(res.message);
-      }
-    };
-
     if (type.toLowerCase() == "signature") {
-      console.log("signature");
       getsignature();
     } else {
-      console.log("contracts");
       getcontracts();
     }
   }, [docstatus, type, search]);
   const [data, setdata] = useState();
-  console.log(data);
 
   useEffect(() => {
     getFolders();
   }, []);
+  
+  const signaturedelete = async (e) => {
+    e.preventDefault();
+    const res = await deletesignature(id);
+    
+    if (res.success) {
+      toast.success(res.message);
+    getsignature()
+
+    } else {
+      toast.error(res.message);
+    }
+    setid("");
+    setshowndeletedocument(false);
+  };
+  const renamedocument = async (e) => {
+    e.preventDefault();
+
+    if (type.toLowerCase() == "signature") {
+      const res = await updatesignature(id, { title: title });
+
+      if (res.success == true) {
+        getsignature();
+        // setdata(res.data);
+        settitle("");
+        toast.success(res.message);
+      } else {
+        // setdata([]);
+
+        toast.error(res.message);
+        settitle("");
+      }
+    } else {
+      const res = await updatecontract(id, { title: title });
+      if (res.success == true) {
+        setdata(res.data);
+        getcontracts();
+        // toast.success(res.message);
+      } else {
+        setdata([]);
+
+        // toast.error(res.message);
+      }
+    }
+    setshownrenamemodal(false);
+  };
   return (
     <>
       <div className="Row containe">
@@ -421,9 +436,23 @@ export default function Agreement() {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                      <Dropdown.Item>Rename</Dropdown.Item>
+                                      <Dropdown.Item
+                                        onClick={() => {
+                                          setid(item._id);
+                                          setshownrenamemodal(true);
+                                        }}
+                                      >
+                                        Rename
+                                      </Dropdown.Item>
                                       <Dropdown.Item>Move to</Dropdown.Item>
-                                      <Dropdown.Item>Delete</Dropdown.Item>
+                                      <Dropdown.Item
+                                        onClick={() => {
+                                          setshowndeletedocument(true);
+                                          setid(item._id);
+                                        }}
+                                      >
+                                        Delete
+                                      </Dropdown.Item>
                                       <Dropdown.Item>
                                         Change Permissions
                                       </Dropdown.Item>
@@ -636,6 +665,7 @@ export default function Agreement() {
           </Button>
         </Modal.Footer>
       </Modal>
+
       <Modal
         show={showFolderupdateModal}
         onHide={() => {
@@ -659,10 +689,7 @@ export default function Agreement() {
                     value={folderData.name}
                     onChange={(e) => {
                       e.preventDefault();
-                      console.log(e.target.value, e.target.key);
-                      if (e.key == "Enter") {
-                        console.log("Enter is pressed");
-                      }
+
                       setFolderdata({ ...folderData, name: e.target.value });
                     }}
                   />
@@ -685,6 +712,110 @@ export default function Agreement() {
             onClick={(e) => updatefolder(e)}
           >
             update
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Rename modal */}
+      <Modal
+        show={shownrenamemodal}
+        onHide={() => {
+          setshownrenamemodal(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Rename {type}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <>
+            <form className="teamdata">
+              <Row className="teamrow">
+                <Col>
+                  <lable>Title</lable>
+                </Col>
+                <Col>
+                  <input
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      settitle(e.target.value);
+                    }}
+                  />
+                </Col>
+              </Row>
+            </form>
+          </>
+        </Modal.Body>
+        <Modal.Footer>
+          {/* <Button
+            variant="danger"
+            type="submit"
+            onClick={(e) => deleteFolder(e)}
+          >
+            Delete
+          </Button> */}
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => renamedocument(e)}
+          >
+            update
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* delete document */}
+      <Modal
+        show={showndeletedocument}
+        onHide={() => {
+          setshowndeletedocument(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Delete {type}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* <>
+            <form className="teamdata">
+              <Row className="teamrow">
+                <Col>
+                  <lable>Title</lable>
+                </Col>
+                <Col>
+                  <input
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      settitle(e.target.value);
+                    }}
+                  />
+                </Col>
+              </Row>
+            </form>
+          </> */}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="danger"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              setid("");
+              setshowndeletedocument(false);
+            }}
+          >
+            No
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => signaturedelete(e)}
+          >
+            Yes
           </Button>
         </Modal.Footer>
       </Modal>
