@@ -14,6 +14,7 @@ import { userlogin } from "../../action/action";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Spinner } from "react-bootstrap";
 import { baseURL } from "../../action/config";
+import { GoogleLogin } from "react-google-login";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -36,6 +37,9 @@ export default function Login() {
     }
   };
 
+  const responseGoogle = (response) => {
+    console.log("===================", response);
+  };
   return (
     <>
       <section id="login_page">
@@ -146,14 +150,19 @@ export default function Login() {
                       class="btn google_btn"
                       onClick={(e) => {
                         e.preventDefault();
-
-                        // navigate(`${baseURL}/api/auth/google`)
+                        navigate(`${baseURL}/auth/google`);
                       }}
                     >
-                      
-                        <img src={google} class="google_icon_login" /> Login
-                        with Google
+                      <img src={google} class="google_icon_login" /> Login with
+                      Google
                     </button>
+                    <GoogleLogin
+                      clientId="1008366125971-ccgl9h9a3hure3ag4sde5ooj1q7v7vhk.apps.googleusercontent.com"
+                      buttonText="Login"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      cookiePolicy={"single_host_origin"}
+                    />
                   </form>
                   <div class="dont_account sign_in">
                     <p onClick={() => navigate("/signup")}>
