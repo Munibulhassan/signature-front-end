@@ -805,3 +805,89 @@
 .btn-block{
   width: 15%
 }
+.invoicethead{
+  max-width: 86%;
+
+}
+.textbase{
+  resize: none;
+  width: 100%;
+}
+.left{
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.discountinput{
+  width: 50%;
+  margin-left: 15px;  
+  height: 33px;
+}
+
+#calculation{
+  padding:0px 20px 0px 20px;
+}
+.error{
+  color:red
+}
+.profileh1{
+  font-size: 18px;
+  font-weight: 500;
+}
+.update{
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+}
+.profileinput{
+  width: 50%;
+    padding: 12px 16px 11px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #d7e3e7;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgb(14 79 206 / 13%);
+    border-radius: 3px;
+    color: #596a78;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    margin-bottom: 10px;
+}
+.subscription{
+  padding: 46px 20px 47px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 179px;
+    display: flex;
+  /* padding: 15px;
+  text-align: center; */
+}
+.subscription p{
+  height: 40px;
+  width: 230px;
+}
+.current{
+  background-color: white ;
+  color: #3b9add ;
+  font-weight: 500;
+  
+  border: none;
+}
+.planinfo td{
+  background-color: #eff5f7;
+  height: 60px;
+  padding-left: 10px;
+
+}
+.subcriptiontabel td{
+  border: 1px solid #dce8f5;
+}
+.table-row td{
+  text-align: center;
+  padding: 17px 0 20px 20px;
+  height: 40px;
+  font-size: 18px;
+  color: #7d8d98;
+  font-weight: 400;
+}

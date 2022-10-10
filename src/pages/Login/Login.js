@@ -18,7 +18,7 @@ import { GoogleLogin } from "react-google-login";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("munib96.teckflux@gmail.com");
+  const [email, setEmail] = useState("nib96.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
   const [loader, setloader] = useState(false);
   const userLogin = async () => {
@@ -156,13 +156,13 @@ export default function Login() {
                       <img src={google} class="google_icon_login" /> Login with
                       Google
                     </button>
-                    <GoogleLogin
+                    {/* <GoogleLogin
                       clientId="1008366125971-ccgl9h9a3hure3ag4sde5ooj1q7v7vhk.apps.googleusercontent.com"
                       buttonText="Login"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
                       cookiePolicy={"single_host_origin"}
-                    />
+                    /> */}
                   </form>
                   <div class="dont_account sign_in">
                     <p onClick={() => navigate("/signup")}>

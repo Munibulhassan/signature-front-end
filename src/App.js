@@ -6,10 +6,11 @@ import Setting from "./pages/Setting/Setting";
 
  
 import Team from "./pages/Team/Team";
-import TestForm from "./components/TestForm";
+// import TestForm from "./components/TestForm";
 import Signature from "./pages/Signature/Signature";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Agreement from "./pages/Agreement/Agreement";
+
 // import "./responsive.css"s
 function App() {
   return (

@@ -20,7 +20,40 @@ export const userlogin = async (payload) => {
     return err.message;
   }
 };
+export const profileupdate = async (payload)=>{
+  try {
+    const header = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
+      },
+    };
 
+    const response = await axios.patch(`${baseURL}/auth/updateprofile`, payload,header,);
+
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+}
+export const passwordupdate = async (payload)=>{
+  try {
+    const header = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
+      },
+    };
+
+    const response = await axios.patch(`${baseURL}/auth/password`, payload,header,);
+
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+}
 export const usersignup = async (payload) => {
   try {
     const header = {

@@ -32,6 +32,9 @@ import {
 } from "../../action/signature.action";
 import { getcontractdata, updatecontract } from "../../action/contract.action";
 import { imageURL } from "../../action/config";
+import Calculations from "../../components/Calculations";
+import Textbase from "../../components/Textbase";
+import Uploadfile from "../../components/uploadfile"
 // import SelectSearch from "react-select-search";
 
 export default function Agreement() {
@@ -121,6 +124,8 @@ export default function Agreement() {
   const getcontracts = async () => {
     const res = await getcontractdata(docstatus, search);
     if (res.success == true) {
+
+      
       setdata(res.data);
       // toast.success(res.message);
     } else {
@@ -129,6 +134,7 @@ export default function Agreement() {
       // toast.error(res.message);
     }
   };
+  
   useEffect(() => {
     if (type.toLowerCase() == "signature") {
       getsignature();
@@ -141,14 +147,14 @@ export default function Agreement() {
   useEffect(() => {
     getFolders();
   }, []);
-  
+
   const signaturedelete = async (e) => {
     e.preventDefault();
     const res = await deletesignature(id);
-    
+
     if (res.success) {
       toast.success(res.message);
-    getsignature()
+      getsignature()
 
     } else {
       toast.error(res.message);
@@ -398,8 +404,8 @@ export default function Agreement() {
                                     src={
                                       item?.owner?.profile != undefined
                                         ? imageURL +
-                                          "users/" +
-                                          item?.owner?.profile
+                                        "users/" +
+                                        item?.owner?.profile
                                         : userimg
                                     }
                                     className="profile-img"
@@ -416,7 +422,7 @@ export default function Agreement() {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                      {item?.signer.map((value) => {
+                                      {item?.signer?.map((value) => {
                                         return (
                                           <Dropdown.Item>
                                             {value.name}
@@ -513,6 +519,7 @@ export default function Agreement() {
                 </div>
               </>
             ) : (
+              <>
               <div className="sign">
                 {tab == 1 ? (
                   <div className="sign-menu agree-m">
@@ -583,6 +590,27 @@ export default function Agreement() {
                   </div>
                 )}
               </div>
+            <div>
+              {
+                tab == 1 ? (
+               <Calculations/>
+                ) : (
+
+                  tab == 2 ? (
+                  <Textbase/>
+                  ) : (
+
+                    tab == 3 ? (
+                     <Uploadfile/>
+                    ) : (
+
+                      null
+                    )
+                  )
+                )
+              }
+            </div>
+              </>
             )}
           </div>
         </div>

@@ -488,3 +488,11 @@ margin-top: 10%;
     margin-top: 60px;
   }
 }
+
+
+.invoice-profimg{
+  height: 40px;
+width: 40px;
+border-radius: 50%;
+
+}

@@ -307,6 +307,7 @@ export default function Team() {
           </Button>
         </Modal.Footer>
       </Modal>
+      
       <Modal show={invite} onHide={closeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Invite New Member</Modal.Title>

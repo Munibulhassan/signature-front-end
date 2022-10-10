@@ -23,7 +23,7 @@ export default function Sidebar() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+console.log(location.pathname)
   if (window.innerWidth > 500) {
     return (
       <div div className="sidecontainer">
@@ -83,7 +83,7 @@ export default function Sidebar() {
               <span>Teams</span>
             </li>
           )}
-          {location.pathname.toLowerCase() == "/setting" ? (
+          {location.pathname.toLowerCase() == "/setting/" ? (
             <li>
               <span>
                 <img src={Settingsblue} />
@@ -91,7 +91,7 @@ export default function Sidebar() {
               <span className="active">Setting</span>
             </li>
           ) : (
-            <li onClick={() => navigate("/setting")}>
+            <li onClick={() => navigate("/setting/#home")}>
               <span>
                 <img src={Settingsblack} />
               </span>
@@ -181,7 +181,7 @@ export default function Sidebar() {
                   <span>Teams</span>
                 </li>
               )}
-              {location.pathname.toLowerCase() == "/setting" ? (
+              {location.pathname.toLowerCase() == "/setting/" ? (
                 <li>
                   <span>
                     <img src={Settingsblue} />
@@ -189,7 +189,7 @@ export default function Sidebar() {
                   <span className="active">Setting</span>
                 </li>
               ) : (
-                <li onClick={() => navigate("/setting")}>
+                <li onClick={() => navigate("/setting/#home")}>
                   <span>
                     <img src={Settingsblack} />
                   </span>
@@ -197,7 +197,9 @@ export default function Sidebar() {
                 </li>
               )}
             </ul>
-            <button type="button" className="btn upgrade" style={{"width":"70%"}}>
+            <button type="button" className="btn upgrade" style={{"width":"70%"}} onClick={()=>{
+      navigate("/setting/#billing")
+        }}>
               Upgrade <img alt="" src={rightarrow} />
             </button>
           </Offcanvas.Body>
