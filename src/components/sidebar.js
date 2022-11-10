@@ -23,7 +23,6 @@ export default function Sidebar() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-console.log(location.pathname)
   if (window.innerWidth > 500) {
     return (
       <div div className="sidecontainer">

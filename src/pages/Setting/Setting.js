@@ -52,7 +52,7 @@ export default function Setting() {
     };
     const res = await profileupdate(payload);
 
-    console.log(res);
+    
     if (res.success) {
       localStorage.setItem("user",JSON.stringify(res.data))
       toast.success(res.message);

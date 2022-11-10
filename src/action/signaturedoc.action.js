@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const createSignatureAction = async (data, status) => {
   try {
-    // console.log(status)
-    console.log(data);
+    
+    
     const header = {
       headers: {
         "Content-Type": "application/json",
@@ -15,14 +15,14 @@ export const createSignatureAction = async (data, status) => {
 
     if (status == 1) {
       const response = await axios.post(
-        `${baseURL}/signature/me`,
+        `${baseURL}/signdoc/me`,
         data,
         header
       );
       return response.data;
     } else if (status == 2) {
       const response = await axios.post(
-        `${baseURL}/signature/team`,
+        `${baseURL}/signdoc/team`,
         data,
         header
       );
@@ -30,7 +30,7 @@ export const createSignatureAction = async (data, status) => {
       return response.data;
     } else if (status == 3) {
       const response = await axios.post(
-        `${baseURL}/signature/bulk`,
+        `${baseURL}/signdoc/bulk`,
         data,
         header
       );
@@ -111,7 +111,7 @@ export const updatesignature = async (id, data) => {
     };
 
     const response = await axios.patch(
-      `${baseURL}/signature/${id}`,
+      `${baseURL}/signdoc/${id}`,
       data,
       header
     );
@@ -134,7 +134,7 @@ export const deletesignature = async (id)=>{
     };
 
     const response = await axios.delete(
-      `${baseURL}/signature/${id}`,
+      `${baseURL}/signdoc/${id}`,
       
       header
     );

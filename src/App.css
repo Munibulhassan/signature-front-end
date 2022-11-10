@@ -157,12 +157,12 @@
 }
 .sign-menu h1 {
   margin-top: 3%;
-  font-size: 30px;
+  font-size: 27px;
   color: #3b9be2;
   position: absolute;
   text-align: center;
   justify-content: center;
-  margin-left: 8%;
+  margin-left: 6.5%;
   z-index: 1;
   width: fit-content;
 }
@@ -890,4 +890,11 @@
   font-size: 18px;
   color: #7d8d98;
   font-weight: 400;
+}
+
+
+
+.pandadoc iframe {
+  width: 900px;
+  height: 700px;
 }

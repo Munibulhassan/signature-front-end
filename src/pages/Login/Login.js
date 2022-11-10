@@ -18,7 +18,7 @@ import { GoogleLogin } from "react-google-login";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("nib96.teckflux@gmail.com");
+  const [email, setEmail] = useState("munib1.teckflux@gmail.com");
   const [password, setPassword] = useState("12345679");
   const [loader, setloader] = useState(false);
   const userLogin = async () => {
@@ -29,17 +29,16 @@ export default function Login() {
     const res = await userlogin(userData);
 
     if (res.success == true) {
+      
       toast.success("Login Succssfully");
-
       navigate("/agreement");
+
     } else {
+      setloader(false);
       toast.error(res.message);
     }
   };
 
-  const responseGoogle = (response) => {
-    console.log("===================", response);
-  };
   return (
     <>
       <section id="login_page">

@@ -20,7 +20,7 @@ export const userlogin = async (payload) => {
     return err.message;
   }
 };
-export const profileupdate = async (payload)=>{
+export const profileupdate = async (payload) => {
   try {
     const header = {
       headers: {
@@ -30,14 +30,18 @@ export const profileupdate = async (payload)=>{
       },
     };
 
-    const response = await axios.patch(`${baseURL}/auth/updateprofile`, payload,header,);
+    const response = await axios.patch(
+      `${baseURL}/auth/updateprofile`,
+      payload,
+      header
+    );
 
     return response.data;
   } catch (err) {
     return err.message;
   }
-}
-export const passwordupdate = async (payload)=>{
+};
+export const passwordupdate = async (payload) => {
   try {
     const header = {
       headers: {
@@ -47,13 +51,17 @@ export const passwordupdate = async (payload)=>{
       },
     };
 
-    const response = await axios.patch(`${baseURL}/auth/password`, payload,header,);
+    const response = await axios.patch(
+      `${baseURL}/auth/password`,
+      payload,
+      header
+    );
 
     return response.data;
   } catch (err) {
     return err.message;
   }
-}
+};
 export const usersignup = async (payload) => {
   try {
     const header = {
@@ -130,7 +138,23 @@ export const updateteam = async (id, data) => {
     return err.message;
   }
 };
+export const getkey = async () => {
+  try {
+    const header = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
+      },
+    };
 
+    const response = await axios.get(`${baseURL}/getkey`, header);
+
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+};
 export const getUser = async () => {
   try {
     const header = {
@@ -148,8 +172,8 @@ export const getUser = async () => {
     return err.message;
   }
 };
-export const sendinvite = async (payload)=>{
-  try{
+export const sendinvite = async (payload) => {
+  try {
     const header = {
       headers: {
         "Content-Type": "application/json",
@@ -157,9 +181,13 @@ export const sendinvite = async (payload)=>{
           "Bearer " + JSON.parse(localStorage.getItem("AccessToken")),
       },
     };
-    const response = await axios.post(`${baseURL}/auth/sendinvites`, payload,header);
+    const response = await axios.post(
+      `${baseURL}/auth/sendinvites`,
+      payload,
+      header
+    );
     return response.data;
   } catch (err) {
     return err.message;
   }
-}
+};

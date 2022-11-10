@@ -33,7 +33,11 @@ export default function Signup() {
     if (res.success == true) {
       toast.success("Account created Succssfully");
       navigate("/agreement");
+
+
     } else {
+      setloader(false)
+
       toast.error(res.message);
     }
   };

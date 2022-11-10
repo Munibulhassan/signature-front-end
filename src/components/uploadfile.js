@@ -21,7 +21,7 @@ const  Uploadfile=()=> {
 
   const uploadfile = async () => {
     if (title.length == 0) {
-      console.log(true);
+      
       seterror({
         title: false,
         description: true,

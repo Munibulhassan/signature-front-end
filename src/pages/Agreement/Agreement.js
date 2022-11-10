@@ -29,12 +29,15 @@ import {
   getsignaturedata,
   updatesignature,
   deletesignature,
-} from "../../action/signature.action";
+} from "../../action/signaturedoc.action";
 import { getcontractdata, updatecontract } from "../../action/contract.action";
 import { imageURL } from "../../action/config";
 import Calculations from "../../components/Calculations";
 import Textbase from "../../components/Textbase";
-import Uploadfile from "../../components/uploadfile"
+import Uploadfile from "../../components/uploadfile";
+import { updatedocument } from "../../action/document.action";
+import { transform } from "joi-browser";
+import { useNavigate } from "react-router-dom";
 // import SelectSearch from "react-select-search";
 
 export default function Agreement() {
@@ -53,9 +56,13 @@ export default function Agreement() {
   const [shownrenamemodal, setshownrenamemodal] = useState(false);
   const [showndeletedocument, setshowndeletedocument] = useState(false);
   const [search, setsearch] = useState("");
+  const [page, setpage] = useState(1);
+  const navigate = useNavigate();
+
   const [folderData, setFolderdata] = useState({
     name: "",
   });
+  const [selectfoldermodal, setselectfoldermodal] = useState(false);
   const [getFolder, setGetFolder] = useState([]);
   ///update folder
   const updatefolder = async () => {
@@ -109,7 +116,29 @@ export default function Agreement() {
       toast.error(res.message);
     }
   };
+  const selectfolder = async (folderid) => {
+    if (type == "Contracts") {
+      const res = await updatedocument(id, { folder: folderid });
+      if (res.success == true) {
+        handleselectfolder();
+        toast.success(res.message);
+      } else {
+        handleselectfolder();
 
+        toast.error(res.message);
+      }
+    } else if (type == "Signature") {
+      const res = await updatesignature(id, { folder: folderid });
+      if (res.success == true) {
+        handleselectfolder();
+        toast.success(res.message);
+      } else {
+        handleselectfolder();
+
+        toast.error(res.message);
+      }
+    }
+  };
   const getsignature = async () => {
     const res = await getsignaturedata(docstatus, search);
     if (res.success == true) {
@@ -117,15 +146,12 @@ export default function Agreement() {
       // toast.success(res.message);
     } else {
       setdata([]);
-
       // toast.error(res.message);
     }
   };
   const getcontracts = async () => {
     const res = await getcontractdata(docstatus, search);
     if (res.success == true) {
-
-      
       setdata(res.data);
       // toast.success(res.message);
     } else {
@@ -134,7 +160,7 @@ export default function Agreement() {
       // toast.error(res.message);
     }
   };
-  
+
   useEffect(() => {
     if (type.toLowerCase() == "signature") {
       getsignature();
@@ -154,8 +180,7 @@ export default function Agreement() {
 
     if (res.success) {
       toast.success(res.message);
-      getsignature()
-
+      getsignature();
     } else {
       toast.error(res.message);
     }
@@ -193,6 +218,10 @@ export default function Agreement() {
     }
     setshownrenamemodal(false);
   };
+  const handleselectfolder = () => {
+    setselectfoldermodal(false);
+  };
+
   return (
     <>
       <div className="Row containe">
@@ -318,11 +347,38 @@ export default function Agreement() {
                   </div>
                 </div>
                 <div className="agree-document">
-                  <div className="listing">
-                    <p className="result-count">1-4 of 8 results</p>
+                  <div className="listing" style={{ display: "flex" }}>
+                    <img
+                      src={rightarrow}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        transform: "rotate(180deg)",
+                      }}
+                      onClick={() => {
+                        if (page - 1 > 0) {
+                          setpage(page - 1);
+                        }
+                      }}
+                    />
+                    <p className="result-count">
+                      {(page - 1) * 10 + 1}-{((page - 1) * 10 + 10) <data?.length ?((page - 1) * 10 + 10):data?.length } of{" "}
+                      {data?.length} results
+                    </p>
+                    <img
+                      src={rightarrow}
+                      style={{ width: "40px", height: "40px" }}
+                      onClick={() => {
+                        if(((page-1)*10+10)<data?.length){
+                          setpage(page + 1)
+                        }
+                      }}
+                    />
                   </div>
                   <div className="agree-menu">
-                    <button type="button" className="btn upgrade more-sign">
+                    <button type="button" className="btn upgrade more-sign"  onClick={()=>{
+      navigate("/setting/#billing")
+        }}>
                       Buy more signs
                       <img src={rightarrow} />
                     </button>
@@ -404,8 +460,8 @@ export default function Agreement() {
                                     src={
                                       item?.owner?.profile != undefined
                                         ? imageURL +
-                                        "users/" +
-                                        item?.owner?.profile
+                                          "users/" +
+                                          item?.owner?.profile
                                         : userimg
                                     }
                                     className="profile-img"
@@ -450,7 +506,15 @@ export default function Agreement() {
                                       >
                                         Rename
                                       </Dropdown.Item>
-                                      <Dropdown.Item>Move to</Dropdown.Item>
+                                      <Dropdown.Item
+                                        onClick={() => {
+                                          setid(item._id);
+                                          setselectfoldermodal(true);
+                                        }}
+                                      >
+                                        {" "}
+                                        Move to
+                                      </Dropdown.Item>
                                       <Dropdown.Item
                                         onClick={() => {
                                           setshowndeletedocument(true);
@@ -520,101 +584,100 @@ export default function Agreement() {
               </>
             ) : (
               <>
-              <div className="sign">
-                {tab == 1 ? (
-                  <div className="sign-menu agree-m">
-                    <h1 className="active-sign-menu agreement-white-title">
-                      Calculate & Text Base
-                    </h1>
-                    <p className="active-sign-menu">
-                      Lorem Ex qui mollit officia aliqua do officia deserunt id
-                      aliquip culpa.
-                    </p>
-                    <img src={calculateblue} />
-                  </div>
-                ) : (
-                  <div className="sign-menu agree-m" onClick={() => settab(1)}>
-                    <h1 className="agreement-white-title">
-                      Calculate & Text Base
-                    </h1>
-                    <p>
-                      Lorem Ex qui mollit officia aliqua do officia deserunt id
-                      aliquip culpa.
-                    </p>
-                    <img src={calculate} />
-                  </div>
-                )}
-                {tab == 2 ? (
-                  <div className="sign-menu agree-m">
-                    <h1 className="active-sign-menu agreement-white-title">
-                      Text Base Argument
-                    </h1>
-                    <p className="active-sign-menu">
-                      Lorem Ex qui mollit officia aliqua do officia deserunt id
-                      aliquip culpa.
-                    </p>
-                    <img src={textblue} />
-                  </div>
-                ) : (
-                  <div className="sign-menu agree-m" onClick={() => settab(2)}>
-                    <h1 className="agreement-white-title">
-                      Text Base Argument
-                    </h1>
-                    <p>
-                      Lorem Ex qui mollit officia aliqua do officia deserunt id
-                      aliquip culpa.
-                    </p>
-                    <img src={text} />
-                  </div>
-                )}
-
-                {tab == 3 ? (
-                  <div className="sign-menu bulk_sign agree-m">
-                    <h1 className="active-sign-menu agreement-white-title">
-                      Upload File
-                    </h1>
-                    <p className="active-sign-menu">
-                      Lorem Ex qui mollit officia aliqua do officia deserunt id
-                      aliquip culpa.
-                    </p>
-                    <img src={uploadblue} />
-                  </div>
-                ) : (
-                  <div className="sign-menu agree-m" onClick={() => settab(3)}>
-                    <h1 className="agreement-white-title">Upload File</h1>
-                    <p>
-                      Lorem Ex qui mollit officia aliqua do officia deserunt id
-                      aliquip culpa.
-                    </p>
-                    <img src={upload} />
-                  </div>
-                )}
-              </div>
-            <div>
-              {
-                tab == 1 ? (
-               <Calculations/>
-                ) : (
-
-                  tab == 2 ? (
-                  <Textbase/>
+                <div className="sign">
+                  {tab == 1 ? (
+                    <div className="sign-menu agree-m">
+                      <h1 className="active-sign-menu agreement-white-title">
+                        Calculate & Text Base
+                      </h1>
+                      <p className="active-sign-menu">
+                        Lorem Ex qui mollit officia aliqua do officia deserunt
+                        id aliquip culpa.
+                      </p>
+                      <img src={calculateblue} />
+                    </div>
                   ) : (
+                    <div
+                      className="sign-menu agree-m"
+                      onClick={() => settab(1)}
+                    >
+                      <h1 className="agreement-white-title">
+                        Calculate & Text Base
+                      </h1>
+                      <p>
+                        Lorem Ex qui mollit officia aliqua do officia deserunt
+                        id aliquip culpa.
+                      </p>
+                      <img src={calculate} />
+                    </div>
+                  )}
+                  {tab == 2 ? (
+                    <div className="sign-menu agree-m">
+                      <h1 className="active-sign-menu agreement-white-title">
+                        Text Base Argument
+                      </h1>
+                      <p className="active-sign-menu">
+                        Lorem Ex qui mollit officia aliqua do officia deserunt
+                        id aliquip culpa.
+                      </p>
+                      <img src={textblue} />
+                    </div>
+                  ) : (
+                    <div
+                      className="sign-menu agree-m"
+                      onClick={() => settab(2)}
+                    >
+                      <h1 className="agreement-white-title">
+                        Text Base Argument
+                      </h1>
+                      <p>
+                        Lorem Ex qui mollit officia aliqua do officia deserunt
+                        id aliquip culpa.
+                      </p>
+                      <img src={text} />
+                    </div>
+                  )}
 
-                    tab == 3 ? (
-                     <Uploadfile/>
-                    ) : (
-
-                      null
-                    )
-                  )
-                )
-              }
-            </div>
+                  {tab == 3 ? (
+                    <div className="sign-menu bulk_sign agree-m">
+                      <h1 className="active-sign-menu agreement-white-title">
+                        Upload File
+                      </h1>
+                      <p className="active-sign-menu">
+                        Lorem Ex qui mollit officia aliqua do officia deserunt
+                        id aliquip culpa.
+                      </p>
+                      <img src={uploadblue} />
+                    </div>
+                  ) : (
+                    <div
+                      className="sign-menu agree-m"
+                      onClick={() => settab(3)}
+                    >
+                      <h1 className="agreement-white-title">Upload File</h1>
+                      <p>
+                        Lorem Ex qui mollit officia aliqua do officia deserunt
+                        id aliquip culpa.
+                      </p>
+                      <img src={upload} />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  {tab == 1 ? (
+                    <Calculations />
+                  ) : tab == 2 ? (
+                    <Textbase />
+                  ) : tab == 3 ? (
+                    <Uploadfile />
+                  ) : null}
+                </div>
               </>
             )}
           </div>
         </div>
       </div>
+
       <Modal
         show={show}
         onHide={handleClose}
@@ -660,14 +723,14 @@ export default function Agreement() {
         }}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add Team</Modal.Title>
+          <Modal.Title>Add Folder</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <>
             <form className="teamdata">
               <Row className="teamrow">
                 <Col>
-                  <lable>Team name</lable>
+                  <lable>Folder name</lable>
                 </Col>
                 <Col>
                   <input
@@ -701,14 +764,14 @@ export default function Agreement() {
         }}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update Team</Modal.Title>
+          <Modal.Title>Rename Folder</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <>
             <form className="teamdata">
               <Row className="teamrow">
                 <Col>
-                  <lable>Team name</lable>
+                  <lable>Folder name</lable>
                 </Col>
                 <Col>
                   <input
@@ -846,6 +909,41 @@ export default function Agreement() {
             Yes
           </Button>
         </Modal.Footer>
+      </Modal>
+      {/* select folder */}
+      <Modal
+        show={selectfoldermodal}
+        onHide={handleselectfolder}
+        animation={false}
+        centered
+        size="md"
+        className="main-modal"
+      >
+        <Modal.Header closeButton>
+          <p className="modal-title">Select Folder</p>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="row">
+            {getFolder.map((fol) => {
+              return (
+                <div className="folder-container col-md-4 select-folder">
+                  <div
+                    className="folder"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      selectfolder(fol._id);
+
+                      // showFolderModalHandler;
+                    }}
+                  >
+                    <img src={folder} />
+                  </div>
+                  <p>{fol.name}</p>
+                </div>
+              );
+            })}
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );

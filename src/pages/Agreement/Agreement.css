@@ -1,3 +1,7 @@
+.select-folder :hover{
+background-color: #8A8A8A;
+cursor: pointer;
+}
 @media only screen and (min-width: 1441px) and (max-width: 1600px) {
 }
 @media only screen and (min-width: 1367px) and (max-width: 1440px) {

@@ -42,7 +42,7 @@ export default function Subscription() {
             <tr>
               <td></td>
               {data?.map((item, index) => {
-                console.log(user.subscription[0] == item._id)
+                
                 return (
                   <td>
                     <div className="subscription">
@@ -108,13 +108,13 @@ export default function Subscription() {
               <td>1</td>
               <td>Unlimited</td>
             </tr>
-            <tr className="table-row">
+            {/* <tr className="table-row">
               <td>Google drive Integration</td>
               <td>{data[0]?.googledrive ? "true" : "false"}</td>
               <td>{data[1]?.googledrive ? "true" : "false"}</td>
 
               <td>{data[2]?.googledrive ? "true" : "false"}</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

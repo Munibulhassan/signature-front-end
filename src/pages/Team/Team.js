@@ -135,9 +135,9 @@ export default function Team() {
   }
 
   const invitesend = async () => {
-    console.log({ email: JSON.stringify(email.split(",")) });
+    
     const res = await sendinvite({ email: email.split(",") });
-    console.log(res);
+    
     if (res.success) {
       toast.success(res.message);
       closeModal();

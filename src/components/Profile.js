@@ -4,8 +4,10 @@ import profile from "../Assets/profile.jfif";
 import notification from "../Assets/Group 25911.png";
 import updationnotification from "../Assets/Group 2591.png";
 import { useNavigate } from 'react-router-dom';
+import { imageURL } from '../action/config';
 export default function Profile() {
   const navigate = useNavigate()
+  
 if(window.innerWidth>500){
     return (
       <div className="profile">
@@ -15,7 +17,7 @@ if(window.innerWidth>500){
         Upgrade <img alt="" src={rightarrow} />
       </button>
       <img alt="" className="notify" src={updationnotification} />
-      <img alt="" className="profile-img" src={profile} />
+      <img alt="" className="profile-img" src={imageURL+"users/"+"file-1663673416507.png"} />
     </div>
     )
   }else{

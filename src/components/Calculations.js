@@ -4,6 +4,9 @@ import { imageURL } from "../action/config";
 import TableRows from "./TableRows";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { getkey } from "../action/action";
+import { createdocfromtemp } from "../action/pandadoc.action";
+import { toast } from "react-toastify";
 
 function Calculations() {
   const submitcontract = async () => {
@@ -23,7 +26,7 @@ function Calculations() {
       }
     );
   };
-
+  const user = JSON.parse(localStorage.getItem("user"));
   const [rowsData, setRowsData] = useState([
     {
       sno: 1,
@@ -33,22 +36,129 @@ function Calculations() {
       total: "",
     },
   ]);
+
   const [total, settotal] = useState(0);
   const [discount, setdiscount] = useState(0);
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
+  const [invoiceid, setinvoiceid] = useState("");
 
-  //   useEffect(() => {
-  //     settotal(
-  //       rowsData.reduce((a, b) => {
-  //         return a + b.total;
-  //       }, 0)
-  //     );
-  // console.log(rowsData.reduce((a, b) => {
-  //   return a + b.total;
-  // }, 0))
-  //   }, [rowsData]);
-  //   useEffect(()=>{},[total])
+  const [loader, setloader] = useState(false);
+  const uploadinvoice = async () => {
+    setloader(true);
+    const apikey = await getkey();
+    const tablepricing = [];
+
+    rowsData.map((item) => {
+      tablepricing.push({
+        options: {
+          optional: true,
+          optional_selected: true,
+          qty_editable: true,
+        },
+        data: {
+          name: item.item,
+          Description: "",
+          price: parseInt(item.price),
+          qty: parseInt(item.unit),
+          Tax: {
+            value: 20,
+            type: "percent",
+          },
+        },
+      });
+    });
+    const payload = {
+      name: "Sample invoice",
+      template_uuid: "RYxXeUGHR4wejEc53AwVtX",
+      recipients: [
+        {
+          email: email,
+          first_name: name,
+          last_name: name,
+        },
+      ],
+      tokens: [
+        {
+          name: "Favorite.Pet",
+          value: "Panda",
+        },
+      ],
+      Sender: {
+        FirstName: user.first_name,
+        LastName: user.last_name,
+      },
+      Invoice: {
+        No: invoiceid,
+        DueDate:
+          JSON.stringify(new Date().getDate()) +
+          "-" +
+          JSON.stringify(new Date().getMonth() + 1) +
+          "-" +
+          JSON.stringify(new Date().getFullYear()),
+        Terms: "payment on delivered",
+      },
+      Client: {
+        FirstName: name,
+        LastName: email,
+      },
+      metadata: {
+        my_favorite_pet: "Panda",
+      },
+      tags: ["created_via_api", "test_document"],
+      images: [
+        {
+          name: "Image 1",
+          urls: [imageURL + "user/logo"],
+        },
+      ],
+      pricing_tables: [
+        {
+          name: "Pricing Table 1",
+          data_merge: false,
+          options: {
+            Tax: {
+              is_global: true,
+              type: "absolute",
+              name: "Tax",
+              value: 10,
+            },
+          },
+          sections: [
+            {
+              title: "Sample Section",
+              default: true,
+              rows: tablepricing,
+            },
+          ],
+        },
+      ],
+    };
+
+    const response = await createdocfromtemp(
+      apikey.APIkey,
+      JSON.stringify(payload)
+    );
+    console.log(response);
+    if (response?.data?.id) {
+      toast.success("Ducument generated successfully");
+      setloader(true);
+      setRowsData({
+        sno: 1,
+        item: "",
+        unit: "",
+        price: "",
+        total: "",
+      });
+      setname("");
+      setemail("");
+      setinvoiceid("");
+      setdiscount("");
+    } else {
+      toast.error(response?.data?.type);
+      setloader(true);
+    }
+  };
 
   const addTableRows = () => {
     const rowsInput = {
@@ -84,6 +194,7 @@ function Calculations() {
     );
     setRowsData(rowsInput);
   };
+  // console.log(JSON.parse(localStorage.getItem("user")).profile);
 
   return (
     <div id="newcalculation" style={{ width: "75%" }}>
@@ -141,7 +252,14 @@ function Calculations() {
               <p>
                 <b>Invoice #:</b>
               </p>
-              <input type="Number" className="discountinput"></input>
+              <input
+                type="Number"
+                className="discountinput"
+                onChange={(e) => {
+                  setinvoiceid(e.target.value);
+                }}
+                value={invoiceid}
+              ></input>
             </div>
             <p>
               <b>Created At: </b>
@@ -152,7 +270,6 @@ function Calculations() {
             <p>
               <b>Due Date: </b>
               After 1 Month
-             
             </p>
           </Col>
         </Row>
@@ -217,10 +334,14 @@ function Calculations() {
         </Row>
         <Row>
           <Col>
+            <div id="pandadoc-sdk" class="pandadoc"></div>
+          </Col>
+          <Col>
             <button
               className="btn upgrade left"
               onClick={() => {
-                submitcontract();
+                uploadinvoice();
+                // submitcontract();
               }}
             >
               Submit

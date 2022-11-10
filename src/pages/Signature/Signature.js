@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import {
   createSignatureAction,
   fileupload,
-} from "../../action/signature.action";
+} from "../../action/signaturedoc.action";
 import "./signature.css";
 
 export default function Signature() {
@@ -166,13 +166,13 @@ export default function Signature() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("///")
+    
 
     
     const errors = formValidate();    
-    console.log(errors)
+    
     if (errors) return;    
-    console.log("///")
+    
     
     let formData = new FormData();
     formData.append("file", file);
@@ -191,7 +191,7 @@ export default function Signature() {
       });
 
       const res = await createSignatureAction(payload, status);
-      console.log(res);
+      
       if (res.success == true) {
         setTitle("");
         setDescription("");
@@ -215,7 +215,8 @@ export default function Signature() {
       });
 
       const res = await createSignatureAction(payload, status);
-      console.log(res);
+
+      
       if (res.success == true) {
         setTitle("");
         setDescription("");
@@ -377,22 +378,14 @@ export default function Signature() {
                     </div>
                     <div className="col-md-12">
                       <h1>Add other signers</h1>
-                      {/* <div className="signinput">
-                        <input type="text" placeholder="Full Name" />
-                        <input
-                          type="email"
-                          placeholder="Email Address"
-                          style={{ marginLeft: "20px" }}
-                        />
-                      <button className="rounded-circle" style={{width:"40px",fontSize:"1.4rem"}}>x</button> */}
-                      {/* </div> */}
+                      
                       <DynamicField
                         formValues={signatureUser}
                         setFormValues={setSignatureUser}
                         handleChange={signatuerHandleChange}
                         errors={error?.signedby}
-                        skipIndex={1}
-                        noRemoveField={1}
+                        skipIndex={0}
+                        noRemoveField={0}
                       />
                     </div>
 
@@ -432,7 +425,7 @@ export default function Signature() {
                       <small className=" text-danger">{error.file}</small>
                     )}
                   </div>
-                  <div className="gdrive col-md-3">
+                  {/* <div className="gdrive col-md-3">
                     <img src={gdrive} />
                     <p>Google Drive</p>
                   </div>
@@ -440,7 +433,7 @@ export default function Signature() {
                   <div className="onedrive col-md-3">
                     <img src={onedrive} />
                     <p>One Drive</p>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="mt-4 pb-3">
